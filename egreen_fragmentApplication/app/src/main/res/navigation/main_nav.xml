@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_nav">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/mainFragment">
 
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_addPlantFragment"
+            app:destination="@id/addPlantFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPlantFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.addPlantFragment"
+        android:label="addPlantFragment" >
+        <action
+            android:id="@+id/action_addPlantFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

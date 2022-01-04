@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
 
 class MainFragment : Fragment(R.layout.main_fragment) {
@@ -25,10 +26,18 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         // TODO: Use the ViewModel
 
         addPlant.setOnClickListener{
-            requireActivity().supportFragmentManager.beginTransaction()
+            /* QUUA PRATICAMENTE TOLGO IL VECCHIO E METTO IL NUOVO
+                requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.container, addPlantFragment())
                 //.addToBackStack("secondary")                         //fa sì che premendo il tasto back del dispositivo non si chiuda l'app ma si torni indietro
                 .commitNow()
+
+                    MOLTO PIU EASY - USO FINDNAVCONTROLLER.
+             */
+
+            findNavController().navigate(R.id.action_mainFragment_to_addPlantFragment)
+
+
         }
     }
 

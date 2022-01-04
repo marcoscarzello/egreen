@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
 
 
@@ -22,9 +23,7 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
         val back = view.findViewById<Button>(R.id.back)
 
         back.setOnClickListener{
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment())
-                .commitNow()
+            findNavController().navigate(R.id.action_addPlantFragment_to_mainFragment)
         }
     }
 
