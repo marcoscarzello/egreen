@@ -7,8 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
+
 
 class MainFragment : Fragment(R.layout.main_fragment) {
 
@@ -37,8 +45,23 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
             findNavController().navigate(R.id.action_mainFragment_to_addPlantFragment)
 
-
         }
+
+
+        //test FIREBASE
+        val plantName = view.findViewById<TextView>(R.id.plantName)
+        val db = Firebase.database.reference
+        val ref = db.child("plantname")
+        ref.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val v = snapshot.getValue<String>()
+                plantName.text = v
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
 }

@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.fragmentContainerView, MainFragment.newInstance())
                 .commitNow()
         }
-        
+
          */
     }
 }
