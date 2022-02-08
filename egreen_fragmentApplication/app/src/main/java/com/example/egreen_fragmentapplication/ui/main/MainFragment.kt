@@ -1,5 +1,6 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,9 +11,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
@@ -20,12 +20,15 @@ import com.google.firebase.ktx.Firebase
 
 class MainFragment : Fragment(R.layout.main_fragment) {
 
+
+
     companion object {
         fun newInstance() = MainFragment()
     }
 
     private lateinit var viewModel: MainViewModel
     
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,11 +50,13 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         }
 
-
         //test FIREBASE
+            //ora come ora non fa nulla piu
         val plantName = view.findViewById<TextView>(R.id.plantName)
         val db = Firebase.database.reference
-        val ref = db.child("plantname")
+        val ref = db.child("plantName") //qua dovrà essere child di users e di CurrentUser
+
+
         ref.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 val v = snapshot.getValue<String>()
@@ -63,5 +68,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             }
         })
     }
+
 
 }
