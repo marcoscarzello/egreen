@@ -84,7 +84,7 @@ class RegisterActivity : AppCompatActivity() {
                                    val firebaseUser: FirebaseUser = task.result!!.user!!
 
                                    val currentUserDb = ref.child((firebaseUser.uid))    //sottoramo di users che ha come chiave l'userID assegnato al nuovo utente
-                                   currentUserDb.child("username")?.setValue(r_username.text.toString())        //metto nel ramo dell'utente creato l'username
+                                   currentUserDb.child("username")?.setValue(r_username.text.toString())        //metto nel ramo dell'utente creato lo username
                                    currentUserDb.child("email")?.setValue(r_email.text.toString())              //metto nel ramo dell'utente creato la mail
 
                                    Toast.makeText(
