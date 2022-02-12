@@ -30,6 +30,7 @@ class RegisterActivity : AppCompatActivity() {
         var r_username = findViewById<EditText>(R.id.username)
         var r_email = findViewById<EditText>(R.id.email)
         var r_password = findViewById<EditText>(R.id.password)
+        var r_confirmPassword = findViewById<EditText>(R.id.confirm_password)
         var registerButton = findViewById<Button>(R.id.registerButton)
 
 
@@ -66,6 +67,23 @@ class RegisterActivity : AppCompatActivity() {
                        Toast.LENGTH_SHORT
                    ).show()
                }
+               TextUtils.isEmpty(r_confirmPassword.toString().trim { it <= ' ' }) -> {
+                   Toast.makeText(
+                       this@RegisterActivity,
+                       "Please confirm your password.",     //questo non compare mai bo perchè è anche vera la successiva
+                       Toast.LENGTH_SHORT
+                   ).show()
+               }
+
+               //caso password!=confirm_password
+               !r_confirmPassword.text.toString().contentEquals(r_password.text.toString()) ->{
+                   Toast.makeText(
+                       this@RegisterActivity,
+                       "Your password doesn't match with confirm password.",
+                       Toast.LENGTH_SHORT
+                   ).show()
+               }
+
 
                else -> {
 
