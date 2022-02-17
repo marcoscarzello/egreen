@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.GardenSettingsFragment">
+
+    <Button
+        android:id="@+id/plant0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="new plant"
+        app:layout_constraintBottom_toTopOf="@+id/plant1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/plant2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="new plant"
+        app:layout_constraintBottom_toTopOf="@+id/plant3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plant1" />
+
+    <Button
+        android:id="@+id/plant3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="new plant"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plant2" />
+
+    <Button
+        android:id="@+id/plant1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="new plant"
+        app:layout_constraintBottom_toTopOf="@+id/plant2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plant0" />
+
+    <TextView
+        android:id="@+id/settingsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Garden Settings"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/plant0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,4 +22,25 @@
             android:id="@+id/action_addPlantFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_gardenSettingsFragment"
+            app:destination="@id/gardenSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gardenSettingsFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.GardenSettingsFragment"
+        android:label="fragment_garden_settings"
+        tools:layout="@layout/fragment_garden_settings" >
+        <action
+            android:id="@+id/action_gardenSettingsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_gardenSettingsFragment_to_addPlantFragment"
+            app:destination="@id/addPlantFragment" />
+    </fragment>
 </navigation>
