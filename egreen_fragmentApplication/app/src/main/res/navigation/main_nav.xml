@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_gardenSettingsFragment"
             app:destination="@id/gardenSettingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_addPlantFragment"
+            app:destination="@id/addPlantFragment" />
     </fragment>
     <fragment
         android:id="@+id/gardenSettingsFragment"

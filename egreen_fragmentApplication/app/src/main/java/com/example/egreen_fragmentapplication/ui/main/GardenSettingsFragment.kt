@@ -21,6 +21,7 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
         val plant2 = view.findViewById<Button>(R.id.plant2)
         val plant3 = view.findViewById<Button>(R.id.plant3)
 
+
         val plants= arrayOf(
             plant0,
             plant1,
@@ -41,5 +42,6 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
 
             //else -> mandano al PlantSettings della pianta cui si riferiscono
         }
+
 }
 }

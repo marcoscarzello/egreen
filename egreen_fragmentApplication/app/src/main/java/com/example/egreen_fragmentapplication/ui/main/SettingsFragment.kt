@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
 import android.widget.Switch
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
 
@@ -24,8 +25,16 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         val gardenBtn  = view.findViewById<Button >(R.id.plant3)
         val darkMode = view.findViewById<Switch>(R.id.darkMode)
 
-        accountBtn.setOnClickListener{
-            findNavController().navigate(R.id.action_addPlantFragment_to_mainFragment)
+        gardenBtn.setOnClickListener{
+            findNavController().navigate(R.id.action_settingsFragment_to_gardenSettingsFragment)
         }
-        }
+
+        darkMode.setOnClickListener(View.OnClickListener {
+            if (darkMode.isChecked)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            else
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        })
+
+    }
 }
