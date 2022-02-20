@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
+import com.example.egreen_fragmentapplication.ui.ma.addPlantFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -40,17 +41,17 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         // TODO: Use the ViewModel
 
         addPlant.setOnClickListener{
-            /* QUUA PRATICAMENTE TOLGO IL VECCHIO E METTO IL NUOVO
+             //QUUA PRATICAMENTE TOLGO IL VECCHIO E METTO IL NUOVO
                 requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.container, addPlantFragment())
                 //.addToBackStack("secondary")                         //fa sì che premendo il tasto back del dispositivo non si chiuda l'app ma si torni indietro
                 .commitNow()
 
-                    MOLTO PIU EASY - USO FINDNAVCONTROLLER.
-             */
+                    //MOLTO PIU EASY - USO FINDNAVCONTROLLER.  -->l'app peró crasha con questo
 
-            findNavController().navigate(R.id.action_mainFragment_to_addPlantFragment)
-
+            //questo l'ho tolto
+            //findNavController().navigate(R.id.action_mainFragment_to_addPlantFragment)
+ 12
 
         }
 
