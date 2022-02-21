@@ -16,10 +16,12 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
+
         val plant0 = view.findViewById<Button>(R.id.plant0)
         val plant1 = view.findViewById<Button>(R.id.plant1)
         val plant2 = view.findViewById<Button>(R.id.plant2)
         val plant3 = view.findViewById<Button>(R.id.plant3)
+
 
 
         val plants= arrayOf(

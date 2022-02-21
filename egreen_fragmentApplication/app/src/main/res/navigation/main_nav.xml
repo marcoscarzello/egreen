@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/registerFragment">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_addPlantFragment"
             app:destination="@id/addPlantFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/addPlantFragment"
@@ -30,9 +33,6 @@
         <action
             android:id="@+id/action_settingsFragment_to_gardenSettingsFragment"
             app:destination="@id/gardenSettingsFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_addPlantFragment"
-            app:destination="@id/addPlantFragment" />
     </fragment>
     <fragment
         android:id="@+id/gardenSettingsFragment"
@@ -45,5 +45,29 @@
         <action
             android:id="@+id/action_gardenSettingsFragment_to_addPlantFragment"
             app:destination="@id/addPlantFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 </navigation>

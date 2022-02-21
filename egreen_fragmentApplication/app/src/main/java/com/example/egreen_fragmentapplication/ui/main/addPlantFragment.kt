@@ -1,11 +1,9 @@
-package com.example.egreen_fragmentapplication.ui.ma
+package com.example.egreen_fragmentapplication.ui.main
 
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import com.example.egreen_fragmentapplication.R
 
@@ -16,7 +14,7 @@ import com.example.egreen_fragmentapplication.R
  * create an instance of this fragment.
  */
 //Alessandro
-class addPlantFragment : Fragment() {
+class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
 
     private var mSpinner: Spinner? = null
     private var spinnerResult: String? = null
@@ -28,12 +26,14 @@ class addPlantFragment : Fragment() {
     var plantHeight: String? = null
 
     //Alessandro
-    override fun onCreateView(
+    /*override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_add_plant, container, false)
     }
+
+     */
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -44,20 +44,7 @@
             app:layout_constraintTop_toBottomOf="@+id/userId"
             app:layout_constraintVertical_bias="0.01" />
 
-        <Button
-            android:id="@+id/logoutBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#9C2222"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
-            android:text="log out"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailId"
-            app:layout_constraintVertical_bias="0.995" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
