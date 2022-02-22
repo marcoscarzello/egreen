@@ -93,6 +93,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
  */
                                     viewModel.updateCurrentUser()
+                                    viewModel.getPlants() //carica piante
                                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                                 } else {
                                     //if logging in is not successful then show error message

@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
 
         vm.currentuser.observe(this, Observer {user -> uid.text = user?.uid ; eid.text = user?.email})
 
+        vm.initialize()
+
 
     }
 }

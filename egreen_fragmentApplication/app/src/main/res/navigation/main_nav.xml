@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_gardenSettingsFragment"
+            app:destination="@id/gardenSettingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addPlantFragment"
@@ -48,6 +51,9 @@
         <action
             android:id="@+id/action_gardenSettingsFragment_to_addPlantFragment"
             app:destination="@id/addPlantFragment" />
+        <action
+            android:id="@+id/action_gardenSettingsFragment_to_plantSettingsFragment"
+            app:destination="@id/plantSettingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -78,4 +84,12 @@
         android:name="com.example.egreen_fragmentapplication.ui.main.AccountSettingsFragment"
         android:label="fragment_account_settings"
         tools:layout="@layout/fragment_account_settings" />
+    <fragment
+        android:id="@+id/plantSettingsFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.PlantSettingsFragment"
+        android:label="PlantSettingsFragment" >
+        <action
+            android:id="@+id/action_plantSettingsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

@@ -5,6 +5,8 @@ import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.*
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
 
 
@@ -15,6 +17,8 @@ import com.example.egreen_fragmentapplication.R
  */
 //Alessandro
 class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
+
+    val viewModel: MainViewModel by activityViewModels()
 
     private var mSpinner: Spinner? = null
     private var spinnerResult: String? = null
@@ -75,6 +79,11 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
 
             }
             mActivityCallback?.onContinueButtonPressed()
+
+            //crea infine la pianta
+            viewModel.addPlant(plantName.toString(), plantHeight.toString())
+
+            findNavController().navigate(R.id.action_addPlantFragment_to_mainFragment)
         }
 
         val openCamera = view.findViewById<Button>(R.id.photo_Button)

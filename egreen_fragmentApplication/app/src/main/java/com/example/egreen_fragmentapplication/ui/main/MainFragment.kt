@@ -32,17 +32,21 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         val addPlant = view.findViewById<Button>(R.id.addPlant)
        val viewModel: MainViewModel by activityViewModels()
 
+
         addPlant.setOnClickListener{
+            /*
              //QUUA PRATICAMENTE TOLGO IL VECCHIO E METTO IL NUOVO
                 requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.container, addPlantFragment())
                 //.addToBackStack("secondary")                         //fa sì che premendo il tasto back del dispositivo non si chiuda l'app ma si torni indietro
                 .commitNow()
 
+             */
+
                     //MOLTO PIU EASY - USO FINDNAVCONTROLLER.  -->l'app peró crasha con questo
 
 
-            //findNavController().navigate(R.id.action_mainFragment_to_addPlantFragment)
+            findNavController().navigate(R.id.action_mainFragment_to_gardenSettingsFragment)
 
 
         }
