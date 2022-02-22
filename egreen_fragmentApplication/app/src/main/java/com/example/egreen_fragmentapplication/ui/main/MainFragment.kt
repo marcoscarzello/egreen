@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
@@ -76,9 +77,14 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             //logout from app
             //FirebaseAuth.getInstance().signOut()
 
-            viewModel.logOut()
+            viewModel.logOut()                                                                      //logOut funzione del MainViewModel
             findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
 
+            Toast.makeText(
+                this@MainFragment.requireContext(),
+                "You're logged out successfully",
+                Toast.LENGTH_SHORT
+            ).show()
 
         }
     }

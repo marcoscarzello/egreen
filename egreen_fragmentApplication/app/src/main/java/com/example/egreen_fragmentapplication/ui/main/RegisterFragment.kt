@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
 import com.google.android.gms.tasks.OnCompleteListener
@@ -25,6 +26,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         val db = Firebase.database.reference
         val ref = db.child("users") // primo ramo del database sotto cui ci saranno tutti i vari utenti (ciascuno con userID unico)
 
+        val viewModel: MainViewModel by activityViewModels()
 
         var r_username = view.findViewById<EditText>(R.id.username)
         var r_email = view.findViewById<EditText>(R.id.email)
@@ -122,6 +124,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                                     finish()
 
                                      */
+                                    viewModel.updateCurrentUser()
                                     findNavController().navigate(R.id.action_registerFragment_to_mainFragment)
                                 } else {
                                     //if registering is not successful then show error message

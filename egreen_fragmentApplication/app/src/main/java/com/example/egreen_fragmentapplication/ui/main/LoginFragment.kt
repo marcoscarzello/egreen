@@ -8,6 +8,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.MainActivity
 import com.example.egreen_fragmentapplication.R
@@ -23,15 +26,18 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val viewModel: MainViewModel by activityViewModels()
 
         val loginButton = view.findViewById<Button>(R.id.loginButton)
         val l_email = view.findViewById<TextView>(R.id.login_email)
         val l_password = view.findViewById<TextView>(R.id.login_psw)
         val register = view.findViewById<TextView>(R.id.register)
 
+        val email  = view.findViewById<TextView>(R.id.mail)
+        viewModel.currentuser.observe(this, Observer { u -> email.text = u?.email })
         //not registered yet? go to register activity!
         register.setOnClickListener {
-            startActivity(Intent(this@LoginFragment.requireContext(), RegisterActivity::class.java))
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
         loginButton.setOnClickListener {
@@ -86,6 +92,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                                     finish()
 
  */
+                                    viewModel.updateCurrentUser()
                                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                                 } else {
                                     //if logging in is not successful then show error message

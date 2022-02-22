@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         //NOTA: li vedrò sempre perchè qui siamo nella main activity che è sempre attiva sotto ai vari fragment
 
 
-        vm.user.observe(this, Observer {user -> uid.text = user.uid ; eid.text = user.email})
+        vm.currentuser.observe(this, Observer {user -> uid.text = user?.uid ; eid.text = user?.email})
 
 
     }

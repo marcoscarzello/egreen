@@ -19,18 +19,23 @@ data class User(var email : String, var plantName : String, var username : Strin
 
 class MainViewModel : ViewModel () {
 
-    var user = MutableLiveData<FirebaseUser>()
+    private var mutableCurrentUser = MutableLiveData<FirebaseUser?>()
+    val currentuser: LiveData<FirebaseUser?> get() = mutableCurrentUser
 
-     open fun getCurrentUser():MutableLiveData<FirebaseUser>{
-        if (FirebaseAuth.getInstance().currentUser != null )
-            user.value =  FirebaseAuth.getInstance().currentUser
-        return user
+     open fun updateCurrentUser(){
+     //open fun getCurrentUser():MutableLiveData<FirebaseUser>{
+        //if (FirebaseAuth.getInstance().currentUser != null )
+            mutableCurrentUser.value =  FirebaseAuth.getInstance().currentUser
+
+       // return user
     }
 
 
 
     open fun logOut(){
         FirebaseAuth.getInstance().signOut()
+        updateCurrentUser()
+
     }
 
 
