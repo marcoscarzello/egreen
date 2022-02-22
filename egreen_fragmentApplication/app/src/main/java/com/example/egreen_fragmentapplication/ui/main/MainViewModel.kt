@@ -22,12 +22,17 @@ class MainViewModel : ViewModel () {
     private var mutableCurrentUser = MutableLiveData<FirebaseUser?>()
     val currentuser: LiveData<FirebaseUser?> get() = mutableCurrentUser
 
+    private var mutableRefDB = MutableLiveData<DatabaseReference?>()
+    val refDB: LiveData<DatabaseReference?> get() = mutableRefDB
+
      open fun updateCurrentUser(){
      //open fun getCurrentUser():MutableLiveData<FirebaseUser>{
         //if (FirebaseAuth.getInstance().currentUser != null )
             mutableCurrentUser.value =  FirebaseAuth.getInstance().currentUser
 
        // return user
+
+         mutableRefDB.value = Firebase.database.reference.child("users").child((currentuser.value?.uid.toString()))
     }
 
 

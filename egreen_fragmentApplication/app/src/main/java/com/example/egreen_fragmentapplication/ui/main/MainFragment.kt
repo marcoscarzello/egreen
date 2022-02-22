@@ -49,28 +49,33 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         //test FIREBASE + autenticazione
 
-
+/*
         val user =  FirebaseAuth.getInstance().currentUser?.uid.toString()      //recupero l'ID dello user corrente
 
-        val plantName = view.findViewById<TextView>(R.id.plantName)
+
         val db = Firebase.database.reference
 
         val ref = db.child("users").child((user)) //qui entro nel ramo degli utenti e poi in particolare dell'utente corrente
 
-        //qui accedo al valore di plantName e aggiorno un TextView con il valore presente nel database
-        ref.child("plantName").addValueEventListener(object: ValueEventListener{
+ */
+
+        val plantName = view.findViewById<TextView>(R.id.plantName)
+
+        viewModel.refDB.value?.child("plantName")?.addValueEventListener(object: ValueEventListener{    //refDB lo ricavo dal view model
+
+        //ref.child("plantName").addValueEventListener(object: ValueEventListener{                              //qui accedo al valore di plantName e aggiorno un TextView con il valore presente nel database
             override fun onDataChange(snapshot: DataSnapshot) {
                 val v = snapshot.getValue<String>()
                 plantName.text = v
-
-                //NOTA se ti sei appena registrato, nel db per ora non c'è il parametro plantName:
-                // lo puoi aggiungere da firebase manualmente per verificare il funzionamento
+                                                                                                            //NOTA se ti sei appena registrato, nel db per ora non c'è il parametro plantName:
+                                                                                                            // lo puoi aggiungere da firebase manualmente per verificare il funzionamento
             }
 
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
+
 
         val logout = view.findViewById<Button>(R.id.logoutBtn)
         logout.setOnClickListener{
