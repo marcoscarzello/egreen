@@ -40,7 +40,6 @@ class MainViewModel : ViewModel () {
     open fun logOut(){
         FirebaseAuth.getInstance().signOut()
         updateCurrentUser()
-
     }
 
 
