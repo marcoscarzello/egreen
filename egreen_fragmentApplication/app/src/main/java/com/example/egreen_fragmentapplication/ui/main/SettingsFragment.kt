@@ -33,6 +33,9 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             findNavController().navigate(R.id.action_settingsFragment_to_accountSettingsFragment)
         }
 
+        networkBtn.setOnClickListener{
+            findNavController().navigate(R.id.action_settingsFragment_to_networkFragment)
+        }
         darkMode.setOnClickListener(View.OnClickListener {
             if (darkMode.isChecked)
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

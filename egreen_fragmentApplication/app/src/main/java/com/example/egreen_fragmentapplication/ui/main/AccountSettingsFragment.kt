@@ -44,7 +44,7 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
 
         //TO GARDEN SETTINGS
         gardenSettings.setOnClickListener{
-            findNavController().navigate(R.id.action_settingsFragment_to_gardenSettingsFragment)
+            findNavController().navigate(R.id.action_accountSettingsFragment_to_gardenSettingsFragment)
         }
 
 
