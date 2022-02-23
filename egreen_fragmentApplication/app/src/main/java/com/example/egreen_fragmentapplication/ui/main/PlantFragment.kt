@@ -19,7 +19,7 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
 
         val viewModel: MainViewModel by activityViewModels()
 
-        j
+
         val plantNameText  = view.findViewById<TextView>(R.id.plant_title)
         val humidity  = view.findViewById<TextView>(R.id.humidity)
         val waterlevel  = view.findViewById<TextView>(R.id.water_level)
