@@ -82,8 +82,9 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
 
             //crea infine la pianta
             viewModel.addPlant(plantName.toString(), plantHeight.toString())
+            viewModel.changeSelectedPlant(plantName.toString())
 
-            findNavController().navigate(R.id.action_addPlantFragment_to_mainFragment)
+            findNavController().navigate(R.id.action_addPlantFragment_to_plantFragment)
         }
 
         val openCamera = view.findViewById<Button>(R.id.photo_Button)

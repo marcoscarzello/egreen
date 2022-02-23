@@ -25,8 +25,8 @@
         android:name="com.example.egreen_fragmentapplication.ui.main.addPlantFragment"
         android:label="addPlantFragment" >
         <action
-            android:id="@+id/action_addPlantFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_addPlantFragment_to_plantFragment"
+            app:destination="@id/plantFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -99,7 +99,11 @@
         android:name="com.example.egreen_fragmentapplication.ui.main.PlantSettingsFragment"
         android:label="PlantSettingsFragment" >
         <action
-            android:id="@+id/action_plantSettingsFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_plantSettingsFragment_to_plantFragment"
+            app:destination="@id/plantFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/plantFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.PlantFragment"
+        android:label="PlantFragment" />
 </navigation>

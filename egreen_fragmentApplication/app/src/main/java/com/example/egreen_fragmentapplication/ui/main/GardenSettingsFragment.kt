@@ -79,7 +79,7 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
                         }
                     else ->
                         item.setOnClickListener(){
-                            viewModel.selectedPlant = item.text.toString()
+                            viewModel.changeSelectedPlant(item.text.toString())
                             findNavController().navigate(R.id.action_gardenSettingsFragment_to_plantSettingsFragment)
                         }
                 }

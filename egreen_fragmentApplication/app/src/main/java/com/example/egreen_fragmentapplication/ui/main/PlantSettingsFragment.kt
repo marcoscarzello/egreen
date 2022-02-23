@@ -39,7 +39,7 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
 
         applyBtn.setOnClickListener{
             viewModel.modifyPlant(plantHeigthEditText.text.toString())
-            findNavController().navigate(R.id.action_plantSettingsFragment_to_mainFragment)
+            findNavController().navigate(R.id.action_plantSettingsFragment_to_plantFragment)
         }
 
     }

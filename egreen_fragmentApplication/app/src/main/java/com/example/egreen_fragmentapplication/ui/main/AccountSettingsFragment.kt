@@ -48,6 +48,7 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
         }
 
 
+
         //DELETE ACCOUNT
         deleteAccount.setOnClickListener{
             val dialogBuilder = AlertDialog.Builder(this@AccountSettingsFragment.requireContext())

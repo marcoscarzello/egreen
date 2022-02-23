@@ -1,7 +1,10 @@
 package com.example.egreen_fragmentapplication.ui.main
 
 import android.content.ContentValues.TAG
+import android.net.Uri
 import android.util.Log
+import android.widget.EditText
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,10 +12,15 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 data class User(var email : String, var plantName : String, var username : String){
 }
@@ -29,6 +37,13 @@ class MainViewModel : ViewModel () {
 
     private var mutablePlantList = MutableLiveData<MutableList<String>>()
     val plantList: LiveData<MutableList<String>> get() = mutablePlantList
+
+    //livedata per osservare umidità
+    private var mutableHumidityMap = MutableLiveData<MutableMap<String, String>>()
+    val humidityMap: LiveData<MutableMap<String, String>> get() = mutableHumidityMap
+
+    private var mutableWaterMap = MutableLiveData<MutableMap<String, String>>()
+    val waterMap: LiveData<MutableMap<String, String>> get() = mutableWaterMap
 
     open fun initialize(){
         mutablePlantList.value = mutableListOf()
@@ -58,13 +73,64 @@ class MainViewModel : ViewModel () {
     open fun addPlant(plantName: String, plantHeight: String){
 
         var plantData: MutableMap<String, String> = HashMap()
+        var params: MutableMap<String, String> = HashMap()
+
+        var provvisoria: MutableMap<String, String> = HashMap()     //da togliere quando si caricherà da arduino
 
         plantData["plantName"] = plantName
         plantData["plantHeigth"] = plantHeight
-        plantData["params"] = ""
+
+        params["last5humidity"] = ""
+        params["last5waterlevel"] = ""
+
+
+        provvisoria["a"] = "50"
+        provvisoria["b"] = "45"
+        provvisoria["c"] = "29"
+        provvisoria["d"] = "26"
+        provvisoria["e"] = "9"
+
 
         mutableRefDB.value?.child("plants")?.child(plantName)?.setValue(plantData)
+        mutableRefDB.value?.child("plants")?.child(plantName)?.child("params")?.setValue(params)
 
+        //da eliminare (simula ultimi dati caricati da arduino
+        mutableRefDB.value?.child("plants")?.child(plantName)?.child("params")?.child("last5humidity")?.setValue(provvisoria)
+        mutableRefDB.value?.child("plants")?.child(plantName)?.child("params")?.child("last5waterlevel")?.setValue(provvisoria)
+
+
+
+    }
+
+    open fun changeSelectedPlant(name: String) {
+
+        selectedPlant = name
+
+        mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("params")?.child("last5humidity")?.addValueEventListener(object: ValueEventListener{
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                mutableHumidityMap.value = snapshot.getValue<MutableMap<String, String>>()
+                Log.d("HUMIDITY MAP READ BY VM", humidityMap.value.toString())
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+
+        mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("params")?.child("last5waterlevel")?.addValueEventListener(object: ValueEventListener{
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                mutableWaterMap.value = snapshot.getValue<MutableMap<String, String>>()
+                Log.d("Water MAP READ BY VM", waterMap.value.toString())
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
     }
 
     open fun getSelectedPlantHeigth() {
@@ -135,6 +201,11 @@ class MainViewModel : ViewModel () {
             }
 
     }
+
+    //TODO: update profile settings
+
+    //TODO: get user data
+
 
 
 /*
