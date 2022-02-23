@@ -92,7 +92,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                                     finish()
 
  */
+
                                     viewModel.updateCurrentUser()
+                                    viewModel.getUsername()
                                     viewModel.getPlants() //carica piante
                                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                                 } else {

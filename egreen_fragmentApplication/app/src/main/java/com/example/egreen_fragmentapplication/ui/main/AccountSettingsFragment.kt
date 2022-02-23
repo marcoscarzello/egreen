@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.AlertDialogLayout
 import androidx.fragment.app.activityViewModels
@@ -26,6 +27,16 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
         val deleteAccount = view.findViewById<Button>(R.id.deleteAccountBtn)
         val logOut = view.findViewById<Button>(R.id.logoutBtn)
         val gardenSettings = view.findViewById<Button>(R.id.gardenSettingsBtn)
+        val etUsername = view.findViewById<EditText>(R.id.etUsername)
+        val email = view.findViewById<EditText>(R.id.accountEmail)
+        val saveBtn = view.findViewById<Button>(R.id.saveAccountChanges)
+
+        email.setText(viewModel.getEmail())
+        viewModel.username.observe(this, Observer { u -> etUsername.setText(u) })
+
+        saveBtn.setOnClickListener{
+            viewModel.setUsername(etUsername.text.toString())
+        }
 
         //LOGOUT
         logOut.setOnClickListener {
@@ -46,6 +57,7 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
         gardenSettings.setOnClickListener{
             findNavController().navigate(R.id.action_accountSettingsFragment_to_gardenSettingsFragment)
         }
+
 
 
 

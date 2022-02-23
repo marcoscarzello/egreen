@@ -10,10 +10,12 @@
         android:id="@+id/profileImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.079"
         tools:src="@tools:sample/avatars" />
 
     <EditText
@@ -23,52 +25,65 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Username"
-        app:layout_constraintBottom_toTopOf="@+id/etEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileImg" />
+        app:layout_constraintBottom_toTopOf="@+id/accountEmail"
+        app:layout_constraintTop_toBottomOf="@+id/profileImg"
+        tools:layout_editor_absoluteX="101dp" />
 
     <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textWebEmailAddress"
-        android:text="Email"
-        app:layout_constraintBottom_toTopOf="@+id/etPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
-
-    <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/newPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
         android:text="password"
-        app:layout_constraintBottom_toTopOf="@+id/gardenSettingsBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+        app:layout_constraintBottom_toTopOf="@+id/saveAccountChanges"
+        app:layout_constraintTop_toBottomOf="@+id/accountEmail"
+        tools:layout_editor_absoluteX="100dp" />
+
+    <EditText
+        android:id="@+id/accountEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="textWebEmailAddress"
+        android:text="Email"
+        app:layout_constraintBottom_toTopOf="@+id/newPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etUsername"
+        tools:layout_editor_absoluteX="100dp" />
 
     <Button
         android:id="@+id/gardenSettingsBtn"
-        android:layout_width="248dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="48dp"
+        android:layout_width="188dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="#6DB54E"
         android:text="garden settings"
         app:layout_constraintBottom_toTopOf="@+id/logoutBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/deleteAccountBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#A80505"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:text="delete account"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="12dp"
         android:backgroundTint="#777575"
         android:scaleX="1"
         android:scaleY="1"
@@ -79,17 +94,13 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/deleteAccountBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#A80505"
-        android:scaleX="0.6"
-        android:scaleY="0.6"
-        android:text="delete account"
-        android:textSize="8sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/saveAccountChanges"
+        android:layout_width="151dp"
+        android:layout_height="43dp"
+        android:text="save changes"
+        app:layout_constraintBottom_toTopOf="@+id/gardenSettingsBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,6 +45,9 @@ class MainViewModel : ViewModel () {
     private var mutableWaterMap = MutableLiveData<MutableMap<String, String>>()
     val waterMap: LiveData<MutableMap<String, String>> get() = mutableWaterMap
 
+    private var mutableUsername = MutableLiveData<String>()
+    val username: LiveData<String> get() = mutableUsername
+
     open fun initialize(){
         mutablePlantList.value = mutableListOf()
 
@@ -200,6 +203,41 @@ class MainViewModel : ViewModel () {
                 }
             }
 
+    }
+    open fun getEmail(): String {
+        return mutableCurrentUser.value?.email.toString()
+    }
+
+    open fun getUsername() {
+
+        mutableRefDB.value?.child("username")?.addValueEventListener(
+            object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    mutableUsername.value = snapshot.getValue<String>().toString()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+
+            })
+    }
+
+    open fun setUsername(username: String){
+        mutableRefDB.value?.child("username")?.setValue(username)
+
+    }
+
+
+    //CHANGE PSW
+     open fun changePsw(newPsw: String){
+
+        mutableCurrentUser.value!!.updatePassword(newPsw)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAG, "User password updated.")
+                }
+            }
     }
 
     //TODO: update profile settings
