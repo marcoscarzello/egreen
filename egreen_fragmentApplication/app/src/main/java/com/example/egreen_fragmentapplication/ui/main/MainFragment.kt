@@ -29,27 +29,21 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val addPlant = view.findViewById<Button>(R.id.addPlant)
-       val viewModel: MainViewModel by activityViewModels()
+        val settings = view.findViewById<Button>(R.id.settingsBtn)
+        val viewModel: MainViewModel by activityViewModels()
 
 
         addPlant.setOnClickListener{
-            /*
-             //QUUA PRATICAMENTE TOLGO IL VECCHIO E METTO IL NUOVO
-                requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, addPlantFragment())
-                //.addToBackStack("secondary")                         //fa sì che premendo il tasto back del dispositivo non si chiuda l'app ma si torni indietro
-                .commitNow()
-
-             */
-
-                    //MOLTO PIU EASY - USO FINDNAVCONTROLLER.  -->l'app peró crasha con questo
-
-
-            findNavController().navigate(R.id.action_mainFragment_to_gardenSettingsFragment)
-
-
+            findNavController().navigate(R.id.action_mainFragment_to_gardenSettingsFragment)        //ora va a garden settings per poter testare le cose
         }
+
+        settings.setOnClickListener{
+            findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)              //anche questo per testare, poi non servirà
+        }
+
+
 
         //test FIREBASE + autenticazione
 
@@ -81,6 +75,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         })
 
 
+/*
         val logout = view.findViewById<Button>(R.id.logoutBtn)
         logout.setOnClickListener{
             //logout from app
@@ -96,5 +91,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             ).show()
 
         }
+
+ */
     }
 }

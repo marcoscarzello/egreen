@@ -1,9 +1,11 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -41,7 +43,6 @@ class MainViewModel : ViewModel () {
         //if (FirebaseAuth.getInstance().currentUser != null )
             mutableCurrentUser.value =  FirebaseAuth.getInstance().currentUser
 
-       // return user
 
          mutableRefDB.value = Firebase.database.reference.child("users").child((currentuser.value?.uid.toString()))
     }
@@ -51,6 +52,7 @@ class MainViewModel : ViewModel () {
     open fun logOut(){
         FirebaseAuth.getInstance().signOut()
         updateCurrentUser()
+        Log.d(TAG, "User logged out successfully.")
     }
 
     open fun addPlant(plantName: String, plantHeight: String){
@@ -116,6 +118,22 @@ class MainViewModel : ViewModel () {
 
         })
         //return plantList
+    }
+
+    //DELETE ACCOUNT
+    open fun deleteAccount(){
+        val user = mutableCurrentUser!!.value
+        val refDB = mutableRefDB.value
+        logOut()
+        Log.d( "User deleting account :" , user.toString())
+        user?.delete()!!
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAG, "User account deleted.")
+                    refDB?.setValue(null)                       //cancella dal database ramo e sottorami relativi all'utente in questione
+                }
+            }
+
     }
 
 
