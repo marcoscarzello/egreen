@@ -39,7 +39,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="80dp"
                 android:layout_marginEnd="24dp"
-                android:text="- Turn on the physical device\n- Click the button below and enter your home's wifi credentials\n- Don't forget to add the name of the plant you want to connect\n- Plant can be already created or not yet\n- The system is connected when the blue led goes off\n- Exit the browser"
+                android:text="- Turn on the physical device\n- Click the button below and enter your home's wifi credentials\n- Don't forget to add the name of the plant you want to connect\n- Copy and paste also the user code below in the web form\n- Plant can be already created or not yet\n- The system is connected when the blue led goes off\n- Exit the browser"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -60,6 +60,22 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:textIsSelectable="true"
+                android:id="@+id/user_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:layout_marginBottom="12dp"
+                android:text="TextView"
+                android:textColor="@color/main_theme"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/connect_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

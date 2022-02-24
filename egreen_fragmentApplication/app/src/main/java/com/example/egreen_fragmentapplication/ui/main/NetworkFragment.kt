@@ -10,6 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
 import android.content.Intent
 import android.net.Uri
+import android.widget.TextView
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 
 
 class NetworkFragment : Fragment(R.layout.fragment_network) {
@@ -18,6 +21,13 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
         super.onViewCreated(view, savedInstanceState)
 
         val connectBtn = view.findViewById<Button>(R.id.connect_button)
+        val userCode = view.findViewById<TextView>(R.id.user_code)
+
+        val viewModel: MainViewModel by activityViewModels()
+
+
+        viewModel.currentuser.observe(this, Observer {user ->
+            userCode.text = user?.uid})
 
         connectBtn.setOnClickListener{
             val url = "http://www.polito.it"
