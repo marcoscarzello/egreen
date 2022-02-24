@@ -41,35 +41,41 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
 
 
         //click su password
-        etPassword.setOnClickListener{
-            val dialogBuilder = AlertDialog.Builder(this@AccountSettingsFragment.requireContext())
+        etPassword.setOnFocusChangeListener { v, hasFocus ->
+            if(hasFocus) {
+                val dialogBuilder =
+                    AlertDialog.Builder(this@AccountSettingsFragment.requireContext())
 
-            // set message of alert dialog
-            dialogBuilder.setMessage("Do you want to change your password?")
-                // if the dialog is cancelable
-                .setCancelable(false)
-                // positive button text and action
-                .setPositiveButton("Yes, please", DialogInterface.OnClickListener {
-                        dialog, id ->
+                // set message of alert dialog
+                dialogBuilder.setMessage("Do you want to change your password?")
+                    // if the dialog is cancelable
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton(
+                        "Yes, please",
+                        DialogInterface.OnClickListener { dialog, id ->
 
-                    //qua vorrò andare nel fragment di change password
-                    findNavController().navigate(R.id.action_accountSettingsFragment_to_changePasswordFragment)
+                            //qua vorrò andare nel fragment di change password
+                            findNavController().navigate(R.id.action_accountSettingsFragment_to_changePasswordFragment)
 
-                })
-                // negative button text and action
-                .setNegativeButton("My mistake", DialogInterface.OnClickListener {
-                        dialog, id -> dialog.cancel()
+                        })
+                    // negative button text and action
+                    .setNegativeButton("My mistake", DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
 
-                    //qua bisognerebbe togliere il focus dal text password
-                })
+                        //qua bisognerebbe togliere il focus dal text password
+                        v.clearFocus()
 
-            // create dialog box
-            val alert = dialogBuilder.create()
-            // set title for alert dialog box
-            alert.setTitle("Your Password")
-            // show alert dialog
-            alert.show()
-            //viewModel.deleteAccount()
+                    })
+
+                // create dialog box
+                val alert = dialogBuilder.create()
+                // set title for alert dialog box
+                alert.setTitle("Your Password")
+                // show alert dialog
+                alert.show()
+                //viewModel.deleteAccount()
+            }
         }
 
         saveBtn.setOnClickListener{
