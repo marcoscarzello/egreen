@@ -40,7 +40,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             //greenscore?
             var tmp = plantList.count()*100
-            noplants.text = tmp.toString()
+            greenscore.text = tmp.toString()
         })
 
         //oxigen come si misura?

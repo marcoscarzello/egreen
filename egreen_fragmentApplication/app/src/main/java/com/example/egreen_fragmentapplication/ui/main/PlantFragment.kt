@@ -4,10 +4,12 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.GridLabelRenderer
@@ -30,6 +32,12 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         val plantNameText  = view.findViewById<TextView>(R.id.plant_title)
         val humidity  = view.findViewById<TextView>(R.id.humidity)
         val waterlevel  = view.findViewById<TextView>(R.id.water_level)
+
+        //to delete
+        val test = view.findViewById<Button>(R.id.test_profile)
+        test.setOnClickListener{
+            findNavController().navigate(R.id.action_plantFragment_to_profileFragment)
+        }
 
         val HgraphView = view.findViewById<GraphView>(R.id.Hgraph);
         HgraphView.getViewport().setYAxisBoundsManual(true);

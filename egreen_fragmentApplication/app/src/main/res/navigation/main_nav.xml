@@ -111,7 +111,11 @@
     <fragment
         android:id="@+id/plantFragment"
         android:name="com.example.egreen_fragmentapplication.ui.main.PlantFragment"
-        android:label="PlantFragment" />
+        android:label="PlantFragment" >
+        <action
+            android:id="@+id/action_plantFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/networkFragment"
         android:name="com.example.egreen_fragmentapplication.ui.main.NetworkFragment"
@@ -126,4 +130,8 @@
             android:id="@+id/action_changePasswordFragment_to_accountSettingsFragment"
             app:destination="@id/accountSettingsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>
