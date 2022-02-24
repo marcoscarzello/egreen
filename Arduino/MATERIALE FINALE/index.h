@@ -16,6 +16,12 @@ const char MAIN_page[] PROGMEM = R"=====(
   <br>
   Password:<br>
   <input type="text" name="password" value="pwd">
+  <br>
+  Plant name:<br>
+  <input type="text" name="plantname" value="Plant name">
+  <br>
+  User code:<br>
+  <input type="text" name="usercode" value="Paste code here">
   <br><br>
   <input type="submit" value="Invia">
 </form> 
