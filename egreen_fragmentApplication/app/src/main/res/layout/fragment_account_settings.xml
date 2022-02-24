@@ -20,7 +20,7 @@
         android:id="@+id/til_username"
         android:layout_width="240dp"
         android:layout_height="59dp"
-        app:layout_constraintBottom_toTopOf="@+id/current_password"
+        app:layout_constraintBottom_toTopOf="@+id/til_c_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileImg">
@@ -33,14 +33,14 @@
             android:hint="Username"
             android:inputType="textPersonName"
             android:text=""
-            app:layout_constraintBottom_toTopOf="@+id/current_password"
+            app:layout_constraintBottom_toTopOf="@+id/til_c_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profileImg" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/current_password"
+        android:id="@+id/til_c_password"
         android:layout_width="240dp"
         android:layout_height="59dp"
         app:layout_constraintBottom_toTopOf="@+id/til_email"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/til_username">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPassword"
+            android:id="@+id/current_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:ems="10"
@@ -69,7 +69,7 @@
         app:layout_constraintBottom_toTopOf="@+id/saveAccountChanges"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/current_password">
+        app:layout_constraintTop_toBottomOf="@+id/til_c_password">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/accountEmail"

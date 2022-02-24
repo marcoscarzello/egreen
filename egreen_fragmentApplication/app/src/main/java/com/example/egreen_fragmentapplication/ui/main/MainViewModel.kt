@@ -5,14 +5,12 @@ import android.net.Uri
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.BoolRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.auth.*
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
@@ -239,6 +237,31 @@ class MainViewModel : ViewModel () {
                 }
             }
     }
+
+    open fun reAuthUser(current_password: String): Boolean{
+        Log.d("currentpsw in VM: ", current_password)
+        var success = false
+        if(!current_password.isEmpty() && current_password != null) {
+            Log.d("entrato nell if VM", "yes")
+            Log.d("EMAIL", mutableCurrentUser.value?.email.toString())
+            val credential: AuthCredential = EmailAuthProvider.getCredential(mutableCurrentUser.value?.email.toString(), current_password)
+            Log.d("CREDENTIAL", credential.toString())
+
+
+            mutableCurrentUser.value!!.reauthenticate(credential).addOnSuccessListener {
+                        success = true
+                        Log.d(TAG, "User re-authenticated.")}.addOnFailureListener{
+
+                        success = false
+                        Log.d(TAG, "not  authhenticated CAZZO")
+                    }
+
+
+        }
+        Log.d("SUCCESSSSSS: ", success.toString())
+        return success
+    }
+
 
     //TODO: update profile settings
 

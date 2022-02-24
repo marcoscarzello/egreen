@@ -4,18 +4,14 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.widget.AlertDialogLayout
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
-import com.google.firebase.auth.FirebaseAuth
 
 class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
 
@@ -30,7 +26,7 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
         val etUsername = view.findViewById<EditText>(R.id.etUsername)
         val email = view.findViewById<EditText>(R.id.accountEmail)
         val saveBtn = view.findViewById<Button>(R.id.saveAccountChanges)
-        val etPassword = view.findViewById<EditText>(R.id.etPassword)
+        val etPassword = view.findViewById<EditText>(R.id.current_password)
 
 
         //MOSTRA ATTUALE MAIL
