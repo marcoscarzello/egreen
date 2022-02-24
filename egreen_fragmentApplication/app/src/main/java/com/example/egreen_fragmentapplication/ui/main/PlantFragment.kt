@@ -1,17 +1,17 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Button
-import android.widget.Switch
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
+import com.jjoe64.graphview.GraphView
+import com.jjoe64.graphview.series.DataPoint
+import com.jjoe64.graphview.series.LineGraphSeries
 
 
 class PlantFragment : Fragment(R.layout.fragment_plant) {
@@ -30,6 +30,18 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         val humidity  = view.findViewById<TextView>(R.id.humidity)
         val waterlevel  = view.findViewById<TextView>(R.id.water_level)
 
+        val HgraphView = view.findViewById<GraphView>(R.id.Hgraph);
+        HgraphView.getViewport().setYAxisBoundsManual(true);
+        HgraphView.getViewport().setMinY(0.0);
+        HgraphView.getViewport().setMaxY(100.0);
+
+        var series = LineGraphSeries(
+            arrayOf<DataPoint>( // on below line we are adding
+                // each point on our x and y axis.
+                DataPoint(1.0, 0.0),
+        ))
+        HgraphView.setTitle("Last humidity values")
+
 
         plantNameText.text = viewModel.getSelectedPlantName()
 
@@ -37,6 +49,20 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
             humMap = hm
             humidity.text = humMap["e"]
             Log.d("HUMIDITY MAP READ BY FRAGMENT PLANT", humMap.toString())
+
+            //aggiornamento graph
+            HgraphView.removeAllSeries()
+             series = LineGraphSeries(
+                arrayOf<DataPoint>(
+                    DataPoint(1.0, humMap["a"]!!.toDouble()),
+                    DataPoint(2.0, humMap["b"]!!.toDouble()),
+                    DataPoint(3.0, humMap["c"]!!.toDouble()),
+                    DataPoint(4.0, humMap["d"]!!.toDouble()),
+                    DataPoint(5.0, humMap["e"]!!.toDouble())
+                ))
+            series.setColor(Color.RED)
+            series.setDrawDataPoints(true)
+            HgraphView.addSeries(series)
 
         })
 
