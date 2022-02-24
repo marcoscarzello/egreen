@@ -17,9 +17,14 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val url = "http://www.polito.it"
-        val i = Intent(Intent.ACTION_VIEW)
-        i.data = Uri.parse(url)
-        startActivity(i)
+        val connectBtn = view.findViewById<Button>(R.id.connect_button)
+
+        connectBtn.setOnClickListener{
+            val url = "http://www.polito.it"
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(url)
+            startActivity(i)
+        }
+
     }
 }
