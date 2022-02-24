@@ -15,17 +15,19 @@ import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.main_fragment.*
 
 
 class MainFragment : Fragment(R.layout.main_fragment) {
 
-
+    private lateinit var cardArrayList:ArrayList<CardModel>
+    private lateinit var adapter: CardAdapter
 
     companion object {
         fun newInstance() = MainFragment()
     }
 
-
+    private lateinit var viewModel: MainViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,6 +36,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         val settings = view.findViewById<Button>(R.id.settingsBtn)
         val viewModel: MainViewModel by activityViewModels()
 
+        loadCards()
 
         addPlant.setOnClickListener{
             findNavController().navigate(R.id.action_mainFragment_to_gardenSettingsFragment)        //ora va a garden settings per poter testare le cose
@@ -93,5 +96,41 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
  */
+    }
+
+    private fun loadCards() {
+        //init list
+        cardArrayList = ArrayList()
+
+        //init items
+        cardArrayList.add(
+            CardModel(
+                "Pianta1",
+                R.drawable.genoveffa,
+                5,
+                6
+            ))
+        cardArrayList.add(
+            CardModel(
+                "Pianta2",
+                R.drawable.genoveffa,
+                5,
+                6
+            ))
+        cardArrayList.add(
+            CardModel(
+                "Pianta3",
+                R.drawable.genoveffa,
+                5,
+                6
+            ))
+
+        //setup adapter
+        adapter = CardAdapter(this.context, cardArrayList)
+
+        //set adapter to viewpager
+        viewPager.adapter = adapter
+
+        viewPager.setPadding(100,0,100,0)
     }
 }
