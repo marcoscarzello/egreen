@@ -30,9 +30,47 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
         val etUsername = view.findViewById<EditText>(R.id.etUsername)
         val email = view.findViewById<EditText>(R.id.accountEmail)
         val saveBtn = view.findViewById<Button>(R.id.saveAccountChanges)
+        val etPassword = view.findViewById<EditText>(R.id.etPassword)
 
+
+        //MOSTRA ATTUALE MAIL
         email.setText(viewModel.getEmail())
+
+        //MOSTRA ATTUALE USERNAME (EDITABLE)
         viewModel.username.observe(this, Observer { u -> etUsername.setText(u) })
+
+
+        //click su password
+        etPassword.setOnClickListener{
+            val dialogBuilder = AlertDialog.Builder(this@AccountSettingsFragment.requireContext())
+
+            // set message of alert dialog
+            dialogBuilder.setMessage("Do you want to change your password?")
+                // if the dialog is cancelable
+                .setCancelable(false)
+                // positive button text and action
+                .setPositiveButton("Yes, please", DialogInterface.OnClickListener {
+                        dialog, id ->
+
+                    //qua vorrò andare nel fragment di change password
+                    findNavController().navigate(R.id.action_accountSettingsFragment_to_changePasswordFragment)
+
+                })
+                // negative button text and action
+                .setNegativeButton("My mistake", DialogInterface.OnClickListener {
+                        dialog, id -> dialog.cancel()
+
+                    //qua bisognerebbe togliere il focus dal text password
+                })
+
+            // create dialog box
+            val alert = dialogBuilder.create()
+            // set title for alert dialog box
+            alert.setTitle("Your Password")
+            // show alert dialog
+            alert.show()
+            //viewModel.deleteAccount()
+        }
 
         saveBtn.setOnClickListener{
             viewModel.setUsername(etUsername.text.toString())
