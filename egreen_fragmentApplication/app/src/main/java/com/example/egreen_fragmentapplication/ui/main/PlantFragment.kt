@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.egreen_fragmentapplication.R
 import com.jjoe64.graphview.GraphView
+import com.jjoe64.graphview.GridLabelRenderer
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 
@@ -36,11 +37,15 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         HgraphView.getViewport().setMaxY(100.0);
 
         var series = LineGraphSeries(
-            arrayOf<DataPoint>( // on below line we are adding
+            arrayOf<DataPoint>(
+                // on below line we are adding
                 // each point on our x and y axis.
                 DataPoint(1.0, 0.0),
-        ))
+            ))
         HgraphView.setTitle("Last humidity values")
+        val gridLabel: GridLabelRenderer = HgraphView.getGridLabelRenderer()
+        gridLabel.horizontalAxisTitle = "measure number"
+        gridLabel.verticalAxisTitle = "humidity %"
 
 
         plantNameText.text = viewModel.getSelectedPlantName()

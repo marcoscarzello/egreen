@@ -3,7 +3,90 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/main_theme">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_plants"
+        android:layout_width="152dp"
+        android:layout_height="146dp"
+        android:layout_marginTop="56dp"
+        android:elevation="0dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/schermataSuperiore"
+        app:layout_constraintTop_toBottomOf="@+id/schermataSuperiore">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/no_plants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="TextView"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plants"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.307" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_plants2"
+        android:layout_width="152dp"
+        android:layout_height="146dp"
+        android:layout_marginTop="56dp"
+        android:elevation="0dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/schermataSuperiore"
+        app:layout_constraintTop_toBottomOf="@+id/schermataSuperiore" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/oxigen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="TextView"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView222" />
+
+            <TextView
+                android:id="@+id/textView222"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daily oxigen"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.307" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
     <FrameLayout
         android:id="@+id/schermataSuperiore"
@@ -17,16 +100,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/upload_pic_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Upload"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/profile_pic"
-                app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
 
             <ImageView
                 android:id="@+id/profile_pic"
@@ -46,15 +121,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
+                android:textSize="34sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="37dp" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/username_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="User Name"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView3"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.782"
@@ -65,18 +142,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Green Score"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@+id/greenScore"
                 tools:layout_editor_absoluteX="37dp" />
-
-            <Button
-                android:id="@+id/change_pic_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Change pic"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/profile_pic"
-                app:layout_constraintStart_toEndOf="@+id/textView3"
-                app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
