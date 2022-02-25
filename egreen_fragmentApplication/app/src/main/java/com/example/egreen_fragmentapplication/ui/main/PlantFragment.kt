@@ -60,18 +60,18 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
 
         viewModel.humidityMap.observe(this, Observer { hm ->
             humMap = hm
-            humidity.text = humMap["e"]
+            humidity.text = humMap["a"]
             Log.d("HUMIDITY MAP READ BY FRAGMENT PLANT", humMap.toString())
 
             //aggiornamento graph
             HgraphView.removeAllSeries()
              series = LineGraphSeries(
                 arrayOf<DataPoint>(
-                    DataPoint(1.0, humMap["a"]!!.toDouble()),
-                    DataPoint(2.0, humMap["b"]!!.toDouble()),
+                    DataPoint(1.0, humMap["e"]!!.toDouble()),
+                    DataPoint(2.0, humMap["d"]!!.toDouble()),
                     DataPoint(3.0, humMap["c"]!!.toDouble()),
-                    DataPoint(4.0, humMap["d"]!!.toDouble()),
-                    DataPoint(5.0, humMap["e"]!!.toDouble())
+                    DataPoint(4.0, humMap["b"]!!.toDouble()),
+                    DataPoint(5.0, humMap["a"]!!.toDouble())
                 ))
             series.setColor(Color.RED)
             series.setDrawDataPoints(true)
@@ -81,7 +81,7 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
 
         viewModel.waterMap.observe(this, Observer { wm ->
             watMap = wm
-            waterlevel.text = watMap["e"]
+            waterlevel.text = watMap["a"]
             Log.d("Water MAP READ BY FRAGMENT PLANT", watMap.toString())
 
         })
