@@ -3,10 +3,7 @@ package com.example.egreen_fragmentapplication.ui.main
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Switch
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -28,11 +25,15 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
         val plantNameText  = view.findViewById<TextView>(R.id.plant_name)
         val plantHeigthEditText  = view.findViewById<EditText>(R.id.Plant_height)
         val applyBtn  = view.findViewById<Button >(R.id.save_Button)
-
+        val plantTypeSpinner = view.findViewById<Spinner>(R.id.plant_Type)
 
         plantNameText.text = viewModel.getSelectedPlantName()
         viewModel.getSelectedPlantHeigth()
+        viewModel.getSelectedPlantType()
         viewModel.heigth.observe(this, Observer { h -> plantHeigthEditText.setText(h) })
+
+        //viewModel.plantType.observe(this, Observer { h -> plantTypeSpinner.setText(h) })
+
         //plantHeigthEditText.setText(viewModel.getSelectedPlantHeigth())
 
 

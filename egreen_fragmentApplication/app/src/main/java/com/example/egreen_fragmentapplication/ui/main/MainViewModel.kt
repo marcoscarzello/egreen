@@ -33,6 +33,9 @@ class MainViewModel : ViewModel () {
     private var mutableHeigth = MutableLiveData<String?>()
     val heigth: LiveData<String?> get() = mutableHeigth
 
+    private var mutableType = MutableLiveData<String?>()
+    val plantType: LiveData<String?> get() = mutableType
+
     private var mutablePlantList = MutableLiveData<MutableList<String>>()
     val plantList: LiveData<MutableList<String>> get() = mutablePlantList
 
@@ -71,7 +74,7 @@ class MainViewModel : ViewModel () {
         Log.d(TAG, "User logged out successfully.")
     }
 
-    open fun addPlant(plantName: String, plantHeight: String){
+    open fun addPlant(plantName: String, plantHeight: String, plantType : String){
 
         var plantData: MutableMap<String, String> = HashMap()
         var params: MutableMap<String, String> = HashMap()
@@ -80,6 +83,7 @@ class MainViewModel : ViewModel () {
 
         plantData["plantName"] = plantName
         plantData["plantHeigth"] = plantHeight
+        plantData["plantType"] = plantType
 
         params["last5humidity"] = ""
         params["last5waterlevel"] = ""
@@ -141,6 +145,20 @@ class MainViewModel : ViewModel () {
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     mutableHeigth.value = snapshot.getValue<String>().toString()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+
+            })
+        //return heigth.value.toString()
+    }
+    open fun getSelectedPlantType() {
+
+        mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("plantType")?.addValueEventListener(
+            object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    mutableType.value = snapshot.getValue<String>().toString()
                 }
 
                 override fun onCancelled(error: DatabaseError) {

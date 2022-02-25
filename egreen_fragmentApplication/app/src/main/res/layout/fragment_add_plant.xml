@@ -64,66 +64,64 @@
 
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/edit_text_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <EditText
+                    android:id="@+id/Plant_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/Plant_name"
                     android:layout_margin="20dp"
                     android:hint="Plant Name"
                     android:maxLines="1" />
 
                 <Spinner
+                    android:id="@+id/plant_Type"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:id="@+id/plant_Type"
                     android:layout_margin="20dp" />
 
                 <TextView
+                    android:id="@+id/result"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/result"/>
+                    android:layout_height="wrap_content" />
 
                 <LinearLayout
+                    android:id="@+id/height_info_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/height_info_container"
-                    android:orientation="horizontal"
-                    android:layout_margin="20dp">
+                    android:layout_margin="20dp"
+                    android:orientation="horizontal">
 
                     <EditText
+                        android:id="@+id/Plant_height"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/Plant_height"
                         android:hint="Plant Height"
-                        android:maxLines="1"/>
+                        android:maxLines="1" />
 
                     <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
                         android:id="@+id/plant_height_spinner"
-                        />
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
 
 
                 </LinearLayout>
 
 
                 <Button
+                    android:id="@+id/save_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/photo_Button"
-                    android:layout_gravity="center"
-                    />
+                    android:layout_gravity="center" />
 
                 <Button
+                    android:id="@+id/photo_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/save_Button"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center" />
 
             </LinearLayout>
 

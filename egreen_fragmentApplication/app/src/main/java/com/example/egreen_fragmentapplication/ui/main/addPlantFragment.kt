@@ -28,6 +28,7 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
     var spinnerHeightResult:String? = null
     var plantName: String? = null
     var plantHeight: String? = null
+    var plantType : String? = null
 
     //Alessandro
     /*override fun onCreateView(
@@ -58,6 +59,8 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
             spinnerHeightResult = spinnerHeight?.selectedItem as String?
             plantName = nameEditText.text.toString()
             plantHeight = heightEditText.text.toString()
+            plantType = spinnerResult
+
 
             // error for empty editText
             when {
@@ -81,7 +84,7 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
             mActivityCallback?.onContinueButtonPressed()
 
             //crea infine la pianta
-            viewModel.addPlant(plantName.toString(), plantHeight.toString())
+            viewModel.addPlant(plantName.toString(), plantHeight.toString(), plantType.toString())
             viewModel.changeSelectedPlant(plantName.toString())
 
             findNavController().navigate(R.id.action_addPlantFragment_to_plantFragment)
