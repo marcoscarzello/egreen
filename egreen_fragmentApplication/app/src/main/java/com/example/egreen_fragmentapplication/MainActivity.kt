@@ -47,39 +47,18 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
 
-        val homeFr = MainFragment()
-        val profileFr = ProfileFragment()
-        val settingsFr = SettingsFragment()
-
-
 
         val nav = findViewById<BottomNavigationView>(R.id.bottomNavigationView1)
 
         nav.setOnItemSelectedListener{ item ->
             when(item.itemId){
                 R.id.miHome -> navController.navigate(R.id.mainFragment)
-                R.id.miProfile -> navController.navigate(R.id.accountSettingsFragment)
+                R.id.miProfile -> navController.navigate(R.id.profileFragment)
                 R.id.miSettings -> navController.navigate(R.id.settingsFragment)
             }
             true
         }
 
-
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            if(destination.id == R.id.mainFragment){
-                if(FirebaseAuth.getInstance().currentUser == null){
-                    //start LoginFragment
-                    //hide bottom navigation
-                    nav.visibility = View.GONE
-                    Log.d("current user NULL:", FirebaseAuth.getInstance().currentUser.toString())
-                }else{
-                    //show bottom navigation
-                    nav.visibility = View.VISIBLE
-                    Log.d("current user NOT NULL:", FirebaseAuth.getInstance().currentUser.toString())
-
-                }
-            }
-        }
     }
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
