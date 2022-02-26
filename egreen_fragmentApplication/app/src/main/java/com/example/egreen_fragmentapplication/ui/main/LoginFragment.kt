@@ -21,10 +21,21 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 
+
+
+
+
+
+
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        //HIDE bottom Bar
+        val activity = activity as MainActivity?
+        activity?.hideBottomBar(true)
 
         val viewModel: MainViewModel by activityViewModels()
 
@@ -81,21 +92,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                                         Toast.LENGTH_SHORT
                                     ).show()
 
-/*
-                                    val intent =
-                                        Intent(this@LoginFragment.requireContext(), MainActivity::class.java)
-                                    intent.flags =
-                                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                    intent.putExtra("user_id", FirebaseAuth.getInstance().currentUser!!.uid)
-                                    intent.putExtra("email_id", email)
-                                    startActivity(intent)
-                                    finish()
-
- */
 
                                     viewModel.updateCurrentUser()
                                     viewModel.getUsername()
                                     viewModel.getPlants() //carica piante
+                                    activity?.hideBottomBar(false)
                                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                                 } else {
                                     //if logging in is not successful then show error message
@@ -109,5 +110,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 }
             }
         }
+
+
+
     }
     }

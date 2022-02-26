@@ -3,6 +3,8 @@ package com.example.egreen_fragmentapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
 
 
+        hideBottomBar(false)
 
         val vm: MainViewModel by viewModels()
         //prendo le info extra che ho messo nell'intent all'accesso nell'app e li assegno a variabili
@@ -62,6 +65,21 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if(destination.id == R.id.mainFragment){
+                if(FirebaseAuth.getInstance().currentUser == null){
+                    //start LoginFragment
+                    //hide bottom navigation
+                    nav.visibility = View.GONE
+                    Log.d("current user NULL:", FirebaseAuth.getInstance().currentUser.toString())
+                }else{
+                    //show bottom navigation
+                    nav.visibility = View.VISIBLE
+                    Log.d("current user NOT NULL:", FirebaseAuth.getInstance().currentUser.toString())
+
+                }
+            }
+        }
     }
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
@@ -69,4 +87,9 @@ class MainActivity : AppCompatActivity() {
             addToBackStack(null)
             commit()
         }
+
+    fun hideBottomBar(isHidden: Boolean){
+        val nav = findViewById<BottomNavigationView>(R.id.bottomNavigationView1)
+        nav.visibility = if (isHidden) View.GONE else View.VISIBLE
+    }
 }

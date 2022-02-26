@@ -17,11 +17,19 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.example.egreen_fragmentapplication.MainActivity
+
+
+
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //HIDE bottom Bar
+        val activity = activity as MainActivity?
+        activity?.hideBottomBar(true)
 
         val db = Firebase.database.reference
         val ref = db.child("users") // primo ramo del database sotto cui ci saranno tutti i vari utenti (ciascuno con userID unico)
@@ -114,18 +122,8 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                                     ).show()
 
 
-                                    /*
-                                    val intent =
-                                        Intent(this@RegisterFragment.requireContext(), MainActivity::class.java)
-                                    intent.flags =
-                                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                    intent.putExtra("user_id", firebaseUser.uid)
-                                    intent.putExtra("email_id", email)
-                                    startActivity(intent)
-                                    finish()
-
-                                     */
                                     viewModel.updateCurrentUser()
+                                    activity?.hideBottomBar(false)
                                     findNavController().navigate(R.id.action_registerFragment_to_mainFragment)
                                 } else {
                                     //if registering is not successful then show error message
@@ -139,5 +137,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 }
             }
         }
+
     }
 }
