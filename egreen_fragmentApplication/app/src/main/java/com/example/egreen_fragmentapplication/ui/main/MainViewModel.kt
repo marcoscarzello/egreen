@@ -49,9 +49,16 @@ class MainViewModel : ViewModel () {
     private var mutableUsername = MutableLiveData<String>()
     val username: LiveData<String> get() = mutableUsername
 
+    private var mutabledataWtList = MutableLiveData<MutableList<String>>()
+    val dataWtList: LiveData<MutableList<String>> get() = mutabledataWtList
+
+    private var mutabledataHmList = MutableLiveData<MutableList<String>>()
+    val dataHmList: LiveData<MutableList<String>> get() = mutabledataHmList
+
     open fun initialize(){
         mutablePlantList.value = mutableListOf()
-
+        mutabledataWtList.value = mutableListOf()
+        mutabledataHmList.value = mutableListOf()
     }
 
     private var mutableRefDB = MutableLiveData<DatabaseReference?>()
@@ -65,8 +72,6 @@ class MainViewModel : ViewModel () {
 
          mutableRefDB.value = Firebase.database.reference.child("users").child((currentuser.value?.uid.toString()))
     }
-
-
 
     open fun logOut(){
         FirebaseAuth.getInstance().signOut()
@@ -175,6 +180,57 @@ class MainViewModel : ViewModel () {
     open fun modifyPlant(plantHeight: String) {
         mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("plantHeigth")?.setValue(plantHeight)
 
+    }
+
+    //private var mutableWtlev = MutableLiveData<String>()
+    //val wtlev: LiveData<String> get() = mutableWtlev
+
+    open fun getWtValues(){
+
+        mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (ds in snapshot.children) {
+                    val pianta = ds.child("plantName")?.getValue(String::class.java)
+
+                    if (pianta != null) {
+                        mutableRefDB.value?.child("plants")?.child(pianta)?.child("params")?.child("last5waterlevel")?.child("a")?.addValueEventListener(object: ValueEventListener{
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                val wt = snapshot.getValue<String>().toString()
+                                Log.d("Il wt lev", wt)
+                                mutabledataWtList.value?.add(snapshot.getValue<String>().toString())
+                            }
+                            override fun onCancelled(error: DatabaseError) {
+                                TODO("Not yet implemented")
+                            }
+                        })
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {} })
+    }
+
+    open fun getHmValues(){
+
+        mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (ds in snapshot.children) {
+                    val plant = ds.child("plantName")?.getValue(String::class.java)
+
+                    if (plant != null) {
+                        mutableRefDB.value?.child("plants")?.child(plant)?.child("params")?.child("last5humidity")?.child("a")?.addValueEventListener(object: ValueEventListener{
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                val hm = snapshot.getValue<String>().toString()
+                                Log.d("Il hm lev", hm)
+                                mutabledataHmList.value?.add(snapshot.getValue<String>().toString())
+                            }
+                            override fun onCancelled(error: DatabaseError) {
+                                TODO("Not yet implemented")
+                            }
+                        })
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {} })
     }
 
     open fun getPlants() {

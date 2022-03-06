@@ -33,6 +33,8 @@ class CardAdapter(private val context: Context?, private val CardArrayList: Arra
         //set data to ui views
         view.bannerIv.setImageResource(image)
         view.plantName.text = plantName
+        view.water_level.text = waterlevel
+        view.oxigen.text = oxygen
 
         //handles clicks
         view.setOnClickListener {

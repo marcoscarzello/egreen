@@ -3,6 +3,7 @@ package com.example.egreen_fragmentapplication.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
@@ -96,8 +97,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                                     viewModel.updateCurrentUser()
                                     viewModel.getUsername()
                                     viewModel.getPlants() //carica piante
+                                    //Log.d("Quali piante sono caricate: ", viewModel.plantList.value.toString())
+                                    viewModel.getWtValues()
+                                    viewModel.getHmValues()
                                     activity?.hideBottomBar(false)
                                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+                                    //findNavController().navigate(R.id.action_accountSettingsFragment_to_gardenSettingsFragment)
                                 } else {
                                     //if logging in is not successful then show error message
                                     Toast.makeText(

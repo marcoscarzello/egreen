@@ -1,22 +1,24 @@
 package com.example.egreen_fragmentapplication.ui.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.main_fragment.*
+import androidx.lifecycle.Observer
 
+import android.os.Handler
+import kotlinx.coroutines.*
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.schedule
 
 class MainFragment : Fragment(R.layout.main_fragment) {
 
@@ -27,16 +29,21 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         fun newInstance() = MainFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    //private lateinit var viewModel: MainViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val addPlant = view.findViewById<Button>(R.id.addPlant)
-        val settings = view.findViewById<Button>(R.id.settingsBtn)
         val viewModel: MainViewModel by activityViewModels()
 
-        loadCards()
+        //var humMap: MutableMap<String, String> = HashMap()
+        //var watMap: MutableMap<String, String> = HashMap()
+
+        val addPlant = view.findViewById<Button>(R.id.addPlant)
+        val settings = view.findViewById<Button>(R.id.settingsBtn)
+
+        //loadCards()
+
 
         addPlant.setOnClickListener{
             findNavController().navigate(R.id.action_mainFragment_to_gardenSettingsFragment)        //ora va a garden settings per poter testare le cose
@@ -45,6 +52,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         settings.setOnClickListener{
             findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)              //anche questo per testare, poi non servirà
         }
+
+
 
 
 
@@ -96,41 +105,82 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
  */
-    }
 
-    private fun loadCards() {
-        //init list
+        val handler = Handler()
+
+        var waterlevel: String
         cardArrayList = ArrayList()
 
-        //init items
-        cardArrayList.add(
-            CardModel(
-                "Pianta1",
-                R.drawable.genoveffa,
-                5,
-                6
-            ))
-        cardArrayList.add(
-            CardModel(
-                "Pianta2",
-                R.drawable.genoveffa,
-                5,
-                6
-            ))
-        cardArrayList.add(
-            CardModel(
-                "Pianta3",
-                R.drawable.genoveffa,
-                5,
-                6
-            ))
+        //var testlist: MutableList<String> = mutableListOf<String>()
+        //viewModel.plantList.observe(this, Observer { plantList ->
+        //    if (plantList != null){
+        //        if (plantList.size < 1) {
+        //            Log.d("Oscar", "lista zero")
+        //        }
+        //        for (pl: String in plantList) {
+        //            testlist.add(pl)
+        //            Log.d("Una prova", pl)
+        //            //viewModel.getPlantValues(pl)
+        //            //testlist.add(viewModel.wtlev.value.toString())
+        //        }
+        //    }
+        //    })
 
-        //setup adapter
-        adapter = CardAdapter(this.context, cardArrayList)
+        //Log.d("La lista di prova", testlist.toString())
 
-        //set adapter to viewpager
-        viewPager.adapter = adapter
 
-        viewPager.setPadding(100,0,100,0)
+        handler.postDelayed({ viewModel.plantList.observe(this, Observer { plantList ->
+            if (plantList != null) {
+                var hum: String = "nullo"
+                //Thread.sleep(2_000)
+                if (plantList.size < 1) {
+                    Log.d("Oscar", "lista zero")
+                }
+
+                var i : Int = 0
+                for (p: String in plantList) {
+                        if (p != null) {
+                            //Log.d("Ciclo questa volta", p)
+                            //viewModel.changeSelectedPlant(p)
+
+                            //viewModel.plantList
+
+                            //Log.d("La selected plant: ", viewModel.getSelectedPlantName())
+
+                            //viewModel.changeSelectedPlant(p)
+                            //handler.postDelayed({Log.d("Cosa c'è in plantList", viewModel.plantList.value.toString())},10)
+                            //viewModel.humidityMap.value
+
+
+                            Log.d("lista dati Wt", viewModel.dataWtList.value?.get(1).toString())
+                            Log.d("lista dati Hm", viewModel.dataHmList.value.toString())
+
+                            //handler.postDelayed({ hum = viewModel.wtlev.value.toString() }, 5)
+                            //handler.postDelayed({Log.d("Valore da frag", hum)}, 5)
+
+                            val oxy: String = "22"
+
+                            cardArrayList.add(
+                                CardModel(
+                                    p,
+                                    R.drawable.genoveffa,
+                                    viewModel.dataWtList.value?.get(i).toString(),
+                                    viewModel.dataHmList.value?.get(i).toString()
+                                )
+                            )
+
+                            //se non aspetto non va...
+                            //handler.postDelayed({Log.d("Valore della pianta da frag",viewModel.wtlev.value.toString())}, 5)
+                        }
+
+
+                    }
+                    adapter = CardAdapter(this.context, cardArrayList)
+                    viewPager.adapter = adapter
+                    viewPager.setPadding(10, 0, 10, 0)
+                //viewModel.changeSelectedPlant("")
+                }
+            })
+        }, 800)
     }
 }

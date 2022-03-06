@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,7 +16,7 @@
         android:backgroundTint="@color/teal_200">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -26,31 +27,61 @@
                 android:padding="8dp"
                 android:text="Genoveffa"
                 android:textColor="#000"
-                android:textSize="24dp"
-                />
+                android:textSize="24dp" />
 
             //contenitoreFoto
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:cardCornerRadius="35dp"
                 android:layout_marginHorizontal="10dp"
-                >
+                app:cardCornerRadius="35dp">
+
                 <ImageView
                     android:id="@+id/bannerIv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/genoveffa"
-                    />
+                    android:src="@drawable/genoveffa" />
             </androidx.cardview.widget.CardView>
 
             //contenitoreInfo
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                app:cardCornerRadius="35dp"
-                android:layout_margin="10dp">
+                android:layout_height="105dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="35dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="363dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/water_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="82dp"
+                        android:text="55"
+                        android:textColor="#000"
+                        android:textSize="35dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/oxigen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="82dp"
+                        android:text="55"
+                        android:textColor="#000"
+                        android:textSize="35dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
