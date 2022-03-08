@@ -90,7 +90,7 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
             findNavController().navigate(R.id.action_addPlantFragment_to_plantFragment)
         }
 
-        val openCamera = view.findViewById<Button>(R.id.photo_Button)
+        val openCamera = view.findViewById<Button>(R.id.photoAPI_Button)
         openCamera.text = "PHOTO RECOGNITION"
         openCamera.setOnClickListener {
             mActivityCallback?.onOpenCameraPressed()

@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.main_fragment.*
 import androidx.lifecycle.Observer
 
 import android.os.Handler
+import androidx.viewpager.widget.ViewPager
 import kotlinx.coroutines.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -40,17 +41,9 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         //var watMap: MutableMap<String, String> = HashMap()
 
         val addPlant = view.findViewById<Button>(R.id.addPlant)
-        val settings = view.findViewById<Button>(R.id.settingsBtn)
-
-        //loadCards()
-
 
         addPlant.setOnClickListener{
             findNavController().navigate(R.id.action_mainFragment_to_gardenSettingsFragment)        //ora va a garden settings per poter testare le cose
-        }
-
-        settings.setOnClickListener{
-            findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)              //anche questo per testare, poi non servirà
         }
 
 
@@ -108,31 +101,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         val handler = Handler()
 
-        var waterlevel: String
         cardArrayList = ArrayList()
-
-        //var testlist: MutableList<String> = mutableListOf<String>()
-        //viewModel.plantList.observe(this, Observer { plantList ->
-        //    if (plantList != null){
-        //        if (plantList.size < 1) {
-        //            Log.d("Oscar", "lista zero")
-        //        }
-        //        for (pl: String in plantList) {
-        //            testlist.add(pl)
-        //            Log.d("Una prova", pl)
-        //            //viewModel.getPlantValues(pl)
-        //            //testlist.add(viewModel.wtlev.value.toString())
-        //        }
-        //    }
-        //    })
-
-        //Log.d("La lista di prova", testlist.toString())
-
 
         handler.postDelayed({ viewModel.plantList.observe(this, Observer { plantList ->
             if (plantList != null) {
-                var hum: String = "nullo"
-                //Thread.sleep(2_000)
                 if (plantList.size < 1) {
                     Log.d("Oscar", "lista zero")
                 }
@@ -140,25 +112,9 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 var i : Int = 0
                 for (p: String in plantList) {
                         if (p != null) {
-                            //Log.d("Ciclo questa volta", p)
-                            //viewModel.changeSelectedPlant(p)
 
-                            //viewModel.plantList
-
-                            //Log.d("La selected plant: ", viewModel.getSelectedPlantName())
-
-                            //viewModel.changeSelectedPlant(p)
-                            //handler.postDelayed({Log.d("Cosa c'è in plantList", viewModel.plantList.value.toString())},10)
-                            //viewModel.humidityMap.value
-
-
-                            Log.d("lista dati Wt", viewModel.dataWtList.value?.get(1).toString())
-                            Log.d("lista dati Hm", viewModel.dataHmList.value.toString())
-
-                            //handler.postDelayed({ hum = viewModel.wtlev.value.toString() }, 5)
-                            //handler.postDelayed({Log.d("Valore da frag", hum)}, 5)
-
-                            val oxy: String = "22"
+                            //Log.d("lista dati Wt", viewModel.dataWtList.value?.get(1).toString())
+                            //Log.d("lista dati Hm", viewModel.dataHmList.value.toString())
 
                             cardArrayList.add(
                                 CardModel(
@@ -172,15 +128,39 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                             //se non aspetto non va...
                             //handler.postDelayed({Log.d("Valore della pianta da frag",viewModel.wtlev.value.toString())}, 5)
                         }
-
-
                     }
-                    adapter = CardAdapter(this.context, cardArrayList)
-                    viewPager.adapter = adapter
-                    viewPager.setPadding(10, 0, 10, 0)
+                cardArrayList.add(
+                    CardModel(
+                        "New Plant",
+                        R.drawable.genoveffa,
+                        "Add Plant !",
+                        ""
+                    )
+                )
+
+                adapter = CardAdapter(this.context, cardArrayList)
+                viewPager.adapter = adapter
+                viewPager.setPadding(100, 0, 100, 0)
+                //Log.d("Pianta",viewPager.currentItem.toString())
                 //viewModel.changeSelectedPlant("")
                 }
             })
-        }, 800)
+        }, 600)
+
+        //cambio selectedPlant
+        viewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                val nome = cardArrayList[position].plantName
+                viewModel.changeSelectedPlant(nome)
+            }
+
+            override fun onPageSelected(position: Int) {}
+
+            override fun onPageScrollStateChanged(state: Int) {}
+        })
     }
 }

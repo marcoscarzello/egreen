@@ -196,7 +196,7 @@ class MainViewModel : ViewModel () {
                         mutableRefDB.value?.child("plants")?.child(pianta)?.child("params")?.child("last5waterlevel")?.child("a")?.addValueEventListener(object: ValueEventListener{
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 val wt = snapshot.getValue<String>().toString()
-                                Log.d("Il wt lev", wt)
+                                //Log.d("Il wt lev", wt)
                                 mutabledataWtList.value?.add(snapshot.getValue<String>().toString())
                             }
                             override fun onCancelled(error: DatabaseError) {
@@ -220,7 +220,7 @@ class MainViewModel : ViewModel () {
                         mutableRefDB.value?.child("plants")?.child(plant)?.child("params")?.child("last5humidity")?.child("a")?.addValueEventListener(object: ValueEventListener{
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 val hm = snapshot.getValue<String>().toString()
-                                Log.d("Il hm lev", hm)
+                                //Log.d("Il hm lev", hm)
                                 mutabledataHmList.value?.add(snapshot.getValue<String>().toString())
                             }
                             override fun onCancelled(error: DatabaseError) {

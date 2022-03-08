@@ -59,7 +59,6 @@
                     android:gravity="center"
                     android:text="Add a photo for your new plant"
                     android:layout_marginTop="10dp"/>
-
             </LinearLayout>
 
 
@@ -118,7 +117,7 @@
                     android:layout_gravity="center" />
 
                 <Button
-                    android:id="@+id/photo_Button"
+                    android:id="@+id/photoAPI_Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center" />

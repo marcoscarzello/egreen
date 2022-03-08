@@ -19,7 +19,14 @@
         <action
             android:id="@+id/action_mainFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_CardAdapter_to_addPlantFragment"
+            app:destination="@+id/addPlantFragment"/>
+        <action
+            android:id="@+id/action_CardAdapter_to_plantSettingsFragment"
+            app:destination="@id/plantSettingsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/addPlantFragment"
         android:name="com.example.egreen_fragmentapplication.ui.main.addPlantFragment"

@@ -1,6 +1,7 @@
 package com.example.egreen_fragmentapplication.ui.main
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,10 @@ import androidx.viewpager.widget.PagerAdapter
 import kotlinx.android.synthetic.main.card_view.*
 import com.example.egreen_fragmentapplication.R
 import kotlinx.android.synthetic.main.card_view.view.*
+import android.util.Log
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
+
 
 class CardAdapter(private val context: Context?, private val CardArrayList: ArrayList<CardModel>): PagerAdapter(){
 
@@ -22,6 +27,8 @@ class CardAdapter(private val context: Context?, private val CardArrayList: Arra
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view = LayoutInflater.from(context).inflate(R.layout.card_view,container,false)
+
+        //val viewModel: MainViewModel by activityViewModels()
 
         //prende i dati
         val model = CardArrayList[position]
@@ -37,8 +44,14 @@ class CardAdapter(private val context: Context?, private val CardArrayList: Arra
         view.oxigen.text = oxygen
 
         //handles clicks
-        view.setOnClickListener {
-            Toast.makeText(context, "$plantName", Toast.LENGTH_SHORT).show()
+        view.setOnClickListener() {
+            //Toast.makeText(context, "$plantName", Toast.LENGTH_SHORT).show()
+            if(plantName != "New Plant"){
+                it.findNavController().navigate(R.id.action_CardAdapter_to_plantSettingsFragment)
+                //Log.d("Questa è la pianta: ", plantName)
+            }
+            else
+                it.findNavController().navigate(R.id.action_CardAdapter_to_addPlantFragment)
         }
 
         //add view to container
