@@ -55,5 +55,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
+    <Button
+        android:id="@+id/notifica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prova notifica"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="33dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

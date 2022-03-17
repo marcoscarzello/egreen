@@ -36,7 +36,12 @@ android {
     }
 }
 
+
 dependencies {
+
+    //per notifiche
+    // implementation "androidx.core:core-ktx:$core_version"
+
     //aggiunte da noi per implementare i navigation graph
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
