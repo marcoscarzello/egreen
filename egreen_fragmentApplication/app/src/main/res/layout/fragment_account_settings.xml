@@ -6,12 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.AccountSettingsFragment">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profileImg"
+        app:layout_constraintEnd_toEndOf="@+id/profileImg"
+        app:layout_constraintStart_toStartOf="@+id/profileImg"
+        app:layout_constraintTop_toTopOf="@+id/profileImg" />
+
     <ImageView
         android:id="@+id/profileImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/til_username"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
@@ -138,5 +150,17 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoutBtn" />
+
+    <Button
+        android:id="@+id/newPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="new picture"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.127" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

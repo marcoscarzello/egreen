@@ -1,24 +1,35 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.app.ProgressDialog
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.net.Uri
 import android.util.Log
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.BoolRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bumptech.glide.Glide
+import com.example.egreen_fragmentapplication.GlideApp
+import com.example.egreen_fragmentapplication.R
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.*
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.lang.Exception
+import java.net.URI
+import java.net.URL
 
 data class User(var email : String, var plantName : String, var username : String){
 }
@@ -26,6 +37,7 @@ data class User(var email : String, var plantName : String, var username : Strin
 class MainViewModel : ViewModel () {
 
     public var selectedPlant = "";
+
 
     private var mutableCurrentUser = MutableLiveData<FirebaseUser?>()
     val currentuser: LiveData<FirebaseUser?> get() = mutableCurrentUser
@@ -64,14 +76,20 @@ class MainViewModel : ViewModel () {
     private var mutableRefDB = MutableLiveData<DatabaseReference?>()
     val refDB: LiveData<DatabaseReference?> get() = mutableRefDB
 
+    private var mutableRefStorage = MutableLiveData<StorageReference?>()
+    val refStorage: LiveData<StorageReference?> get() = mutableRefStorage
+
+    private var mutableProfilePicPath = MutableLiveData<Uri>()
+    val profilePicPath: LiveData<Uri> get() = mutableProfilePicPath
+
      open fun updateCurrentUser(){
      //open fun getCurrentUser():MutableLiveData<FirebaseUser>{
         //if (FirebaseAuth.getInstance().currentUser != null )
             mutableCurrentUser.value =  FirebaseAuth.getInstance().currentUser
 
-
          mutableRefDB.value = Firebase.database.reference.child("users").child((currentuser.value?.uid.toString()))
-    }
+         mutableRefStorage.value = FirebaseStorage.getInstance().reference.child("Users").child((currentuser.value?.uid.toString()))    //firestore reference
+     }
 
     open fun logOut(){
         FirebaseAuth.getInstance().signOut()
@@ -342,8 +360,49 @@ class MainViewModel : ViewModel () {
     //TODO: get user data
 
 
+    fun downProfilePic(context: Context, imageView: ImageView){
+        //var ref: StorageReference? = mutableRefStorage.value?.child("/profilePic.png")
+        var ref: StorageReference? = mutableRefStorage.value?.child("/profilePic.png")
+        if (ref != null)
+            GlideApp.with(context).load(ref).into(imageView)
 
-/*
+        Log.e("REF", ref.toString())
+        Log.e("context ", context.toString())
+        Log.e("imageview", imageView.toString())
+    }
+
+
+    private val TAG = "FirebaseStorageManager"
+    private lateinit var mProgressDialog: ProgressDialog
+
+    fun uploadProfilePic(mContext: Context, imageURI: Uri){
+        mProgressDialog = ProgressDialog(mContext)
+        mProgressDialog.setMessage("Please wait, image being uploading.....")
+        mProgressDialog.show()
+        val uploadTask = mutableRefStorage.value?.child("/profilePic.png")?.putFile(imageURI)
+        uploadTask?.addOnSuccessListener {
+            //success
+            Log.e(TAG, "Image upload successfully")
+            mProgressDialog.dismiss()
+
+            val downloadURLTask = mutableRefStorage.value?.child("/profilePic.png")?.downloadUrl
+            downloadURLTask?.addOnSuccessListener{
+                Log.e(TAG, "IMAGE PATH: $it")
+                mutableProfilePicPath.value = it
+                mProgressDialog.dismiss()
+            }?.addOnFailureListener {
+                mProgressDialog.dismiss()
+            }
+
+        }?.addOnFailureListener{
+            Log.e(TAG, "Image upload failed")
+            mProgressDialog.dismiss()
+        }
+
+    }
+
+
+/*D
     private val userData: MutableLiveData<User> by lazy {
         MutableLiveData<User>().also {
             loadUserData()
