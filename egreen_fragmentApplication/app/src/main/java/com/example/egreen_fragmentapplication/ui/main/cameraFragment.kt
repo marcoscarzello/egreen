@@ -3,6 +3,7 @@ package com.example.egreen_fragmentapplication.ui.main
 import android.app.Activity
 import android.app.Activity.RESULT_CANCELED
 import android.app.Activity.RESULT_OK
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -19,6 +20,7 @@ import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.example.egreen_fragmentapplication.R
 
 
@@ -59,7 +61,12 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
         val viewModel: MainViewModel by activityViewModels()
         if(requestCode == IMAGE_REQUEST_CODE && resultCode == RESULT_OK){
             Log.d("DATA", data?.data.toString())
-            viewModel.uploadProfilePic(this@CameraFragment.requireContext(), data?.data!!)
+
+
+            viewModel.uploadPic(this@CameraFragment.requireContext(), data?.data!!)
+
+
+
         }
     }}
 

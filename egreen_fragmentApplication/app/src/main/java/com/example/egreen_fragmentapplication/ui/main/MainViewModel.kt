@@ -14,9 +14,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.LazyHeaders
 import com.example.egreen_fragmentapplication.GlideApp
 import com.example.egreen_fragmentapplication.R
+import com.google.android.gms.auth.api.signin.internal.Storage
 import com.google.android.gms.tasks.Task
+import com.google.common.net.HttpHeaders.USER_AGENT
 import com.google.firebase.auth.*
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
@@ -363,8 +367,12 @@ class MainViewModel : ViewModel () {
     fun downProfilePic(context: Context, imageView: ImageView){
         //var ref: StorageReference? = mutableRefStorage.value?.child("/profilePic.png")
         var ref: StorageReference? = mutableRefStorage.value?.child("/profilePic.png")
+        val glideUrl = GlideUrl(
+            mutableProfilePicPath.value.toString(),
+            LazyHeaders.Builder().addHeader("User-Agent", USER_AGENT).build())
+
         if (ref != null)
-            GlideApp.with(context).load(ref).into(imageView)
+            GlideApp.with(context).load(glideUrl).into(imageView)
 
         Log.e("REF", ref.toString())
         Log.e("context ", context.toString())
@@ -375,32 +383,50 @@ class MainViewModel : ViewModel () {
     private val TAG = "FirebaseStorageManager"
     private lateinit var mProgressDialog: ProgressDialog
 
-    fun uploadProfilePic(mContext: Context, imageURI: Uri){
+    var picFrom = 100
+
+    fun uploadPic(mContext: Context, imageURI: Uri){
         mProgressDialog = ProgressDialog(mContext)
         mProgressDialog.setMessage("Please wait, image being uploading.....")
         mProgressDialog.show()
-        val uploadTask = mutableRefStorage.value?.child("/profilePic.png")?.putFile(imageURI)
-        uploadTask?.addOnSuccessListener {
-            //success
-            Log.e(TAG, "Image upload successfully")
-            mProgressDialog.dismiss()
+        when (picFrom) {
+            0 -> {
+                val uploadTask =
+                    mutableRefStorage.value?.child("/profilePic.png")?.putFile(imageURI)
+                uploadTask?.addOnSuccessListener {
+                    //success
+                    Log.e(TAG, "Image upload successfully")
+                    mProgressDialog.dismiss()
 
-            val downloadURLTask = mutableRefStorage.value?.child("/profilePic.png")?.downloadUrl
-            downloadURLTask?.addOnSuccessListener{
-                Log.e(TAG, "IMAGE PATH: $it")
-                mutableProfilePicPath.value = it
-                mProgressDialog.dismiss()
-            }?.addOnFailureListener {
-                mProgressDialog.dismiss()
+                    val downloadURLTask =
+                        mutableRefStorage.value?.child("/profilePic.png")?.downloadUrl
+                    downloadURLTask?.addOnSuccessListener {
+                        Log.e(TAG, "IMAGE PATH: $it")
+                        mutableProfilePicPath.value = it    // URL immagine profilo
+                        mProgressDialog.dismiss()
+                    }?.addOnFailureListener {
+                        mProgressDialog.dismiss()
+                    }
+
+                }?.addOnFailureListener {
+                    Log.e(TAG, "Image upload failed")
+                    mProgressDialog.dismiss()
+                }
             }
+            // qua ci sarnno gli altri valori di picFrom a cui corrisponderà il relativo comportamento
 
-        }?.addOnFailureListener{
-            Log.e(TAG, "Image upload failed")
-            mProgressDialog.dismiss()
         }
-
     }
 
+    fun changeImgCalledFrom(int: Int){
+        picFrom = int
+
+        /*
+        0 se da account settings
+        1 se da add plant
+        ....
+         */
+    }
 
 /*D
     private val userData: MutableLiveData<User> by lazy {

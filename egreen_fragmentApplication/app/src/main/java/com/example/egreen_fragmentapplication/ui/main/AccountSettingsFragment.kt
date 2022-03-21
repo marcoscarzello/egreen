@@ -145,6 +145,7 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
         }
 
         newpic.setOnClickListener {
+            viewModel.changeImgCalledFrom(0)    //qua dico che sto chiamando camera fragment da account settings
             findNavController().navigate(R.id.action_accountSettingsFragment_to_cameraFragment2)
         }
 
