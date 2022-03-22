@@ -6,26 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.AccountSettingsFragment">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        app:civ_border_color="#FF000000"
-        app:civ_border_width="2dp"
-        app:layout_constraintBottom_toBottomOf="@+id/profileImg"
-        app:layout_constraintEnd_toEndOf="@+id/profileImg"
-        app:layout_constraintStart_toStartOf="@+id/profileImg"
-        app:layout_constraintTop_toTopOf="@+id/profileImg" />
+    <Button
+        android:id="@+id/newPic"
+        android:layout_width="119dp"
+        android:layout_height="55dp"
+        android:text="new picture"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_pic_settings"
+        app:layout_constraintEnd_toStartOf="@+id/profile_pic_settings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profile_pic_settings" />
 
     <ImageView
-        android:id="@+id/profileImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/til_username"
+        android:id="@+id/profile_pic_settings"
+        android:layout_width="95dp"
+        android:layout_height="89dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.149"
         tools:src="@tools:sample/avatars" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -34,8 +34,10 @@
         android:layout_height="59dp"
         app:layout_constraintBottom_toTopOf="@+id/til_c_password"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileImg">
+        app:layout_constraintTop_toBottomOf="@+id/profile_pic_settings"
+        app:layout_constraintVertical_chainStyle="packed">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etUsername"
@@ -49,6 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profileImg" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -57,6 +60,7 @@
         android:layout_height="59dp"
         app:layout_constraintBottom_toTopOf="@+id/til_email"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_username">
 
@@ -80,6 +84,7 @@
         android:layout_height="59dp"
         app:layout_constraintBottom_toTopOf="@+id/saveAccountChanges"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_c_password">
 
@@ -92,16 +97,14 @@
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:inputType="none"
-            android:text="Email"
-            tools:layout_editor_absoluteX="101dp"
-            tools:layout_editor_absoluteY="371dp" />
+            android:text="Email" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/saveAccountChanges"
         android:layout_width="151dp"
         android:layout_height="43dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:text="save changes"
         app:layout_constraintBottom_toTopOf="@+id/gardenSettingsBtn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,12 +115,11 @@
         android:id="@+id/gardenSettingsBtn"
         android:layout_width="188dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="#6DB54E"
         android:text="garden settings"
         app:layout_constraintBottom_toTopOf="@+id/logoutBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/saveAccountChanges" />
 
@@ -125,14 +127,12 @@
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
         android:backgroundTint="#777575"
         android:scaleX="1"
         android:scaleY="1"
         android:text="log out"
         app:layout_constraintBottom_toTopOf="@+id/deleteAccountBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gardenSettingsBtn" />
 
@@ -140,6 +140,7 @@
         android:id="@+id/deleteAccountBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#A80505"
         android:scaleX="0.6"
         android:scaleY="0.6"
@@ -147,20 +148,21 @@
         android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoutBtn" />
 
-    <Button
-        android:id="@+id/newPic"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="new picture"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.091"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.127" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="505dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="205dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

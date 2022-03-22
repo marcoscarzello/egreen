@@ -32,6 +32,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val noplants = view.findViewById<TextView>(R.id.no_plants)
         val oxigen = view.findViewById<TextView>(R.id.oxigen)
         val greenscore = view.findViewById<TextView>(R.id.greenScore)
+        val profilePic = view.findViewById<ImageView>(R.id.profile_pic)
 
         viewModel.username.observe(this, Observer { u -> nametextview.text = u })
 
@@ -46,6 +47,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         //oxigen come si misura?
 
 
+        viewModel.downProfilePic(this@ProfileFragment.requireContext(), profilePic )        //aggiorna realtime l'immagine profilo in base a quella presente su firestore
 
         }}
 

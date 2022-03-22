@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.BoolRes
+import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -35,12 +36,11 @@ import java.lang.Exception
 import java.net.URI
 import java.net.URL
 
-data class User(var email : String, var plantName : String, var username : String){
-}
+data class User(var email : String, var plantName : String, var username : String)
 
 class MainViewModel : ViewModel () {
 
-    public var selectedPlant = "";
+    var selectedPlant = ""
 
 
     private var mutableCurrentUser = MutableLiveData<FirebaseUser?>()
@@ -212,7 +212,7 @@ class MainViewModel : ViewModel () {
         mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (ds in snapshot.children) {
-                    val pianta = ds.child("plantName")?.getValue(String::class.java)
+                    val pianta = ds.child("plantName").getValue(String::class.java)
 
                     if (pianta != null) {
                         mutableRefDB.value?.child("plants")?.child(pianta)?.child("params")?.child("last5waterlevel")?.child("a")?.addValueEventListener(object: ValueEventListener{
@@ -236,7 +236,7 @@ class MainViewModel : ViewModel () {
         mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (ds in snapshot.children) {
-                    val plant = ds.child("plantName")?.getValue(String::class.java)
+                    val plant = ds.child("plantName").getValue(String::class.java)
 
                     if (plant != null) {
                         mutableRefDB.value?.child("plants")?.child(plant)?.child("params")?.child("last5humidity")?.child("a")?.addValueEventListener(object: ValueEventListener{
@@ -263,7 +263,7 @@ class MainViewModel : ViewModel () {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (ds in snapshot.children) {
-                    val pianta = ds.child("plantName")?.getValue(String::class.java)
+                    val pianta = ds.child("plantName").getValue(String::class.java)
                     Log.d("DS", ds.toString())
 
                     Log.d("PIANTA", pianta.toString())
@@ -285,7 +285,7 @@ class MainViewModel : ViewModel () {
 
     //DELETE ACCOUNT
     open fun deleteAccount(){
-        val user = mutableCurrentUser!!.value
+        val user = mutableCurrentUser.value
         val refDB = mutableRefDB.value
         logOut()
         Log.d( "User deleting account :" , user.toString())
@@ -371,8 +371,19 @@ class MainViewModel : ViewModel () {
             mutableProfilePicPath.value.toString(),
             LazyHeaders.Builder().addHeader("User-Agent", USER_AGENT).build())
 
-        if (ref != null)
-            GlideApp.with(context).load(glideUrl).into(imageView)
+        mutableRefDB.value?.child("profileImgUrl")?.addValueEventListener(
+            object: ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                        GlideApp.with(context).load(snapshot.value.toString().toUri()).into(imageView)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            }
+        )
+
+
+
 
         Log.e("REF", ref.toString())
         Log.e("context ", context.toString())
@@ -403,6 +414,7 @@ class MainViewModel : ViewModel () {
                     downloadURLTask?.addOnSuccessListener {
                         Log.e(TAG, "IMAGE PATH: $it")
                         mutableProfilePicPath.value = it    // URL immagine profilo
+                        mutableRefDB.value?.child("profileImgUrl")?.setValue(it.toString()) //metto imgUrl nel ramo del firebase dell'utente    !IMPORTANTE!
                         mProgressDialog.dismiss()
                     }?.addOnFailureListener {
                         mProgressDialog.dismiss()

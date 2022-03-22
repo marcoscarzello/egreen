@@ -36,8 +36,11 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
         val saveBtn = view.findViewById<Button>(R.id.saveAccountChanges)
         val etPassword = view.findViewById<EditText>(R.id.current_password)
         val newpic = view.findViewById<Button>(R.id.newPic)
-        val profilePic = view.findViewById<ImageView>(R.id.profileImg)
+        val profilePic = view.findViewById<ImageView>(R.id.profile_pic_settings)
 
+
+
+        viewModel.downProfilePic(this@AccountSettingsFragment.requireContext(), profilePic )
 
         //MOSTRA ATTUALE MAIL
         email.setText(viewModel.getEmail())
