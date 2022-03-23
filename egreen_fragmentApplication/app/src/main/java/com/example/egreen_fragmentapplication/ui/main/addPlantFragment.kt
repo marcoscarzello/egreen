@@ -66,7 +66,7 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
         var photoImage = view.findViewById<ImageView>(R.id.plant_image)
         photoImage.setOnClickListener {
             Log.d("Ho Cliccato ", "la foto")
-            camera()
+            findNavController().navigate(R.id.action_accountSettingsFragment_to_cameraFragment2)
         }
         val saveButton = view.findViewById<Button>(R.id.save_Button)
         saveButton.text = "CREATE PLANT"
@@ -115,69 +115,6 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
         setUpPlantSpinner()
         setUpHeightSpinner()
     }
-
-    private val FILE_NAME = "photo.jpg"
-    private lateinit var photoFile: File
-
-    val getAction = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-        val photoImage = view?.findViewById<ImageView>(R.id.plant_image)
-
-        //val bitmap = it?.data?.extras?.get("data") as Bitmap
-
-        val bitmap = BitmapFactory.decodeFile(photoFile.absolutePath)
-
-        //val rotatedBitmap = rotateBitmap(bitmap, 90f)
-        val uri = photoFile.absolutePath
-        //val uri = it?.data?.data
-        Log.d("L'uri", uri.toString())
-        //val uri = it?.data?.data
-
-        photoImage?.setImageBitmap(bitmap)
-    }
-
-    private fun getPhotoFile(fileName: String): File{
-        val storageDir = context?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile(fileName, ".jpg", storageDir)
-    }
-
-    private fun camera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        //val intent = Intent(Intent.ACTION_PICK)
-        photoFile = getPhotoFile(FILE_NAME)
-        //intent.putExtra(MediaStore.EXTRA_OUTPUT, photoFile)
-        val fileProvider = FileProvider.getUriForFile(requireContext(), "com.example.egreen_fragmentapplication.ui.main.fileprovider", photoFile )
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider)
-        //intent.type = "image/*"
-        //startActivityForResult(intent, our_request_code)
-        getAction.launch(intent)
-    }
-
-    private var our_request_code: Int = 360
-
-    fun rotateBitmap(source: Bitmap, degrees: Float): Bitmap {
-        val matrix = Matrix()
-        matrix.postRotate(degrees)
-        return Bitmap.createBitmap(
-            source, 0, 0, source.width, source.height, matrix, true
-        )
-    }
-
-    //Codice passato
-    //override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    //    super.onActivityResult(requestCode, resultCode, data)
-    //    if(resultCode == Activity.RESULT_OK && requestCode == our_request_code){
-            //val uri = data?.data
-    //        Log.d("L?uri: ", data?.data.toString())
-    //        val photoImage = view?.findViewById<ImageView>(R.id.plant_image)
-    //        val bitmap = data?.extras?.get("data") as Bitmap
-    //        //val rotatedBitmap = rotateBitmap(bitmap, 90f)
-    //        val image = data.data
-    //        photoImage?.setImageBitmap(bitmap)
-    //    }
-    //    else {
-    //
-    //    }
-    //}
 
 
     private fun setUpPlantSpinner() {
