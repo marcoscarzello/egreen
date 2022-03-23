@@ -1,5 +1,6 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -18,8 +19,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.example.egreen_fragmentapplication.MainActivity
-
-
+import com.google.firebase.storage.FirebaseStorage
 
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
@@ -121,6 +121,11 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                                         Toast.LENGTH_SHORT
                                     ).show()
 
+/*
+                                    FirebaseStorage.getInstance().reference.child("Users").child(firebaseUser.uid).putFile(
+                                        Uri.fromFile())
+
+ */
 
                                     viewModel.updateCurrentUser()
                                     activity?.hideBottomBar(false)

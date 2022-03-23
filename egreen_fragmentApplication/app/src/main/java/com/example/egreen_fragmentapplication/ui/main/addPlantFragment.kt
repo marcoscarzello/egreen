@@ -162,21 +162,22 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
         )
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK && requestCode == our_request_code){
+    //Codice passato
+    //override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    //    super.onActivityResult(requestCode, resultCode, data)
+    //    if(resultCode == Activity.RESULT_OK && requestCode == our_request_code){
             //val uri = data?.data
-            Log.d("L?uri: ", data?.data.toString())
+    //        Log.d("L?uri: ", data?.data.toString())
     //        val photoImage = view?.findViewById<ImageView>(R.id.plant_image)
     //        val bitmap = data?.extras?.get("data") as Bitmap
     //        //val rotatedBitmap = rotateBitmap(bitmap, 90f)
     //        val image = data.data
     //        photoImage?.setImageBitmap(bitmap)
-        }
+    //    }
     //    else {
     //
     //    }
-    }
+    //}
 
 
     private fun setUpPlantSpinner() {

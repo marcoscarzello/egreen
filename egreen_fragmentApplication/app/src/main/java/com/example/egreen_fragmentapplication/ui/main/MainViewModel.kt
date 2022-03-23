@@ -1,31 +1,47 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.app.ProgressDialog
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.net.Uri
 import android.util.Log
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.BoolRes
+import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.LazyHeaders
+import com.example.egreen_fragmentapplication.GlideApp
+import com.example.egreen_fragmentapplication.R
+import com.google.android.gms.auth.api.signin.internal.Storage
 import com.google.android.gms.tasks.Task
+import com.google.common.net.HttpHeaders.USER_AGENT
 import com.google.firebase.auth.*
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.lang.Exception
+import java.net.URI
+import java.net.URL
 
-data class User(var email : String, var plantName : String, var username : String){
-}
+data class User(var email : String, var plantName : String, var username : String)
 
 class MainViewModel : ViewModel () {
 
-    public var selectedPlant = "";
+    var selectedPlant = ""
+
 
     private var mutableCurrentUser = MutableLiveData<FirebaseUser?>()
     val currentuser: LiveData<FirebaseUser?> get() = mutableCurrentUser
@@ -64,14 +80,20 @@ class MainViewModel : ViewModel () {
     private var mutableRefDB = MutableLiveData<DatabaseReference?>()
     val refDB: LiveData<DatabaseReference?> get() = mutableRefDB
 
+    private var mutableRefStorage = MutableLiveData<StorageReference?>()
+    val refStorage: LiveData<StorageReference?> get() = mutableRefStorage
+
+    private var mutableProfilePicPath = MutableLiveData<Uri>()
+    val profilePicPath: LiveData<Uri> get() = mutableProfilePicPath
+
      open fun updateCurrentUser(){
      //open fun getCurrentUser():MutableLiveData<FirebaseUser>{
         //if (FirebaseAuth.getInstance().currentUser != null )
             mutableCurrentUser.value =  FirebaseAuth.getInstance().currentUser
 
-
          mutableRefDB.value = Firebase.database.reference.child("users").child((currentuser.value?.uid.toString()))
-    }
+         mutableRefStorage.value = FirebaseStorage.getInstance().reference.child("Users").child((currentuser.value?.uid.toString()))    //firestore reference
+     }
 
     open fun logOut(){
         FirebaseAuth.getInstance().signOut()
@@ -190,7 +212,7 @@ class MainViewModel : ViewModel () {
         mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (ds in snapshot.children) {
-                    val pianta = ds.child("plantName")?.getValue(String::class.java)
+                    val pianta = ds.child("plantName").getValue(String::class.java)
 
                     if (pianta != null) {
                         mutableRefDB.value?.child("plants")?.child(pianta)?.child("params")?.child("last5waterlevel")?.child("a")?.addValueEventListener(object: ValueEventListener{
@@ -214,7 +236,7 @@ class MainViewModel : ViewModel () {
         mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (ds in snapshot.children) {
-                    val plant = ds.child("plantName")?.getValue(String::class.java)
+                    val plant = ds.child("plantName").getValue(String::class.java)
 
                     if (plant != null) {
                         mutableRefDB.value?.child("plants")?.child(plant)?.child("params")?.child("last5humidity")?.child("a")?.addValueEventListener(object: ValueEventListener{
@@ -241,7 +263,7 @@ class MainViewModel : ViewModel () {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (ds in snapshot.children) {
-                    val pianta = ds.child("plantName")?.getValue(String::class.java)
+                    val pianta = ds.child("plantName").getValue(String::class.java)
                     Log.d("DS", ds.toString())
 
                     Log.d("PIANTA", pianta.toString())
@@ -263,7 +285,7 @@ class MainViewModel : ViewModel () {
 
     //DELETE ACCOUNT
     open fun deleteAccount(){
-        val user = mutableCurrentUser!!.value
+        val user = mutableCurrentUser.value
         val refDB = mutableRefDB.value
         logOut()
         Log.d( "User deleting account :" , user.toString())
@@ -342,8 +364,83 @@ class MainViewModel : ViewModel () {
     //TODO: get user data
 
 
+    fun downProfilePic(context: Context, imageView: ImageView){
+        //var ref: StorageReference? = mutableRefStorage.value?.child("/profilePic.png")
+        var ref: StorageReference? = mutableRefStorage.value?.child("/profilePic.png")
+        val glideUrl = GlideUrl(
+            mutableProfilePicPath.value.toString(),
+            LazyHeaders.Builder().addHeader("User-Agent", USER_AGENT).build())
 
-/*
+        mutableRefDB.value?.child("profileImgUrl")?.addValueEventListener(
+            object: ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                        GlideApp.with(context).load(snapshot.value.toString().toUri()).into(imageView)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            }
+        )
+
+
+
+
+        Log.e("REF", ref.toString())
+        Log.e("context ", context.toString())
+        Log.e("imageview", imageView.toString())
+    }
+
+
+    private val TAG = "FirebaseStorageManager"
+    private lateinit var mProgressDialog: ProgressDialog
+
+    var picFrom = 100
+
+    fun uploadPic(mContext: Context, imageURI: Uri){
+        mProgressDialog = ProgressDialog(mContext)
+        mProgressDialog.setMessage("Please wait, image being uploading.....")
+        mProgressDialog.show()
+        when (picFrom) {
+            0 -> {
+                val uploadTask =
+                    mutableRefStorage.value?.child("/profilePic.png")?.putFile(imageURI)
+                uploadTask?.addOnSuccessListener {
+                    //success
+                    Log.e(TAG, "Image upload successfully")
+                    mProgressDialog.dismiss()
+
+                    val downloadURLTask =
+                        mutableRefStorage.value?.child("/profilePic.png")?.downloadUrl
+                    downloadURLTask?.addOnSuccessListener {
+                        Log.e(TAG, "IMAGE PATH: $it")
+                        mutableProfilePicPath.value = it    // URL immagine profilo
+                        mutableRefDB.value?.child("profileImgUrl")?.setValue(it.toString()) //metto imgUrl nel ramo del firebase dell'utente    !IMPORTANTE!
+                        mProgressDialog.dismiss()
+                    }?.addOnFailureListener {
+                        mProgressDialog.dismiss()
+                    }
+
+                }?.addOnFailureListener {
+                    Log.e(TAG, "Image upload failed")
+                    mProgressDialog.dismiss()
+                }
+            }
+            // qua ci sarnno gli altri valori di picFrom a cui corrisponderà il relativo comportamento
+
+        }
+    }
+
+    fun changeImgCalledFrom(int: Int){
+        picFrom = int
+
+        /*
+        0 se da account settings
+        1 se da add plant
+        ....
+         */
+    }
+
+/*D
     private val userData: MutableLiveData<User> by lazy {
         MutableLiveData<User>().also {
             loadUserData()
