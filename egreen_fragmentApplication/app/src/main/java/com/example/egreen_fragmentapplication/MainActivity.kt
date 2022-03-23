@@ -71,4 +71,5 @@ class MainActivity : AppCompatActivity() {
         val nav = findViewById<BottomNavigationView>(R.id.bottomNavigationView1)
         nav.visibility = if (isHidden) View.GONE else View.VISIBLE
     }
+
 }
