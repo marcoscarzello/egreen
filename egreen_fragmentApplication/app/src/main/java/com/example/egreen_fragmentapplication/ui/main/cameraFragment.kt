@@ -102,6 +102,7 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
     }
 
     private fun openCamera() {
+        Log.d("Questa", "è la modifica")
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         photoFile = getPhotoFile(FILE_NAME)
         val fileProvider = FileProvider.getUriForFile(requireContext(), "com.example.egreen_fragmentapplication.ui.main.fileprovider", photoFile )
