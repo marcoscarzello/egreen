@@ -1,5 +1,6 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -77,6 +78,7 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
                         item.setOnClickListener(){
                             findNavController().navigate(R.id.action_gardenSettingsFragment_to_addPlantFragment)
                         }
+
                     else ->
                         item.setOnClickListener(){
                             viewModel.changeSelectedPlant(item.text.toString())
