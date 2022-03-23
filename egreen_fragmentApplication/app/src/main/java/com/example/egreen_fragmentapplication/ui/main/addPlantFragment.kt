@@ -66,7 +66,8 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
         var photoImage = view.findViewById<ImageView>(R.id.plant_image)
         photoImage.setOnClickListener {
             Log.d("Ho Cliccato ", "la foto")
-            findNavController().navigate(R.id.action_accountSettingsFragment_to_cameraFragment2)
+            viewModel.changeImgCalledFrom(1)    //qua dico che sto chiamando camera fragment da add plant
+            findNavController().navigate(R.id.action_addPlantFragment_to_cameraFragment2)
         }
         val saveButton = view.findViewById<Button>(R.id.save_Button)
         saveButton.text = "CREATE PLANT"
@@ -107,11 +108,14 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
             findNavController().navigate(R.id.action_addPlantFragment_to_plantFragment)
         }
 
+
+        //IMMAGINE PIANTAAAA
         val openCamera = view.findViewById<Button>(R.id.photoAPI_Button)
         openCamera.text = "PHOTO RECOGNITION"
         openCamera.setOnClickListener {
-            //mActivityCallback?.onOpenCameraPressed()
         }
+
+
         setUpPlantSpinner()
         setUpHeightSpinner()
     }

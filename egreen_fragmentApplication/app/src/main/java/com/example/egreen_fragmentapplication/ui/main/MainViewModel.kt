@@ -3,13 +3,16 @@ package com.example.egreen_fragmentapplication.ui.main
 import android.app.ProgressDialog
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.icu.text.SimpleDateFormat
 import android.net.Uri
+import android.os.Build
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.BoolRes
+import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -29,12 +32,19 @@ import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.type.DateTime
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.lang.Exception
 import java.net.URI
 import java.net.URL
+import java.time.Instant.now
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalDateTime.now
+import java.util.*
+import kotlin.collections.HashMap
 
 data class User(var email : String, var plantName : String, var username : String)
 
@@ -86,6 +96,10 @@ class MainViewModel : ViewModel () {
     private var mutableProfilePicPath = MutableLiveData<Uri>()
     val profilePicPath: LiveData<Uri> get() = mutableProfilePicPath
 
+
+    private var mutablePlantPicPath = MutableLiveData<Uri>()
+    val plantPicPath: LiveData<Uri> get() = mutablePlantPicPath
+
      open fun updateCurrentUser(){
      //open fun getCurrentUser():MutableLiveData<FirebaseUser>{
         //if (FirebaseAuth.getInstance().currentUser != null )
@@ -123,6 +137,7 @@ class MainViewModel : ViewModel () {
         provvisoria["e"] = "9"
 
 
+
         mutableRefDB.value?.child("plants")?.child(plantName)?.setValue(plantData)
         mutableRefDB.value?.child("plants")?.child(plantName)?.child("params")?.setValue(params)
 
@@ -131,7 +146,7 @@ class MainViewModel : ViewModel () {
         mutableRefDB.value?.child("plants")?.child(plantName)?.child("params")?.child("last5waterlevel")?.setValue(provvisoria)
 
 
-
+        mutableRefDB.value?.child("plants")?.child(plantName)?.child("piantaimgUrl")?.setValue(plantPicPath.value.toString())       //metto nel database il link all'immagine della pianta
     }
 
     open fun changeSelectedPlant(name: String) {
@@ -365,11 +380,6 @@ class MainViewModel : ViewModel () {
 
 
     fun downProfilePic(context: Context, imageView: ImageView){
-        //var ref: StorageReference? = mutableRefStorage.value?.child("/profilePic.png")
-        var ref: StorageReference? = mutableRefStorage.value?.child("/profilePic.png")
-        val glideUrl = GlideUrl(
-            mutableProfilePicPath.value.toString(),
-            LazyHeaders.Builder().addHeader("User-Agent", USER_AGENT).build())
 
         mutableRefDB.value?.child("profileImgUrl")?.addValueEventListener(
             object: ValueEventListener{
@@ -381,13 +391,6 @@ class MainViewModel : ViewModel () {
                 }
             }
         )
-
-
-
-
-        Log.e("REF", ref.toString())
-        Log.e("context ", context.toString())
-        Log.e("imageview", imageView.toString())
     }
 
 
@@ -396,10 +399,17 @@ class MainViewModel : ViewModel () {
 
     var picFrom = 100
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun uploadPic(mContext: Context, imageURI: Uri){
+
         mProgressDialog = ProgressDialog(mContext)
         mProgressDialog.setMessage("Please wait, image being uploading.....")
         mProgressDialog.show()
+
+        val formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault() )
+        val now = Date()
+        val fileName = formatter.format(now)
+
         when (picFrom) {
             0 -> {
                 val uploadTask =
@@ -415,6 +425,31 @@ class MainViewModel : ViewModel () {
                         Log.e(TAG, "IMAGE PATH: $it")
                         mutableProfilePicPath.value = it    // URL immagine profilo
                         mutableRefDB.value?.child("profileImgUrl")?.setValue(it.toString()) //metto imgUrl nel ramo del firebase dell'utente    !IMPORTANTE!
+                        mProgressDialog.dismiss()
+                    }?.addOnFailureListener {
+                        mProgressDialog.dismiss()
+                    }
+
+                }?.addOnFailureListener {
+                    Log.e(TAG, "Image upload failed")
+                    mProgressDialog.dismiss()
+                }
+            }
+
+            1 ->{
+                val uploadTask =
+                    mutableRefStorage.value?.child("/plants/$fileName")?.putFile(imageURI)      //la chiamo provvisoriamente con l'ora corrente (salvata in filename)
+                uploadTask?.addOnSuccessListener {
+                    //success
+                    Log.e(TAG, "Image upload successfully")
+                    mProgressDialog.dismiss()
+
+                    val downloadURLTask =
+                        mutableRefStorage.value?.child("/plants/$fileName")?.downloadUrl
+                    downloadURLTask?.addOnSuccessListener {
+                        Log.e(TAG, "PLANT PATH: $it")
+                        mutablePlantPicPath.value = it    // URL immagine nuova pianta
+
                         mProgressDialog.dismiss()
                     }?.addOnFailureListener {
                         mProgressDialog.dismiss()
