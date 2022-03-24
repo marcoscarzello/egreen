@@ -34,7 +34,7 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         val waterlevel  = view.findViewById<TextView>(R.id.water_level)
 
         var plantImg = view.findViewById<ImageView>(R.id.plant_image_view)
-        viewModel.downPlantPic(this@PlantFragment.requireContext(), plantImg)
+        viewModel.downPlantPic(this@PlantFragment.requireContext(), plantImg)   //scarico immagine pianta
 
         //to delete
         val test = view.findViewById<Button>(R.id.test_profile)
@@ -62,30 +62,35 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         plantNameText.text = viewModel.getSelectedPlantName()
 
         viewModel.humidityMap.observe(this, Observer { hm ->
-            humMap = hm
-            humidity.text = humMap["a"]
-            Log.d("HUMIDITY MAP READ BY FRAGMENT PLANT", humMap.toString())
+            if (hm!= null) {
+                humMap = hm
+                humidity.text = humMap["a"]
+                Log.d("HUMIDITY MAP READ BY FRAGMENT PLANT", humMap.toString())
 
-            //aggiornamento graph
-            HgraphView.removeAllSeries()
-             series = LineGraphSeries(
-                arrayOf<DataPoint>(
-                    DataPoint(1.0, humMap["e"]!!.toDouble()),
-                    DataPoint(2.0, humMap["d"]!!.toDouble()),
-                    DataPoint(3.0, humMap["c"]!!.toDouble()),
-                    DataPoint(4.0, humMap["b"]!!.toDouble()),
-                    DataPoint(5.0, humMap["a"]!!.toDouble())
-                ))
-            series.setColor(Color.RED)
-            series.setDrawDataPoints(true)
-            HgraphView.addSeries(series)
+                //aggiornamento graph
+                HgraphView.removeAllSeries()
+                series = LineGraphSeries(
+                    arrayOf<DataPoint>(
+                        DataPoint(1.0, humMap["e"]!!.toDouble()),
+                        DataPoint(2.0, humMap["d"]!!.toDouble()),
+                        DataPoint(3.0, humMap["c"]!!.toDouble()),
+                        DataPoint(4.0, humMap["b"]!!.toDouble()),
+                        DataPoint(5.0, humMap["a"]!!.toDouble())
+                    )
+                )
+                series.setColor(Color.RED)
+                series.setDrawDataPoints(true)
+                HgraphView.addSeries(series)
+            }
 
         })
 
         viewModel.waterMap.observe(this, Observer { wm ->
-            watMap = wm
-            waterlevel.text = watMap["a"]
-            Log.d("Water MAP READ BY FRAGMENT PLANT", watMap.toString())
+            if(wm!= null) {
+                watMap = wm
+                waterlevel.text = watMap["a"]
+                Log.d("Water MAP READ BY FRAGMENT PLANT", watMap.toString())
+            }
 
         })
     }
