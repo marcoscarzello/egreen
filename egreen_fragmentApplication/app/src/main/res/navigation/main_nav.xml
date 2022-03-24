@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_CardAdapter_to_plantSettingsFragment"
             app:destination="@id/plantSettingsFragment" />
+        <action
+            android:id="@+id/action_CardAdapter_to_plantFragment"
+            app:destination="@id/plantFragment" />
     </fragment>
 
     <fragment

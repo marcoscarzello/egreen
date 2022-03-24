@@ -47,7 +47,7 @@ class CardAdapter(private val context: Context?, private val CardArrayList: Arra
         view.setOnClickListener() {
             //Toast.makeText(context, "$plantName", Toast.LENGTH_SHORT).show()
             if(plantName != "New Plant"){
-                it.findNavController().navigate(R.id.action_CardAdapter_to_plantSettingsFragment)
+                it.findNavController().navigate(R.id.action_CardAdapter_to_plantFragment)
                 //Log.d("Questa è la pianta: ", plantName)
             }
             else

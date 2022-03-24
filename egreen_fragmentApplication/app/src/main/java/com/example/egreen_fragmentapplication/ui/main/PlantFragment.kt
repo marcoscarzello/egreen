@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -24,7 +25,6 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
 
         val viewModel: MainViewModel by activityViewModels()
 
-
         var humMap: MutableMap<String, String> = HashMap()
         var watMap: MutableMap<String, String> = HashMap()
 
@@ -32,6 +32,9 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         val plantNameText  = view.findViewById<TextView>(R.id.plant_title)
         val humidity  = view.findViewById<TextView>(R.id.humidity)
         val waterlevel  = view.findViewById<TextView>(R.id.water_level)
+
+        var plantImg = view.findViewById<ImageView>(R.id.plant_image_view)
+        viewModel.downPlantPic(this@PlantFragment.requireContext(), plantImg)
 
         //to delete
         val test = view.findViewById<Button>(R.id.test_profile)

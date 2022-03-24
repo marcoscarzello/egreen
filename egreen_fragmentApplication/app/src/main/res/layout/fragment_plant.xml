@@ -9,6 +9,7 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="400dp"
         android:layout_height="212dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -98,5 +99,17 @@
         android:text="Test  go to profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/plant_image_view"
+        android:layout_width="251dp"
+        android:layout_height="265dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/plant_title"
+        app:layout_constraintVertical_bias="0.487"
+        app:srcCompat="@drawable/genoveffa" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

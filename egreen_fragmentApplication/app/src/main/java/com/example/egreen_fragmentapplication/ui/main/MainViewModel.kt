@@ -378,6 +378,16 @@ class MainViewModel : ViewModel () {
 
     //TODO: get user data
 
+    fun downPlantPic(context: Context, imageView: ImageView){
+        mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("piantaimgUrl")?.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                GlideApp.with(context).load(snapshot.value.toString().toUri()).into(imageView)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+    }
 
     fun downProfilePic(context: Context, imageView: ImageView){
 
