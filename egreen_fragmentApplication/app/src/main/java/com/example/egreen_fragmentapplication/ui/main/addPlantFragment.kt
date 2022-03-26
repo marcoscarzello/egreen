@@ -1,6 +1,5 @@
 package com.example.egreen_fragmentapplication.ui.main
 
-import android.app.Activity
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -11,19 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
 import android.util.Log
 
-import android.provider.MediaStore
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Matrix
-import android.os.Environment
-
 import android.widget.ImageView
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.FileProvider
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_login.*
-import java.io.File
 
 
 /**
@@ -63,7 +52,7 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
         spinnerHeight = view.findViewById(R.id.plant_height_spinner)
         val heightEditText = view.findViewById(R.id.Plant_height) as EditText
         val nameEditText = view.findViewById(R.id.Plant_name) as EditText
-        var photoImage = view.findViewById<ImageView>(R.id.plant_image)
+        var photoImage = view.findViewById<ImageView>(R.id.plant_settings_image)
         photoImage.setOnClickListener {
             Log.d("Ho Cliccato ", "la foto")
             viewModel.changeImgCalledFrom(1)    //qua dico che sto chiamando camera fragment da add plant

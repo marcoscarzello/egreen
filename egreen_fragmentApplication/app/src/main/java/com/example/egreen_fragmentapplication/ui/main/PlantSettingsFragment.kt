@@ -26,6 +26,9 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
         val plantHeigthEditText  = view.findViewById<EditText>(R.id.Plant_height)
         val applyBtn  = view.findViewById<Button >(R.id.save_Button)
         val plantTypeSpinner = view.findViewById<Spinner>(R.id.plant_Type)
+        var plantImg = view.findViewById<ImageView>(R.id.plant_settings_image)
+
+        viewModel.downPlantPic(requireContext(), plantImg)
 
         plantNameText.text = viewModel.getSelectedPlantName()
         viewModel.getSelectedPlantHeigth()
