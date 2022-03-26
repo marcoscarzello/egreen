@@ -263,6 +263,7 @@ class MainViewModel : ViewModel () {
                                 val hm = snapshot.getValue<String>().toString()
                                 //Log.d("Il hm lev", hm)
                                 mutabledataHmList.value?.add(snapshot.getValue<String>().toString())
+                                //Log.d("LISTA hm", mutabledataHmList.value.toString())
                             }
                             override fun onCancelled(error: DatabaseError) {
                                 TODO("Not yet implemented")
