@@ -1,4 +1,6 @@
 package com.example.egreen_fragmentapplication.ui.main
 
-class CardModel(var plantName: String, var image: Int, var waterlevel: String, var oxygen: String) {
+import android.net.Uri
+
+class CardModel(var plantName: String, var image: String, var waterlevel: String, var oxygen: String) {
 }

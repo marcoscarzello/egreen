@@ -11,13 +11,19 @@ import kotlinx.android.synthetic.main.card_view.*
 import com.example.egreen_fragmentapplication.R
 import kotlinx.android.synthetic.main.card_view.view.*
 import android.util.Log
+import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import com.example.egreen_fragmentapplication.GlideApp
+import java.util.*
+
+import com.squareup.picasso.Picasso
 
 
 class CardAdapter(private val context: Context?, private val CardArrayList: ArrayList<CardModel>): PagerAdapter(){
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
+
         return view == `object`
     }
 
@@ -28,8 +34,6 @@ class CardAdapter(private val context: Context?, private val CardArrayList: Arra
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view = LayoutInflater.from(context).inflate(R.layout.card_view,container,false)
 
-        //val viewModel: MainViewModel by activityViewModels()
-
         //prende i dati
         val model = CardArrayList[position]
         val plantName = model.plantName
@@ -37,9 +41,14 @@ class CardAdapter(private val context: Context?, private val CardArrayList: Arra
         val waterlevel = model.waterlevel
         val oxygen = model.oxygen
 
-        //set data to ui views
-        view.bannerIv.setImageResource(image)
         view.plantName.text = plantName
+
+        if(plantName != "New Plant"){
+            Picasso.with(context).load(image.toUri()).into(view.bannerIv)
+        }
+        else
+            view.bannerIv.setImageResource(R.drawable.genoveffa)
+
         view.water_level.text = waterlevel
         view.oxigen.text = oxygen
 

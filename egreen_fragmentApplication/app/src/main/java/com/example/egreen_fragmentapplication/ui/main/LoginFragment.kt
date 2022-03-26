@@ -96,7 +96,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                                     viewModel.updateCurrentUser()
                                     viewModel.getUsername()
-                                    viewModel.getPlants() //carica piante
+                                    //viewModel.getPlants() //carica piante
                                     //Log.d("Quali piante sono caricate: ", viewModel.plantList.value.toString())
                                     viewModel.getWtValues()
                                     viewModel.getHmValues()

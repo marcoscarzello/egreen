@@ -16,6 +16,11 @@ import kotlinx.android.synthetic.main.main_fragment.*
 import androidx.lifecycle.Observer
 
 import android.os.Handler
+import android.widget.ImageView
+import androidx.core.graphics.drawable.toIcon
+import androidx.core.net.toUri
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.viewpager.widget.ViewPager
 import kotlinx.coroutines.*
 import java.util.*
@@ -32,11 +37,30 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     //private lateinit var viewModel: MainViewModel
+    private lateinit var img1 : Uri
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val viewModel: MainViewModel by activityViewModels()
+        viewModel.getPlants()
+        viewModel.getPlantsUri()
+
+        //Log.d("ListaUri", viewModel.plantListUri!!.value?.get(0)!!.toString())
+
+        //var mutableRefDB = MutableLiveData<DatabaseReference?>()
+
+        //viewModel.refDB.value?.child("plants")?.child("Pianta1")?.child("piantaimgUrl")
+        //    ?.addValueEventListener(object: ValueEventListener{
+        //        override fun onDataChange(snapshot: DataSnapshot) {
+        //            val v = snapshot.getValue<String>()
+        //            img1 = v!!.toUri()
+        //            //Log.d("L'uri", img1.toString())
+        //        }
+        //        override fun onCancelled(error: DatabaseError) {}
+        //    })
+
+        //val img = mutableRefDB.value?.child("plants")?.child("Pianta1")?.child("piantaimgUrl").toString()
 
         //var humMap: MutableMap<String, String> = HashMap()
         //var watMap: MutableMap<String, String> = HashMap()
@@ -114,13 +138,13 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 for (p: String in plantList) {
                         if (p != null) {
 
-                            //Log.d("lista dati Wt", viewModel.dataWtList.value?.get(1).toString())
-                            //Log.d("lista dati Hm", viewModel.dataHmList.value.toString())
+                            //viewModel.changeSelectedPlant(p)
 
                             cardArrayList.add(
                                 CardModel(
                                     p,
-                                    R.drawable.genoveffa,
+                                    viewModel.plantListUri!!.value?.get(i)!!.toString(),//R.drawable.genoveffa,
+                                    //viewModel.refDB.value?.child("plants")?.child(p)?.child("piantaimgUrl").toString().toUri(),
                                     viewModel.dataWtList.value?.get(i).toString(),
                                     viewModel.dataHmList.value?.get(i).toString()
                                 )
@@ -129,15 +153,26 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                             //se non aspetto non va...
                             //handler.postDelayed({Log.d("Valore della pianta da frag",viewModel.wtlev.value.toString())}, 5)
                         }
+                    i++
                     }
                 cardArrayList.add(
                     CardModel(
                         "New Plant",
-                        R.drawable.genoveffa,
-                        "Add Plant !",
-                        ""
+                        //R.drawable.genoveffa,
+                        "test",//img1.toString(),//viewModel.refDB.value?.child("plants")?.child(p)?.child("piantaimgUrl").toString().toUri(),
+                        viewModel.dataWtList.value?.get(0).toString(),
+                        viewModel.dataHmList.value?.get(0).toString()
                     )
                 )
+
+                //cardArrayList.add(
+                //    CardModel(
+                //        "New Plant",
+                //        R.drawable.genoveffa.toString().toUri(),
+                //        "Add Plant !",
+                //        ""
+                //    )
+                //)
 
                 adapter = CardAdapter(this.context, cardArrayList)
                 viewPager.adapter = adapter

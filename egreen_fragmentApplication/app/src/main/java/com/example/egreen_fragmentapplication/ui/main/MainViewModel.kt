@@ -65,6 +65,9 @@ class MainViewModel : ViewModel () {
     private var mutablePlantList = MutableLiveData<MutableList<String>>()
     val plantList: LiveData<MutableList<String>> get() = mutablePlantList
 
+    private var mutablePlantListUri = MutableLiveData<MutableList<String>>()
+    val plantListUri: LiveData<MutableList<String>> get() = mutablePlantListUri
+
     //livedata per osservare umidità
     private var mutableHumidityMap = MutableLiveData<MutableMap<String, String>>()
     val humidityMap: LiveData<MutableMap<String, String>> get() = mutableHumidityMap
@@ -83,6 +86,7 @@ class MainViewModel : ViewModel () {
 
     open fun initialize(){
         mutablePlantList.value = mutableListOf()
+        mutablePlantListUri.value = mutableListOf()
         mutabledataWtList.value = mutableListOf()
         mutabledataHmList.value = mutableListOf()
     }
@@ -271,31 +275,37 @@ class MainViewModel : ViewModel () {
     }
 
     open fun getPlants() {
-    //open fun getPlants() : MutableList<String>?{
-        //var plantList : MutableList<String> = mutableListOf()
-        //mutablePlantList.value = mutableListOf()
         mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (ds in snapshot.children) {
                     val pianta = ds.child("plantName").getValue(String::class.java)
-                    Log.d("DS", ds.toString())
-
-                    Log.d("PIANTA", pianta.toString())
+                    //Log.d("DS", ds.toString())
+                    //Log.d("PIANTA", pianta.toString())
 
                     if (pianta != null && mutablePlantList.value?.contains(pianta) == false) mutablePlantList.value?.add(pianta)
-                    Log.d("LISTA PAINTE", mutablePlantList.value.toString())
-
+                    //Log.d("LISTA PAINTE", mutablePlantList.value.toString())
                 }
-
             }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
+            override fun onCancelled(error: DatabaseError) {}
         })
-        //return plantList
+    }
+
+    open fun getPlantsUri() {
+        mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (ds in snapshot.children) {
+                    val piantaUri = ds.child("piantaimgUrl").getValue(String::class.java)
+                    //Log.d("DS", ds.toString())
+                    //Log.d("PIANTA", pianta.toString())
+
+                    if (piantaUri != null) mutablePlantListUri.value?.add(piantaUri)
+                    //Log.d("LISTA PAINTE Uri", mutablePlantListUri.value.toString())
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 
     //DELETE ACCOUNT
@@ -382,6 +392,7 @@ class MainViewModel : ViewModel () {
         mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("piantaimgUrl")?.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 GlideApp.with(context).load(snapshot.value.toString().toUri()).into(imageView)
+                Log.d("L'uri di lara: ", snapshot.value.toString())
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -395,6 +406,7 @@ class MainViewModel : ViewModel () {
             object: ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                         GlideApp.with(context).load(snapshot.value.toString().toUri()).into(imageView)
+                    //Log.d("Test", snapshot.value.toString().toUri().c)
                 }
 
                 override fun onCancelled(error: DatabaseError) {
