@@ -145,8 +145,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                                     p,
                                     viewModel.plantListUri!!.value?.get(i)!!.toString(),//R.drawable.genoveffa,
                                     //viewModel.refDB.value?.child("plants")?.child(p)?.child("piantaimgUrl").toString().toUri(),
-                                    viewModel.dataWtList.value?.get(i).toString(),
-                                    viewModel.dataHmList.value?.get(i).toString()
+                                    viewModel.dataWtList.value?.get(0).toString(),
+                                    viewModel.dataHmList.value?.get(0).toString()
                                 )
                             )
 
