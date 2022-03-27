@@ -45,6 +45,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         val viewModel: MainViewModel by activityViewModels()
         viewModel.getPlants()
         viewModel.getPlantsUri()
+        viewModel.getWtValues()
+        viewModel.getHmValues()
 
         //Log.d("ListaUri", viewModel.plantListUri!!.value?.get(0)!!.toString())
 
@@ -145,8 +147,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                                     p,
                                     viewModel.plantListUri!!.value?.get(i)!!.toString(),//R.drawable.genoveffa,
                                     //viewModel.refDB.value?.child("plants")?.child(p)?.child("piantaimgUrl").toString().toUri(),
-                                    viewModel.dataWtList.value?.get(i).toString(),
-                                    viewModel.dataHmList.value?.get(i).toString()
+                                    viewModel.dataWtList!!.value?.get(i)!!.toString(),
+                                    viewModel.dataHmList!!.value?.get(i)!!.toString()
                                 )
                             )
 

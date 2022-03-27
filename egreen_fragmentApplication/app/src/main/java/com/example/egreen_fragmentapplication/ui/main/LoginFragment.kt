@@ -98,8 +98,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                                     viewModel.getUsername()
                                     //viewModel.getPlants() //carica piante
                                     //Log.d("Quali piante sono caricate: ", viewModel.plantList.value.toString())
-                                    viewModel.getWtValues()
-                                    viewModel.getHmValues()
+                                    //viewModel.getWtValues()
+                                    //viewModel.getHmValues()
                                     activity?.hideBottomBar(false)
                                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                                     //findNavController().navigate(R.id.action_accountSettingsFragment_to_gardenSettingsFragment)
