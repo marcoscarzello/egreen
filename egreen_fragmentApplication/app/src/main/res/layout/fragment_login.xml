@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_theme"
-    android:backgroundTint="#80AD76"
+    android:background="@color/green_200"
+    android:backgroundTint="@color/green_200"
     tools:context="ui.main.LoginFragment">
 
     <Button
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/custom_button"
+        android:backgroundTint="@color/green_700"
         android:fontFamily="@font/ropa_sans"
         android:text="log in"
         android:textSize="16sp"
@@ -71,6 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register now"
+        android:textColor="@color/green_700"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +87,7 @@
         android:gravity="fill"
         android:text="Log in"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/green_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
