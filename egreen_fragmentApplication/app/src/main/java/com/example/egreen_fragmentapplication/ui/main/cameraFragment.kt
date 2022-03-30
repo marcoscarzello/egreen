@@ -16,6 +16,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -39,21 +40,30 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
 
         var imag = view.findViewById<ImageView>(R.id.capturedImage)
 
-        viewModel.downProfilePic(this@CameraFragment.requireContext(), imag)
+        viewModel.downProfilePic(this@CameraFragment.requireContext(), imag)        //vedo sempre l'immagine profilo
 
     //TEST IMMAGINI
 
-    val gallery = view.findViewById<Button>(R.id.galleria)
-    val camera = view.findViewById<Button>(R.id.btnTakePicture)
+        val gallery = view.findViewById<Button>(R.id.galleria)
+        val camera = view.findViewById<Button>(R.id.btnTakePicture)
 
-    gallery.setOnClickListener {
-        pickImageGallery()
-    }
+        val closeBtn = view.findViewById<ImageButton>(R.id.closeCamera)
 
-    camera.setOnClickListener {
-        openCamera()
+
+        gallery.setOnClickListener {
+            pickImageGallery()
+        }
+
+        camera.setOnClickListener {
+            openCamera()
+        }
+
+        closeBtn.setOnClickListener{
+            //activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
+            this.fragmentManager?.beginTransaction()?.remove(this)?.commit()
+            this.fragmentManager?.popBackStack()
+        }
     }
-}
 
 
     companion object{
@@ -114,6 +124,7 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
         val storageDir = context?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(fileName, ".jpg", storageDir)
     }
+
 }
 
 

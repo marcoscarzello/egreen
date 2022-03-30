@@ -1,5 +1,6 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.ContentValues.TAG
 import android.content.Context
@@ -12,6 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.BoolRes
+import androidx.annotation.MainThread
 import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
@@ -474,6 +476,8 @@ class MainViewModel : ViewModel () {
                         mutablePlantPicPath.value = it    // URL immagine nuova pianta
 
                         mProgressDialog.dismiss()
+
+
                     }?.addOnFailureListener {
                         mProgressDialog.dismiss()
                     }
