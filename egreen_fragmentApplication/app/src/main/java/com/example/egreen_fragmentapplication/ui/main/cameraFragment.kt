@@ -27,6 +27,8 @@ import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.FileProvider
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
 import java.io.File
 
@@ -40,7 +42,7 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
 
         var imag = view.findViewById<ImageView>(R.id.capturedImage)
 
-        viewModel.downProfilePic(this@CameraFragment.requireContext(), imag)        //vedo sempre l'immagine profilo
+        viewModel.downTakenPic(this@CameraFragment.requireContext(), imag)
 
     //TEST IMMAGINI
 
@@ -60,8 +62,8 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
 
         closeBtn.setOnClickListener{
             //activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
-            this.fragmentManager?.beginTransaction()?.remove(this)?.commit()
-            this.fragmentManager?.popBackStack()
+            //this.fragmentManager?.beginTransaction()?.remove(this)?.commit()
+            findNavController().popBackStack()
         }
     }
 

@@ -418,6 +418,13 @@ class MainViewModel : ViewModel () {
         )
     }
 
+    fun downTakenPic(context: Context, imageView: ImageView){
+        when (picFrom){
+            0 -> downProfilePic(context, imageView)
+            1 -> downPlantPic(context, imageView)
+        }
+    }
+
 
     private val TAG = "FirebaseStorageManager"
     private lateinit var mProgressDialog: ProgressDialog
