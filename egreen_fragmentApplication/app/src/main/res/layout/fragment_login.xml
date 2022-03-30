@@ -40,6 +40,7 @@
         android:paddingEnd="12dp"
         android:textAlignment="center"
 
+        android:textColor="@color/green_700"
         app:layout_constraintBottom_toTopOf="@+id/login_psw"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +60,8 @@
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/green_700"
+        android:textColorHighlight="@color/green_700"
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"

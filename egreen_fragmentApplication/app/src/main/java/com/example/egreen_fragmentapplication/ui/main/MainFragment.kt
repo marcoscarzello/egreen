@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.main_fragment.*
 import androidx.lifecycle.Observer
 
 import android.os.Handler
+import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.core.graphics.drawable.toIcon
 import androidx.core.net.toUri
@@ -67,27 +68,13 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         //var humMap: MutableMap<String, String> = HashMap()
         //var watMap: MutableMap<String, String> = HashMap()
 
-        val addPlant = view.findViewById<Button>(R.id.addPlant)
+        val gsBtn = view.findViewById<ImageButton>(R.id.gs_btn)
 
-        addPlant.setOnClickListener{
-            findNavController().navigate(R.id.action_mainFragment_to_gardenSettingsFragment)        //ora va a garden settings per poter testare le cose
+        gsBtn.setOnClickListener{
+            findNavController().navigate(R.id.action_mainFragment_to_gardenSettingsFragment)
         }
 
 
-
-
-
-        //test FIREBASE + autenticazione
-
-/*
-        val user =  FirebaseAuth.getInstance().currentUser?.uid.toString()      //recupero l'ID dello user corrente
-
-
-        val db = Firebase.database.reference
-
-        val ref = db.child("users").child((user)) //qui entro nel ramo degli utenti e poi in particolare dell'utente corrente
-
- */
 
         val plantName = view.findViewById<TextView>(R.id.plantName)
 

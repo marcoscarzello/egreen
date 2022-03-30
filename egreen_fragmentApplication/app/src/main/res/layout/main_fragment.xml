@@ -8,6 +8,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainFragment">
 
+    <ImageButton
+        android:id="@+id/gs_btn"
+        android:layout_width="29dp"
+        android:layout_height="30dp"
+        android:background="#88FFFFCC"
+        android:src="@drawable/ic_settings"
+        android:text="GS"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
@@ -17,7 +28,7 @@
         android:foregroundGravity="center"
         android:overScrollMode="never"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-120dp">
+        tools:layout_editor_absoluteY="-16dp">
 
         <TextView
             android:id="@+id/plantName"
@@ -26,33 +37,8 @@
             android:text="text"
             android:textAlignment="center"
             android:textStyle="bold|italic" />
+
     </androidx.viewpager.widget.ViewPager>
-
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:scaleX="3"
-        android:scaleY="3"
-        android:text="Giardino"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13999999" />
-
-    <Button
-        android:id="@+id/addPlant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GS"
-        android:background= "#88FFFFCC"
-        android:layout_marginRight="10dp"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/message"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

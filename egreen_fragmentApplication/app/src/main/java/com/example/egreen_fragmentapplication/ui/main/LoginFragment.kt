@@ -15,7 +15,6 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.MainActivity
 import com.example.egreen_fragmentapplication.R
-import com.example.egreen_fragmentapplication.RegisterActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
