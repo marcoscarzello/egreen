@@ -39,7 +39,8 @@
         android:id="@+id/plant_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="170dp"
         android:text="Nome pianta"
         android:textColor="@color/white"
@@ -47,6 +48,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/humidity"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -111,6 +113,7 @@
         android:layout_width="251dp"
         android:layout_height="265dp"
         android:layout_marginEnd="4dp"
+
 
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
