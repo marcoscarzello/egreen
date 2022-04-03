@@ -5,7 +5,7 @@
     android:id="@+id/Constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/main_theme">
 
 
     <ScrollView
@@ -42,7 +42,9 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="170dp"
         android:text="Nome pianta"
+        android:textColor="@color/white"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/humidity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +57,7 @@
         android:layout_marginTop="44dp"
         android:layout_marginEnd="250dp"
         android:text="00"
+        android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,6 +71,7 @@
         android:layout_marginTop="54dp"
         android:layout_marginEnd="250dp"
         android:text="00"
+        android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,6 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="% humidity"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/humidity"
         app:layout_constraintTop_toBottomOf="@+id/humidity" />
 
@@ -89,6 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="% water level"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/water_level"
         app:layout_constraintTop_toBottomOf="@+id/water_level" />
 
@@ -105,6 +111,7 @@
         android:layout_width="251dp"
         android:layout_height="265dp"
         android:layout_marginEnd="4dp"
+
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView6"
