@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -13,14 +13,33 @@
         <action
             android:id="@+id/action_mainFragment_to_addPlantFragment"
             app:destination="@id/addPlantFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_gardenSettingsFragment"
+            app:destination="@id/gardenSettingsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_CardAdapter_to_addPlantFragment"
+            app:destination="@+id/addPlantFragment"/>
+        <action
+            android:id="@+id/action_CardAdapter_to_plantSettingsFragment"
+            app:destination="@id/plantSettingsFragment" />
+        <action
+            android:id="@+id/action_CardAdapter_to_plantFragment"
+            app:destination="@id/plantFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/addPlantFragment"
         android:name="com.example.egreen_fragmentapplication.ui.main.addPlantFragment"
         android:label="addPlantFragment" >
         <action
-            android:id="@+id/action_addPlantFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_addPlantFragment_to_plantFragment"
+            app:destination="@id/plantFragment" />
+        <action
+            android:id="@+id/action_addPlantFragment_to_cameraFragment2"
+            app:destination="@id/cameraFragment2" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -31,8 +50,11 @@
             android:id="@+id/action_settingsFragment_to_gardenSettingsFragment"
             app:destination="@id/gardenSettingsFragment" />
         <action
-            android:id="@+id/action_settingsFragment_to_addPlantFragment"
-            app:destination="@id/addPlantFragment" />
+            android:id="@+id/action_settingsFragment_to_accountSettingsFragment"
+            app:destination="@id/accountSettingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_networkFragment"
+            app:destination="@id/networkFragment" />
     </fragment>
     <fragment
         android:id="@+id/gardenSettingsFragment"
@@ -44,6 +66,100 @@
             app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/action_gardenSettingsFragment_to_addPlantFragment"
+            app:destination="@id/addPlantFragment" />
+        <action
+            android:id="@+id/action_gardenSettingsFragment_to_plantSettingsFragment"
+            app:destination="@id/plantSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountSettingsFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.AccountSettingsFragment"
+        android:label="fragment_account_settings"
+        tools:layout="@layout/fragment_account_settings" >
+        <action
+            android:id="@+id/action_accountSettingsFragment_to_gardenSettingsFragment"
+            app:destination="@id/gardenSettingsFragment" />
+        <action
+            android:id="@+id/action_accountSettingsFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_accountSettingsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_accountSettingsFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_accountSettingsFragment_to_cameraFragment2"
+            app:destination="@id/cameraFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/plantSettingsFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.PlantSettingsFragment"
+        android:label="PlantSettingsFragment" >
+        <action
+            android:id="@+id/action_plantSettingsFragment_to_plantFragment"
+            app:destination="@id/plantFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/plantFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.PlantFragment"
+        android:label="PlantFragment" >
+        <action
+            android:id="@+id/action_plantFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/networkFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.NetworkFragment"
+        android:label="fragment_network"
+        tools:layout="@layout/fragment_network" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_accountSettingsFragment"
+            app:destination="@id/accountSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.egreen_fragmentapplication.ui.main.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/cameraFragment2"
+        android:name="com.example.egreen_fragmentapplication.ui.main.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" >
+        <action
+            android:id="@+id/action_cameraFragment2_to_accountSettingsFragment"
+            app:destination="@id/accountSettingsFragment" />
+        <action
+            android:id="@+id/action_cameraFragment2_to_addPlantFragment"
             app:destination="@id/addPlantFragment" />
     </fragment>
 </navigation>

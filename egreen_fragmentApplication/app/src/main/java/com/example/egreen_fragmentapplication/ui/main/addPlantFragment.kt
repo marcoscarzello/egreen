@@ -1,14 +1,19 @@
-package com.example.egreen_fragmentapplication.ui.ma
+package com.example.egreen_fragmentapplication.ui.main
 
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
+import android.util.Log
+
+import android.widget.ImageView
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.fragment_login.*
 
 
 /**
@@ -17,7 +22,9 @@ import com.example.egreen_fragmentapplication.R
  * create an instance of this fragment.
  */
 //Alessandro
-class addPlantFragment : Fragment() {
+class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
+
+    val viewModel: MainViewModel by activityViewModels()
 
     private var mSpinner: Spinner? = null
     private var spinnerResult: String? = null
@@ -27,6 +34,7 @@ class addPlantFragment : Fragment() {
     var spinnerHeightResult:String? = null
     var plantName: String? = null
     var plantHeight: String? = null
+    var plantType : String? = null
 
 
     override fun onAttach(context: Context) {
@@ -37,12 +45,14 @@ class addPlantFragment : Fragment() {
 
 
     //Alessandro
-    override fun onCreateView(
+    /*override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_add_plant, container, false)
     }
+
+     */
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,9 +61,11 @@ class addPlantFragment : Fragment() {
         spinnerHeight = view.findViewById(R.id.plant_height_spinner)
         val heightEditText = view.findViewById(R.id.Plant_height) as EditText
         val nameEditText = view.findViewById(R.id.Plant_name) as EditText
-        val photoImage = view.findViewById<ImageView>(R.id.plant_image)
+        var photoImage = view.findViewById<ImageView>(R.id.plant_settings_image)
         photoImage.setOnClickListener {
-            mActivityCallback?.onOpenCameraPressed()
+            Log.d("Ho Cliccato ", "la foto")
+            viewModel.changeImgCalledFrom(1)    //qua dico che sto chiamando camera fragment da add plant
+            findNavController().navigate(R.id.action_addPlantFragment_to_cameraFragment2)
         }
         val saveButton = view.findViewById<Button>(R.id.save_Button)
         saveButton.text = "CREATE PLANT"
@@ -63,6 +75,8 @@ class addPlantFragment : Fragment() {
             spinnerHeightResult = spinnerHeight?.selectedItem as String?
             plantName = nameEditText.text.toString()
             plantHeight = heightEditText.text.toString()
+            plantType = spinnerResult
+
 
             // error for empty editText
             when {
@@ -84,19 +98,28 @@ class addPlantFragment : Fragment() {
 
             }
             mActivityCallback?.onContinueButtonPressed()
+
+            //crea infine la pianta
+            viewModel.addPlant(plantName.toString(), plantHeight.toString(), plantType.toString())
+            viewModel.changeSelectedPlant(plantName.toString())
+
+            findNavController().navigate(R.id.action_addPlantFragment_to_plantFragment)
         }
 
-        val openCamera = view.findViewById<Button>(R.id.photo_Button)
+
+        //IMMAGINE PIANTAAAA
+        val openCamera = view.findViewById<Button>(R.id.photoAPI_Button)
         openCamera.text = "PHOTO RECOGNITION"
         openCamera.setOnClickListener {
-            mActivityCallback?.onOpenCameraPressed()
         }
+
+
         setUpPlantSpinner()
         setUpHeightSpinner()
     }
 
-    private fun setUpPlantSpinner() {
 
+    private fun setUpPlantSpinner() {
 
         val arrayList = arrayOf("Pianta Grassa", "Pianta Tropicale", "Pianta Carnivora", "Ent", "Altro tipo di pianta")
         mSpinner?.adapter = ArrayAdapter<String>(requireContext(),android.R.layout.simple_spinner_item, arrayList)
