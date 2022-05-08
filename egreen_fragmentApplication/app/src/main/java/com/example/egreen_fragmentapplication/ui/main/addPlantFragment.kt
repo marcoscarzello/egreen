@@ -1,5 +1,6 @@
 package com.example.egreen_fragmentapplication.ui.ma
 
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -26,6 +27,14 @@ class addPlantFragment : Fragment() {
     var spinnerHeightResult:String? = null
     var plantName: String? = null
     var plantHeight: String? = null
+
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mActivityCallback = context as? ActivityInterface
+
+    }
+
 
     //Alessandro
     override fun onCreateView(
