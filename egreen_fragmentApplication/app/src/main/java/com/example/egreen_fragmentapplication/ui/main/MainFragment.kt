@@ -23,6 +23,7 @@ import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -165,12 +166,23 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
                 adapter = CardAdapter(this.context, cardArrayList)
                 viewPager.adapter = adapter
-                viewPager.setPadding(100, 0, 100, 0)
+                viewPager.setPadding(10, 0, 10, 0)
                 //Log.d("Pianta",viewPager.currentItem.toString())
                 //viewModel.changeSelectedPlant("")
+
+                // set viewpager tab selector
+                val mTabSelector = view.findViewById<TabLayout>(R.id.tabLayout)
+                if (cardArrayList.size == 0 ||cardArrayList.size == 1) {
+
+                    mTabSelector.visibility = View.GONE
+                } else {
+                    mTabSelector.visibility = View.VISIBLE
+                }
                 }
             })
         }, 600)
+
+
 
         //cambio selectedPlant
         viewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
