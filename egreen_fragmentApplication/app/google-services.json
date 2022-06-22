@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "500292871531-q4k1g4bubu8506mp6it5e3jiun110v9v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.egreen_fragmentapplication",
+            "certificate_hash": "56e7008c10152753688669073d101c58cedd8fd4"
+          }
+        },
+        {
           "client_id": "500292871531-l6n061cpjo6srokcd8eh6dodr5n1j735.apps.googleusercontent.com",
           "client_type": 3
         }
