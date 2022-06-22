@@ -111,4 +111,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp" />
+
+    <Button
+        android:id="@+id/googlebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="google sign in"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_psw" />
 </androidx.constraintlayout.widget.ConstraintLayout>
