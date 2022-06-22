@@ -46,7 +46,10 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
         email.setText(viewModel.getEmail())
 
         //MOSTRA ATTUALE USERNAME (EDITABLE)
-        viewModel.username.observe(this, Observer { u -> etUsername.setText(u) })
+        viewModel.username.observe(this, Observer { u -> etUsername.setText(u)
+            if( u == null)
+                etUsername.setText(viewModel.getEmail())
+        })
 
 
         //click su password
