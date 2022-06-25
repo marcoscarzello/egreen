@@ -1,29 +1,35 @@
 package com.example.egreen_fragmentapplication.ui.main
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.MainActivity
 import com.example.egreen_fragmentapplication.R
-import com.example.egreen_fragmentapplication.databinding.FragmentLoginBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.*
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 
@@ -31,7 +37,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
 //forse da mettere in viemodel
     private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var binding: FragmentLoginBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -171,6 +176,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         "You are logged in succesfully",
                         Toast.LENGTH_SHORT
                     ).show()
+
+                    //qua devo fare il controllo per capire se è la prima  volta che hlaccede (isnewuser) o meno. Se no se fa ogni volta i comandi seguenti si perdono tutti i dati ogni volta
+                    Log.e(TAG, firebaseUser.uid.toString())
+                    val currentUserDb = Firebase.database.reference.child("users").child((firebaseUser.uid))    //sottoramo di users che ha come chiave l'userID assegnato al nuovo utente
+                    currentUserDb.child("email")?.setValue(firebaseUser.email)              //metto nel ramo dell'utente creato la mail
+
+//voglio che lo faccia solo la prima volta che si registra, se no se poi cambia username nell app gli tornera ad essere sempre la mail.
+                        currentUserDb.child("username")?.setValue(firebaseUser.email)
                     viewModel.updateCurrentUser()
                     viewModel.getUsername()
 
