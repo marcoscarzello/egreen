@@ -54,7 +54,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         var r_password = view.findViewById<EditText>(R.id.password)
         var r_confirmPassword = view.findViewById<EditText>(R.id.confirm_password)
         var registerButton = view.findViewById<Button>(R.id.registerButton)
-        var googleButton = view.findViewById<Button>(R.id.googlebtnReg)
+
 
 
         val login = view.findViewById<TextView>(R.id.login)
@@ -64,16 +64,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("500292871531-l6n061cpjo6srokcd8eh6dodr5n1j735.apps.googleusercontent.com")
-            .requestEmail()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(this@RegisterFragment.requireActivity(), gso)
-
-        googleButton.setOnClickListener {
-            signIn()
-        }
         registerButton.setOnClickListener {
             when {
                 TextUtils.isEmpty(r_email.text.toString().trim { it <= ' ' }) -> {

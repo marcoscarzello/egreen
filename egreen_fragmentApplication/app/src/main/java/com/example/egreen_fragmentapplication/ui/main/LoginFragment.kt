@@ -182,8 +182,17 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     val currentUserDb = Firebase.database.reference.child("users").child((firebaseUser.uid))    //sottoramo di users che ha come chiave l'userID assegnato al nuovo utente
                     currentUserDb.child("email")?.setValue(firebaseUser.email)              //metto nel ramo dell'utente creato la mail
 
-//voglio che lo faccia solo la prima volta che si registra, se no se poi cambia username nell app gli tornera ad essere sempre la mail.
-                        currentUserDb.child("username")?.setValue(firebaseUser.email)
+
+                    currentUserDb.addListenerForSingleValueEvent(object: ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if (!snapshot.child("username").exists()) {
+                                currentUserDb.child("username")?.setValue(firebaseUser.email)
+                            }
+                        }
+                        override fun onCancelled(error: DatabaseError) {
+                        }
+                    })
+
                     viewModel.updateCurrentUser()
                     viewModel.getUsername()
 
