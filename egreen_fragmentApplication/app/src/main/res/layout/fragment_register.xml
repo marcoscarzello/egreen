@@ -13,12 +13,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:text="google sign in"
+        android:text="oogle"
+        app:icon="@drawable/googleg_standard_color_18"
         app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_psw" />
+        app:layout_constraintTop_toBottomOf="@+id/registerButton" />
 
     <Button
         android:id="@+id/registerButton"
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="256dp"
         android:backgroundTint="@color/green_700"
         android:fontFamily="@font/ropa_sans"
         android:text="sign up"
@@ -33,16 +35,13 @@
         android:typeface="monospace"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.793" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
-        android:layout_marginTop="32dp"
         android:background="@drawable/custom_input"
         android:ems="15"
         android:hint="username"
@@ -53,11 +52,8 @@
         android:textAlignment="center"
         android:textColor="@color/green_700"
         app:layout_constraintBottom_toTopOf="@+id/email"
-        app:layout_constraintEnd_toEndOf="@+id/registerButton"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="@+id/registerButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread" />
+        app:layout_constraintTop_toBottomOf="@+id/mail"
+        tools:layout_editor_absoluteX="49dp" />
 
     <EditText
         android:id="@+id/email"
@@ -72,10 +68,8 @@
         android:paddingEnd="12dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/password"
-        app:layout_constraintEnd_toEndOf="@+id/registerButton"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="@+id/registerButton"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        tools:layout_editor_absoluteX="49dp" />
 
     <EditText
         android:id="@+id/password"
@@ -91,11 +85,9 @@
         android:textAlignment="center"
         android:textColor="@color/green_700"
         android:textColorHighlight="@color/green_700"
-        app:layout_constraintBottom_toTopOf="@+id/registerButton"
-        app:layout_constraintEnd_toEndOf="@+id/registerButton"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="@+id/registerButton"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintBottom_toTopOf="@+id/confirm_password"
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        tools:layout_editor_absoluteX="48dp" />
 
     <EditText
         android:id="@+id/confirm_password"
@@ -112,10 +104,8 @@
         android:textColor="@color/green_700"
         android:textColorHighlight="@color/green_700"
         app:layout_constraintBottom_toTopOf="@+id/registerButton"
-        app:layout_constraintEnd_toEndOf="@+id/registerButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/registerButton"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:layout_editor_absoluteX="48dp" />
 
     <TextView
         android:id="@+id/mail"
@@ -129,7 +119,7 @@
         android:textColor="@color/green_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />

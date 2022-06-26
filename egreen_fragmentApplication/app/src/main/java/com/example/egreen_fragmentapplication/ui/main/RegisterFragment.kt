@@ -54,6 +54,11 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         var r_password = view.findViewById<EditText>(R.id.password)
         var r_confirmPassword = view.findViewById<EditText>(R.id.confirm_password)
         var registerButton = view.findViewById<Button>(R.id.registerButton)
+        var googlebtn = view.findViewById<Button>(R.id.googlebtn2)
+
+        googlebtn.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        }
 
 
 
