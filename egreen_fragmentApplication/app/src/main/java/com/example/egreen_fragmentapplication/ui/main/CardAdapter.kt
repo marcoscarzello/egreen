@@ -34,6 +34,7 @@ class CardAdapter(private val context: Context?, private val CardArrayList: Arra
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view = LayoutInflater.from(context).inflate(R.layout.card_view,container,false)
 
+
         //prende i dati
         val model = CardArrayList[position]
         val plantName = model.plantName
@@ -59,8 +60,10 @@ class CardAdapter(private val context: Context?, private val CardArrayList: Arra
                 it.findNavController().navigate(R.id.action_CardAdapter_to_plantFragment)
                 //Log.d("Questa è la pianta: ", plantName)
             }
-            else
+            else{
+                //viewModel.picpath da resettare
                 it.findNavController().navigate(R.id.action_CardAdapter_to_addPlantFragment)
+            }
         }
 
         //add view to container

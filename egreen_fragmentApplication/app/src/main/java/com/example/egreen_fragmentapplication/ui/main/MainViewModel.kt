@@ -52,6 +52,7 @@ data class User(var email : String, var plantName : String, var username : Strin
 
 class MainViewModel : ViewModel () {
 
+    lateinit var tmpImgUrl: URL
     var selectedPlant = ""
 
     private var mutableDarkMode = MutableLiveData<Boolean>()
@@ -410,6 +411,14 @@ class MainViewModel : ViewModel () {
         })
     }
 
+    open fun resetTmpPlantPath(){
+        mutablePlantPicPath.value = "".toUri()
+    }
+    fun downTmpPlantPic(context: Context, imageView: ImageView, uri: Uri?){
+        GlideApp.with(context).load(uri.toString().toUri()).into(imageView)
+        Log.e("URItmp", uri.toString())
+    }
+
     fun downProfilePic(context: Context, imageView: ImageView){
 
         mutableRefDB.value?.child("profileImgUrl")?.addValueEventListener(
@@ -425,10 +434,12 @@ class MainViewModel : ViewModel () {
         )
     }
 
-    fun downTakenPic(context: Context, imageView: ImageView){
+    fun downTakenPic(context: Context, imageView: ImageView, uri: Uri?){
+        Log.e(TAG, picFrom.toString())
         when (picFrom){
             0 -> downProfilePic(context, imageView)
-            1 -> downPlantPic(context, imageView)
+            1 -> downTmpPlantPic(context, imageView, uri)
+            //1 -> downPlantPic(context, imageView)
         }
     }
 

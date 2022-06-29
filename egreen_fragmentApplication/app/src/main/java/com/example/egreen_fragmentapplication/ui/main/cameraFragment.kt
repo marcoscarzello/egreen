@@ -42,7 +42,8 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
 
         var imag = view.findViewById<ImageView>(R.id.capturedImage)
 
-        viewModel.downTakenPic(this@CameraFragment.requireContext(), imag)
+        viewModel.plantPicPath.observe(this, Observer { pp->  viewModel.downTakenPic(this@CameraFragment.requireContext(), imag, pp)  })
+        viewModel.downTakenPic(this@CameraFragment.requireContext(), imag, viewModel.plantPicPath.value)
 
     //TEST IMMAGINI
 
@@ -83,11 +84,11 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
 
         val viewModel: MainViewModel by activityViewModels()
         if(requestCode == IMAGE_REQUEST_CODE && resultCode == RESULT_OK){
-            Log.d("DATA", data?.data.toString())
+            Log.e("DATA", data?.data.toString())
 
 
             viewModel.uploadPic(this@CameraFragment.requireContext(), data?.data!!)
-
+            //viewModel.tmpImgUrl = data?.data!!
 
 
         }

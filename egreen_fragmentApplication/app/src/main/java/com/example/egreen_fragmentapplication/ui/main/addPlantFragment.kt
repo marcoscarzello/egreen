@@ -12,8 +12,10 @@ import com.example.egreen_fragmentapplication.R
 import android.util.Log
 
 import android.widget.ImageView
+import androidx.core.net.toUri
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_login.*
+import java.util.Observer
 
 
 /**
@@ -56,12 +58,18 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val viewModel: MainViewModel by activityViewModels()
         result = view.findViewById(R.id.result)
         mSpinner = view.findViewById(R.id.plant_Type)
         spinnerHeight = view.findViewById(R.id.plant_height_spinner)
         val heightEditText = view.findViewById(R.id.Plant_height) as EditText
         val nameEditText = view.findViewById(R.id.Plant_name) as EditText
         var photoImage = view.findViewById<ImageView>(R.id.plant_settings_image)
+
+        viewModel.plantPicPath.observe(this, androidx.lifecycle.Observer{ pp->
+                viewModel.downTakenPic(this@addPlantFragment.requireContext(),photoImage, pp )})
+
         photoImage.setOnClickListener {
             Log.d("Ho Cliccato ", "la foto")
             viewModel.changeImgCalledFrom(1)    //qua dico che sto chiamando camera fragment da add plant

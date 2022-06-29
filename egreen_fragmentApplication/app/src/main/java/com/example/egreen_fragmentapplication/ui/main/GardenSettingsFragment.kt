@@ -76,6 +76,7 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
                 when (item.text){
                     "new plant" ->
                         item.setOnClickListener(){
+                            viewModel.resetTmpPlantPath()
                             findNavController().navigate(R.id.action_gardenSettingsFragment_to_addPlantFragment)
                         }
 
