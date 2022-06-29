@@ -54,6 +54,8 @@ class MainViewModel : ViewModel () {
 
     var selectedPlant = ""
 
+    private var mutableDarkMode = MutableLiveData<Boolean>()
+    val darkMode: LiveData<Boolean> get() = mutableDarkMode
 
     private var mutableCurrentUser = MutableLiveData<FirebaseUser?>()
     val currentuser: LiveData<FirebaseUser?> get() = mutableCurrentUser
@@ -105,6 +107,7 @@ class MainViewModel : ViewModel () {
 
     private var mutablePlantPicPath = MutableLiveData<Uri>()
     val plantPicPath: LiveData<Uri> get() = mutablePlantPicPath
+
 
      open fun updateCurrentUser(){
      //open fun getCurrentUser():MutableLiveData<FirebaseUser>{
@@ -214,6 +217,10 @@ class MainViewModel : ViewModel () {
 
             })
         //return heigth.value.toString()
+    }
+
+    open fun setDarkMode(boolean: Boolean){
+        mutableDarkMode.value = boolean
     }
 
     open fun getSelectedPlantName() : String {

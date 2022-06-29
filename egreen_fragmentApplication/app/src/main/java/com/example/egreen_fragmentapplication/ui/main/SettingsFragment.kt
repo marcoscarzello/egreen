@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.Switch
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
 
@@ -19,6 +21,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val viewModel: MainViewModel by activityViewModels()
         val accountBtn  = view.findViewById<Button >(R.id.plant0)
         val deviceBtn  = view.findViewById<Button >(R.id.plant1)
         val networkBtn  = view.findViewById<Button >(R.id.plant2)
@@ -36,11 +39,21 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         networkBtn.setOnClickListener{
             findNavController().navigate(R.id.action_settingsFragment_to_networkFragment)
         }
+
+        viewModel.darkMode.observe(this, Observer { u ->
+            //lo metto nella main activity
+
+                if (u)
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                else
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+                darkMode.isChecked = u
+            })
+
+
         darkMode.setOnClickListener(View.OnClickListener {
-            if (darkMode.isChecked)
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            else
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                viewModel.setDarkMode(darkMode.isChecked)
         })
 
     }

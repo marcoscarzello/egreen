@@ -87,10 +87,10 @@ class MainActivity : AppCompatActivity() {
         //NOTA: li vedrò sempre perchè qui siamo nella main activity che è sempre attiva sotto ai vari fragment
 
 
+
         vm.currentuser.observe(this, Observer {user -> uid.text = user?.uid ; eid.text = user?.email})
 
         vm.initialize()
-
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
 
