@@ -28,7 +28,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         val deviceBtn  = view.findViewById<Button >(R.id.plant1)
         //val networkBtn  = view.findViewById<Button >(R.id.plant2)
         val networkBtn  = view.findViewById<ImageView >(R.id.plant02)
-        val gardenBtn  = view.findViewById<Button >(R.id.plant3)
+        //val gardenBtn  = view.findViewById<Button >(R.id.plant3)
+        val gardenBtn  = view.findViewById<ImageView >(R.id.plant03)
         val darkMode = view.findViewById<Switch>(R.id.darkMode)
 
         gardenBtn.setOnClickListener{
