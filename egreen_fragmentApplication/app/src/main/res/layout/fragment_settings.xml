@@ -21,69 +21,126 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingsTitle">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="264dp"
-        android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="226dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:gravity="center|center_horizontal|center_vertical"
+            android:layout_height="464dp"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/plant0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Account"
-                app:layout_constraintBottom_toTopOf="@+id/plant1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="421dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/plant2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="network connection"
-                app:layout_constraintBottom_toTopOf="@+id/plant3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/plant1" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="339dp"
+                    android:layout_height="106dp">
 
-            <Button
-                android:id="@+id/plant3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="garden settings"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/plant2" />
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/back_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.497"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/plant1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="12dp"
+                    <ImageView
+                        android:id="@+id/plant00"
+                        android:layout_width="79dp"
+                        android:layout_height="76dp"
+                        android:src="@drawable/edits"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+                        app:layout_constraintEnd_toEndOf="@+id/textView7"
+                        app:layout_constraintStart_toStartOf="@+id/textView7"
+                        app:layout_constraintTop_toTopOf="@+id/textView7" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                android:paddingEnd="12dp"
-                android:text="device connection"
-                app:layout_constraintBottom_toTopOf="@+id/plant2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/plant0" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="339dp"
+                    android:layout_height="106dp"
+                    android:layout_marginBottom="63dp">
+
+                    <TextView
+                        android:id="@+id/textView70"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/back_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.497"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/plant02"
+                        android:layout_width="64dp"
+                        android:layout_height="69dp"
+                        android:src="@drawable/network_connection"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView70"
+                        app:layout_constraintEnd_toEndOf="@+id/textView70"
+                        app:layout_constraintStart_toStartOf="@+id/textView70"
+                        app:layout_constraintTop_toTopOf="@+id/textView70" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/plant0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Account"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toTopOf="@+id/plant1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:visibility="gone" />
+
+                <Button
+                    android:id="@+id/plant2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="network connection"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toTopOf="@+id/plant3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/plant1"
+                    tools:visibility="gone" />
+
+                <Button
+                    android:id="@+id/plant3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="garden settings"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/plant2" />
+
+                <Button
+                    android:id="@+id/plant1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="12dp"
+
+                    android:paddingEnd="12dp"
+                    android:text="device connection"
+                    app:layout_constraintBottom_toTopOf="@+id/plant2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/plant0" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <Switch

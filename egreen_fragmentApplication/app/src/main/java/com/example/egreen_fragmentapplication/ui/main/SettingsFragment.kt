@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Switch
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.activityViewModels
@@ -22,9 +23,11 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         super.onViewCreated(view, savedInstanceState)
 
         val viewModel: MainViewModel by activityViewModels()
-        val accountBtn  = view.findViewById<Button >(R.id.plant0)
+       //val accountBtn  = view.findViewById<Button >(R.id.plant0)
+        val accountBtn = view.findViewById<ImageView>(R.id.plant00)
         val deviceBtn  = view.findViewById<Button >(R.id.plant1)
-        val networkBtn  = view.findViewById<Button >(R.id.plant2)
+        //val networkBtn  = view.findViewById<Button >(R.id.plant2)
+        val networkBtn  = view.findViewById<ImageView >(R.id.plant02)
         val gardenBtn  = view.findViewById<Button >(R.id.plant3)
         val darkMode = view.findViewById<Switch>(R.id.darkMode)
 
