@@ -103,15 +103,17 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+                else -> {
+                    //crea infine la pianta
+                    viewModel.addPlant(plantName.toString(), plantHeight.toString(), plantType.toString())
+                    viewModel.changeSelectedPlant(plantName.toString())
 
+                    findNavController().navigate(R.id.action_addPlantFragment_to_plantFragment)
+                }
             }
             mActivityCallback?.onContinueButtonPressed()
 
-            //crea infine la pianta
-            viewModel.addPlant(plantName.toString(), plantHeight.toString(), plantType.toString())
-            viewModel.changeSelectedPlant(plantName.toString())
 
-            findNavController().navigate(R.id.action_addPlantFragment_to_plantFragment)
         }
 
 
