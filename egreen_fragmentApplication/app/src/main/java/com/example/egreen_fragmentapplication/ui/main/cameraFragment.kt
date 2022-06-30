@@ -47,8 +47,10 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
 
     //TEST IMMAGINI
 
-        val gallery = view.findViewById<Button>(R.id.galleria)
-        val camera = view.findViewById<Button>(R.id.btnTakePicture)
+        //val gallery = view.findViewById<Button>(R.id.galleria)
+        //val camera = view.findViewById<Button>(R.id.btnTakePicture)
+        val gallery = view.findViewById<ImageView>(R.id.gallery)
+        val camera = view.findViewById<ImageView>(R.id.cam)
 
         val closeBtn = view.findViewById<ImageButton>(R.id.closeCamera)
 
