@@ -1,5 +1,6 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -54,7 +55,10 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
                 darkMode.isChecked = u
             })
-
+        when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_NO -> {viewModel.setDarkMode(false)} // Night mode is not active, we're using the light theme
+            Configuration.UI_MODE_NIGHT_YES -> {viewModel.setDarkMode(true)} // Night mode is active, we're using dark theme
+        }
 
         darkMode.setOnClickListener(View.OnClickListener {
                 viewModel.setDarkMode(darkMode.isChecked)

@@ -52,7 +52,6 @@ data class User(var email : String, var plantName : String, var username : Strin
 
 class MainViewModel : ViewModel () {
 
-    lateinit var tmpImgUrl: URL
     var selectedPlant = ""
 
     private var mutableDarkMode = MutableLiveData<Boolean>()
