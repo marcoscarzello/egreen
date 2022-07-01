@@ -164,7 +164,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 //    )
                 //)
 
-                adapter = CardAdapter(this.context, cardArrayList)
+                adapter = CardAdapter(this.context, cardArrayList, viewModel)
                 viewPager.adapter = adapter
                 viewPager.setPadding(10, 0, 10, 0)
                 //Log.d("Pianta",viewPager.currentItem.toString())

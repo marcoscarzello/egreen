@@ -20,7 +20,8 @@ import java.util.*
 import com.squareup.picasso.Picasso
 
 
-class CardAdapter(private val context: Context?, private val CardArrayList: ArrayList<CardModel>): PagerAdapter(){
+class CardAdapter(private val context: Context?, private val CardArrayList: ArrayList<CardModel>, viewModel: MainViewModel): PagerAdapter(){
+    private val vm = viewModel
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
 
@@ -61,7 +62,7 @@ class CardAdapter(private val context: Context?, private val CardArrayList: Arra
                 //Log.d("Questa è la pianta: ", plantName)
             }
             else{
-                //viewModel.picpath da resettare
+                vm.resetTmpPlantPath()
                 it.findNavController().navigate(R.id.action_CardAdapter_to_addPlantFragment)
             }
         }
