@@ -32,6 +32,12 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
         val newpic = view.findViewById<Button>(R.id.newPic)
         val profilePic = view.findViewById<ImageView>(R.id.profile_pic_settings)
 
+        val backButton = view.findViewById<ImageView>(R.id.backButton_accountSettings)
+
+        backButton.setOnClickListener {
+            findNavController().navigate(R.id.action_accountSettingFragment_toSettingsFragment)
+        }
+
 
 
         viewModel.downProfilePic(this@AccountSettingsFragment.requireContext(), profilePic )

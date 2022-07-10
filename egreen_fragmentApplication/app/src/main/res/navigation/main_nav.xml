@@ -100,6 +100,10 @@
         android:name="com.example.egreen_fragmentapplication.ui.main.AccountSettingsFragment"
         android:label="fragment_account_settings"
         tools:layout="@layout/fragment_account_settings" >
+
+        <action
+            android:id="@+id/action_accountSettingFragment_toSettingsFragment"
+            app:destination="@+id/settingsFragment"/>
         <action
             android:id="@+id/action_accountSettingsFragment_to_gardenSettingsFragment"
             app:destination="@id/gardenSettingsFragment" />
