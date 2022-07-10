@@ -138,7 +138,7 @@
 
                 <Button
                     android:id="@+id/saveAccountChanges"
-                    android:layout_width="151dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="43dp"
                     android:layout_marginTop="30dp"
                     android:text="save changes"
@@ -178,8 +178,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:backgroundTint="#A80505"
-                    android:scaleX="0.6"
-                    android:scaleY="0.6"
                     android:text="delete account"
                     android:textSize="8sp"
                     app:layout_constraintBottom_toBottomOf="parent"
