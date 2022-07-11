@@ -23,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
+        android:layout_marginBottom="64dp"
         android:background="@color/main_theme"
         android:clipToPadding="false"
         android:foregroundGravity="center"
@@ -46,11 +47,11 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity = "bottom"
-            app:tabGravity="center"
-            app:tabBackground="@drawable/tab_selector"
+            android:layout_gravity="bottom"
             android:background="@null"
-            app:tabIndicatorHeight="0dp"/>
+            app:tabBackground="@drawable/tab_selector"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp" />
 
     </androidx.viewpager.widget.ViewPager>
 
