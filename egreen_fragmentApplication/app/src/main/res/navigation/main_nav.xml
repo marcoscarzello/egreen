@@ -130,6 +130,9 @@
         <action
             android:id="@+id/action_plantSettingsFragment_to_gardenSettingsFragment"
             app:destination="@id/gardenSettingsFragment" />
+        <action
+            android:id="@+id/action_plantSettingsFragment_to_cameraFragment2"
+            app:destination="@id/cameraFragment2" />
     </fragment>
     <fragment
         android:id="@+id/plantFragment"
@@ -168,5 +171,8 @@
         <action
             android:id="@+id/action_cameraFragment2_to_addPlantFragment"
             app:destination="@id/addPlantFragment" />
+        <action
+            android:id="@+id/action_cameraFragment2_to_plantSettingsFragment"
+            app:destination="@id/plantSettingsFragment" />
     </fragment>
 </navigation>

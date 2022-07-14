@@ -35,6 +35,10 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
             findNavController().navigate(R.id.action_plantSettingsFragment_to_gardenSettingsFragment)
         }
 
+        plantImg.setOnClickListener{
+            viewModel.changeImgCalledFrom(2)    //qua dico che sto chiamando camera fragment da add plant
+            findNavController().navigate(R.id.action_plantSettingsFragment_to_cameraFragment2)
+        }
         viewModel.downPlantPic(requireContext(), plantImg)
 
         plantNameText.text = viewModel.getSelectedPlantName()

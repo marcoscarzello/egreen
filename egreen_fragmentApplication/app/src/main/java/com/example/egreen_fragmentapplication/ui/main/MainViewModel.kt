@@ -402,18 +402,6 @@ class MainViewModel : ViewModel () {
 
     //TODO: get user data
 
-    fun downPlantPic(context: Context, imageView: ImageView){
-        mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("piantaimgUrl")?.addValueEventListener(object: ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                GlideApp.with(context).load(snapshot.value.toString().toUri()).into(imageView)
-                Log.d("L'uri di lara: ", snapshot.value.toString())
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
-    }
-
     open fun resetTmpPlantPath(){
         mutablePlantPicPath.value = "".toUri()
     }
@@ -437,11 +425,26 @@ class MainViewModel : ViewModel () {
         )
     }
 
+    fun downPlantPic(context: Context, imageView: ImageView){
+        mutableRefDB.value?.child("plants/$selectedPlant/piantaimgUrl")?.addValueEventListener(
+            object: ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    GlideApp.with(context).load(snapshot.value.toString().toUri()).into(imageView)
+                    //Log.d("Test", snapshot.value.toString().toUri().c)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            }
+        )
+    }
+
     fun downTakenPic(context: Context, imageView: ImageView, uri: Uri?){
         Log.e(TAG, picFrom.toString())
         when (picFrom){
             0 -> downProfilePic(context, imageView)
             1 -> downTmpPlantPic(context, imageView, uri)
+            2 -> downPlantPic(context, imageView)
             //1 -> downPlantPic(context, imageView)
         }
     }
@@ -464,6 +467,8 @@ class MainViewModel : ViewModel () {
         val fileName = formatter.format(now)
 
         when (picFrom) {
+
+                    //metto/cambio immagine profilo
             0 -> {
                 val uploadTask =
                     mutableRefStorage.value?.child("/profilePic.png")?.putFile(imageURI)
@@ -488,7 +493,7 @@ class MainViewModel : ViewModel () {
                     mProgressDialog.dismiss()
                 }
             }
-
+                //img nuova pianta in fase di creazione della stessa
             1 ->{
                 val uploadTask =
                     mutableRefStorage.value?.child("/plants/$fileName")?.putFile(imageURI)      //la chiamo provvisoriamente con l'ora corrente (salvata in filename)
@@ -515,7 +520,33 @@ class MainViewModel : ViewModel () {
                     mProgressDialog.dismiss()
                 }
             }
-            // qua ci sarnno gli altri valori di picFrom a cui corrisponderà il relativo comportamento
+
+                    //cambio immagine pianta già creata
+            2->{
+                val uploadTask =
+                    mutableRefStorage.value?.child("/$selectedPlant")?.putFile(imageURI)
+                uploadTask?.addOnSuccessListener {
+                    //success
+                    Log.e(TAG, "Image upload successfully")
+                    mProgressDialog.dismiss()
+
+                    val downloadURLTask =
+                        mutableRefStorage.value?.child("/$selectedPlant")?.downloadUrl
+                    downloadURLTask?.addOnSuccessListener {
+                        Log.e(TAG, "IMAGE PATH: $it")
+                        mutableProfilePicPath.value = it    // URL immagine profilo
+                        mutableRefDB.value?.child("plants/$selectedPlant/piantaimgUrl")?.setValue(it.toString()) //metto imgUrl nel ramo del firebase dell'utente    !IMPORTANTE!
+                        mProgressDialog.dismiss()
+                    }?.addOnFailureListener {
+                        mProgressDialog.dismiss()
+                    }
+
+                }?.addOnFailureListener {
+                    Log.e(TAG, "Image upload failed")
+                    mProgressDialog.dismiss()
+                }
+
+            }
 
         }
     }
