@@ -30,10 +30,13 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
         var plantImg = view.findViewById<ImageView>(R.id.plant_settings_image)
         var deletePlantBtn = view.findViewById<Button>(R.id.deletePlantButton)
 
+        /*
         deletePlantBtn.setOnClickListener {
             viewModel.deletePlant(viewModel.getSelectedPlantName())
             findNavController().navigate(R.id.action_plantSettingsFragment_to_gardenSettingsFragment)
         }
+
+         */
 
         plantImg.setOnClickListener{
             viewModel.changeImgCalledFrom(2)    //qua dico che sto chiamando camera fragment da add plant

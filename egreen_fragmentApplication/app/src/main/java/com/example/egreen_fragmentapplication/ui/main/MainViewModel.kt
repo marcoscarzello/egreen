@@ -445,7 +445,6 @@ class MainViewModel : ViewModel () {
             0 -> downProfilePic(context, imageView)
             1 -> downTmpPlantPic(context, imageView, uri)
             2 -> downPlantPic(context, imageView)
-            //1 -> downPlantPic(context, imageView)
         }
     }
 
