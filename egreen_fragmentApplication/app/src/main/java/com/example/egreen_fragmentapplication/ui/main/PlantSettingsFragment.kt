@@ -1,5 +1,6 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -27,7 +28,13 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
         val applyBtn  = view.findViewById<Button >(R.id.save_Button)
         val plantTypeSpinner = view.findViewById<Spinner>(R.id.plant_Type)
         var plantImg = view.findViewById<ImageView>(R.id.plant_settings_image)
+        var deletePlantBtn = view.findViewById<Button>(R.id.deletePlantButton)
 
+        deletePlantBtn.setOnClickListener {
+            viewModel.deletePlant(viewModel.getSelectedPlantName())
+            findNavController().navigate(R.id.action_plantSettingsFragment_to_gardenSettingsFragment)
+
+        }
         viewModel.downPlantPic(requireContext(), plantImg)
 
         plantNameText.text = viewModel.getSelectedPlantName()

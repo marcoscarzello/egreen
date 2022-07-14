@@ -127,6 +127,9 @@
         <action
             android:id="@+id/action_plantSettingsFragment_to_plantFragment"
             app:destination="@id/plantFragment" />
+        <action
+            android:id="@+id/action_plantSettingsFragment_to_gardenSettingsFragment"
+            app:destination="@id/gardenSettingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/plantFragment"

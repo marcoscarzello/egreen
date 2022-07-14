@@ -158,6 +158,10 @@ class MainViewModel : ViewModel () {
         mutableRefDB.value?.child("plants")?.child(plantName)?.child("piantaimgUrl")?.setValue(plantPicPath.value.toString())       //metto nel database il link all'immagine della pianta
     }
 
+    open fun deletePlant(plantName: String){
+        mutableRefDB.value?.child("plants")?.child(plantName)?.removeValue()
+    }
+
     open fun changeSelectedPlant(name: String) {
 
         selectedPlant = name
