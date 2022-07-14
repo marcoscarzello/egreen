@@ -81,12 +81,12 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
                             findNavController().navigate(R.id.action_gardenSettingsFragment_to_addPlantFragment)
                         }
 
-                    else ->{
+                    else ->
                         item.setOnClickListener(){
                             viewModel.changeSelectedPlant(item.text.toString())
                             findNavController().navigate(R.id.action_gardenSettingsFragment_to_plantSettingsFragment)
                         }
-                    }
+                    
                 }
 
                 //else -> mandano al PlantSettings della pianta cui si riferiscono
