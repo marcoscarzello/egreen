@@ -8,6 +8,28 @@
     android:background="@color/main_theme">
 
 
+    <TextView
+        android:id="@+id/test_profile"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="352dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/back_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.008" />
+
+    <ImageView
+        android:id="@+id/plant"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:src="@drawable/garden_settings"
+        app:layout_constraintBottom_toBottomOf="@+id/test_profile"
+        app:layout_constraintEnd_toEndOf="@+id/test_profile"
+        app:layout_constraintStart_toStartOf="@+id/test_profile"
+        app:layout_constraintTop_toTopOf="@+id/test_profile" />
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="400dp"
@@ -100,13 +122,8 @@
         app:layout_constraintStart_toStartOf="@+id/water_level"
         app:layout_constraintTop_toBottomOf="@+id/water_level" />
 
-    <Button
-        android:id="@+id/test_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test  go to profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/plant_image_view"

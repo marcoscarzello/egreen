@@ -141,6 +141,9 @@
         <action
             android:id="@+id/action_plantFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_plantFragment_to_plantSettingsFragment"
+            app:destination="@id/plantSettingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/networkFragment"
