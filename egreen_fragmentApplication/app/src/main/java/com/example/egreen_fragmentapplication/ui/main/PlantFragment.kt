@@ -37,9 +37,9 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         viewModel.downPlantPic(this@PlantFragment.requireContext(), plantImg)   //scarico immagine pianta
 
         //to delete
-        val test = view.findViewById<Button>(R.id.test_profile)
+        val test = view.findViewById<TextView>(R.id.test_profile)
         test.setOnClickListener{
-            findNavController().navigate(R.id.action_plantFragment_to_profileFragment)
+            findNavController().navigate(R.id.action_plantFragment_to_plantSettingsFragment)
         }
 
         val HgraphView = view.findViewById<GraphView>(R.id.Hgraph);

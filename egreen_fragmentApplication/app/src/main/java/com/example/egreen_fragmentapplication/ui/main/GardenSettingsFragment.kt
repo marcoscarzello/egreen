@@ -12,7 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
-
+import kotlinx.android.synthetic.main.fragment_garden_settings.*
 
 
 class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
@@ -42,6 +42,7 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
             plant3
 
         )
+
 
 
 
@@ -80,11 +81,12 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
                             findNavController().navigate(R.id.action_gardenSettingsFragment_to_addPlantFragment)
                         }
 
-                    else ->
+                    else ->{
                         item.setOnClickListener(){
                             viewModel.changeSelectedPlant(item.text.toString())
                             findNavController().navigate(R.id.action_gardenSettingsFragment_to_plantSettingsFragment)
                         }
+                    }
                 }
 
                 //else -> mandano al PlantSettings della pianta cui si riferiscono
@@ -103,6 +105,8 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
                */
 
         })
+
+
 
 
 
