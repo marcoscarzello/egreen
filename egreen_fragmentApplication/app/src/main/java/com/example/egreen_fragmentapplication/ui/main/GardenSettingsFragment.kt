@@ -90,6 +90,7 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
                             viewModel.changeSelectedPlant(item.text.toString())
                             findNavController().navigate(R.id.action_gardenSettingsFragment_to_plantSettingsFragment)
                         }
+<<<<<<< Updated upstream
                         item.setOnLongClickListener {
 
                             val dialogBuilder = AlertDialog.Builder(this@GardenSettingsFragment.requireContext())
@@ -132,6 +133,9 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
                             true
                         }
                     }
+=======
+
+>>>>>>> Stashed changes
                 }
 
                 //else -> mandano al PlantSettings della pianta cui si riferiscono

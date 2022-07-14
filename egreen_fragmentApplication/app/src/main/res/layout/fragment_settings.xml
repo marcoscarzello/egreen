@@ -99,7 +99,7 @@
 
                         <ImageView
                             android:id="@+id/plant00"
-                            android:layout_width="79dp"
+                            android:layout_width="76dp"
                             android:layout_height="76dp"
                             android:src="@drawable/edits"
                             app:layout_constraintBottom_toBottomOf="@+id/textView7"
@@ -181,9 +181,9 @@
 
                         <ImageView
                             android:id="@+id/plant03"
-                            android:layout_width="70dp"
+                            android:layout_width="60dp"
                             android:layout_height="75dp"
-                            android:src="@drawable/garden_settings"
+                            android:src="@drawable/settingsnew"
                             app:layout_constraintBottom_toBottomOf="@+id/textView80"
                             app:layout_constraintEnd_toEndOf="@+id/textView80"
                             app:layout_constraintStart_toStartOf="@+id/textView80"
