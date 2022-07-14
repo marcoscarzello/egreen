@@ -33,8 +33,8 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
         deletePlantBtn.setOnClickListener {
             viewModel.deletePlant(viewModel.getSelectedPlantName())
             findNavController().navigate(R.id.action_plantSettingsFragment_to_gardenSettingsFragment)
-
         }
+
         viewModel.downPlantPic(requireContext(), plantImg)
 
         plantNameText.text = viewModel.getSelectedPlantName()
