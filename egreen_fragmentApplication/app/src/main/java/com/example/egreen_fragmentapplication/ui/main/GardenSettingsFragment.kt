@@ -1,22 +1,17 @@
 package com.example.egreen_fragmentapplication.ui.main
 
 import android.app.AlertDialog
-import android.content.ContentValues.TAG
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
-
 
 
 class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
@@ -102,10 +97,16 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
                                 .setPositiveButton("Yes", DialogInterface.OnClickListener {
                                         dialog, id ->
 
+
+                                    val ft = parentFragmentManager.beginTransaction()
                                     // faccio cose per l'eliminazione della pianta
 
                                     viewModel.deletePlant(item.text.toString())
                                     //qua va reloaddato il tutto se no vedo ancora la pianta anche se non esiste piuuuu
+
+
+
+
 
                                     Toast.makeText(
                                         this@GardenSettingsFragment.requireContext(),
@@ -113,7 +114,13 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
                                         Toast.LENGTH_SHORT
                                     ).show()
 
-                                    //qua va reloaddato il fragment di garden settings (e non solo)
+                                    //---_> RELOAD!!!
+                                    /*
+                                    activity!!.supportFragmentManager.beginTransaction()
+                                        .replace(this@GardenSettingsFragment.getId(), GardenSettingsFragment()).commit()
+
+                                     */
+                                    findNavController().navigate(R.id.action_gardenSettingsFragment_self)
 
                                 })
                                 // negative button text and action

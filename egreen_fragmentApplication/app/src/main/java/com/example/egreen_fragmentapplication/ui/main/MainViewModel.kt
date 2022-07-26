@@ -160,6 +160,7 @@ class MainViewModel : ViewModel () {
 
     open fun deletePlant(plantName: String){
         mutableRefDB.value?.child("plants")?.child(plantName)?.removeValue()
+        mutablePlantList.value?.remove(plantName)
     }
 
     open fun changeSelectedPlant(name: String) {

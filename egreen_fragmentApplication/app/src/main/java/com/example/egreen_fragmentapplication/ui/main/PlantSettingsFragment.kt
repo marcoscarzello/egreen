@@ -1,10 +1,12 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -60,5 +62,45 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
             findNavController().navigate(R.id.action_plantSettingsFragment_to_plantFragment)
         }
 
+
+        deletePlantBtn.setOnClickListener {
+            val dialogBuilder = AlertDialog.Builder(this@PlantSettingsFragment.requireContext())
+            // set message of alert dialog
+            dialogBuilder.setMessage("This plant will be deleted from the system")
+                // if the dialog is cancelable
+                .setCancelable(false)
+                // positive button text and action
+                .setPositiveButton("Yes", DialogInterface.OnClickListener {
+                        dialog, id ->
+
+
+                    val ft = parentFragmentManager.beginTransaction()
+                    // faccio cose per l'eliminazione della pianta
+
+                    viewModel.deletePlant(viewModel.getSelectedPlantName())
+
+                    Toast.makeText(
+                        this@PlantSettingsFragment.requireContext(),
+                        "Plant deleted",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    findNavController().navigate(R.id.action_plantSettingsFragment_to_gardenSettingsFragment)
+
+                })
+                // negative button text and action
+                .setNegativeButton("My mistake", DialogInterface.OnClickListener {
+                        dialog, id -> dialog.cancel()
+                })
+
+            // create dialog box
+            val alert = dialogBuilder.create()
+            // set title for alert dialog box
+            var i = viewModel.getSelectedPlantName()
+            alert.setTitle("Delete $i ?")
+            // show alert dialog
+            alert.show()
+
+        }
     }
 }

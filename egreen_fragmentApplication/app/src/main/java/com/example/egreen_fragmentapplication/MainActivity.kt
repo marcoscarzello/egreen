@@ -68,7 +68,8 @@ class MainActivity : AppCompatActivity() {
         notificaBtn.setOnClickListener{
             sendNotification()
         }
-        //
+        //provo darkmode
+
 
 
         hideBottomBar(false)
@@ -85,8 +86,6 @@ class MainActivity : AppCompatActivity() {
 
         //praticamente vedrò scritti mail con cui ho fatto l accesso e il corrispondente user ID
         //NOTA: li vedrò sempre perchè qui siamo nella main activity che è sempre attiva sotto ai vari fragment
-
-
 
         vm.currentuser.observe(this, Observer {user -> uid.text = user?.uid ; eid.text = user?.email})
 
@@ -108,6 +107,7 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
 
     }
     private fun setCurrentFragment(fragment: Fragment) =
