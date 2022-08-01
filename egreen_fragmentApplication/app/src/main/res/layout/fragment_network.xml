@@ -13,7 +13,7 @@
 
         android:layout_marginTop="24dp"
         android:layout_marginBottom="179dp"
-        android:text="Instructions"
+        android:text="Connect your plant!"
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/white"
@@ -61,7 +61,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
                 android:gravity="top"
-                android:text="- Turn on the physical device\n- Click the button below and enter your home's wifi credentials\n- Don't forget to add the name of the plant you want to connect\n- Copy and paste also the user code below in the web form\n- Plant can be already created or not yet\n- The system is connected when the blue led goes off\n- Exit the browser"
+                android:text="Here you can connect your physical device to your plant. All you need is a home WiFi to connect to and the plant name you choose before. \n - Turn on the physical device\n- Click the user code below to copy it...you will need it\n- Click the button below and enter your home's wifi credentials\n- Don't forget to add the name of the plant you want to connect\n- Plant can be already created or not yet\n- The system is connected when the blue led goes off- Exit the browser"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -1,5 +1,9 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Context.CLIPBOARD_SERVICE
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -11,6 +15,9 @@ import com.example.egreen_fragmentapplication.R
 import android.content.Intent
 import android.net.Uri
 import android.widget.TextView
+import android.widget.Toast
+
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 
@@ -36,5 +43,22 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
             startActivity(i)
         }
 
+        userCode.setOnClickListener {
+            copyText(userCode)
+                    }
+
+
+    }
+    fun copyText(userCode: TextView) {
+        val text = userCode.text.toString()
+        if (text.isNotEmpty()) {
+            val clipboardManager =
+                requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clipData = ClipData.newPlainText("key", text)
+            clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(this@NetworkFragment.context, "Copied", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this@NetworkFragment.context, "No text to be copied", Toast.LENGTH_SHORT).show()
+        }
     }
 }
