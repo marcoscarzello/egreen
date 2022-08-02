@@ -2,34 +2,31 @@ package com.example.egreen_fragmentapplication.ui.main
 
 import android.content.ContentValues
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.egreen_fragmentapplication.MainActivity
 import com.example.egreen_fragmentapplication.R
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import com.example.egreen_fragmentapplication.MainActivity
-import com.example.egreen_fragmentapplication.databinding.FragmentLoginBinding
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.fragment_register.*
 
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
@@ -39,6 +36,9 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        val textInputLayouts: List<TextInputLayout> = listOf( r_user_text_input, r_email_text_input, r_psw_text_input, psw2_text_input)
 
         //HIDE bottom Bar
         val activity = activity as MainActivity?
@@ -69,41 +69,23 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
 
+
+
         registerButton.setOnClickListener {
-            when {
-                TextUtils.isEmpty(r_email.text.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@RegisterFragment.requireContext(),
-                        "Please enter email.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+            var noErrors = true
+            for (textInputLayout in textInputLayouts) {
+                val editTextString = textInputLayout.editText!!.text.toString()
+                if (editTextString.isEmpty()) {
+                    textInputLayout.error = resources.getString(R.string.error_string)
+                    noErrors = false
+                } else {
+                    textInputLayout.error = null
                 }
-
-                TextUtils.isEmpty(r_username.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@RegisterFragment.requireContext(),
-                        "Please enter username.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                TextUtils.isEmpty(r_password.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@RegisterFragment.requireContext(),
-                        "Please enter password.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                TextUtils.isEmpty(r_confirmPassword.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@RegisterFragment.requireContext(),
-                        "Please confirm your password.",     //questo non compare mai bo perchè è anche vera la successiva
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
+            }
+            when(noErrors){
                 //caso password!=confirm_password
                 !r_confirmPassword.text.toString().contentEquals(r_password.text.toString()) ->{
+                    psw2_text_input.error = "Password doesn't match"
                     Toast.makeText(
                         this@RegisterFragment.requireContext(),
                         "Your password doesn't match with confirm password.",

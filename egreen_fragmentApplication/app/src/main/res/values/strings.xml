@@ -25,4 +25,9 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="label_password">Password</string>
+    <string name="label_email">Email</string>
+    <string name="content_description_end_icon" />
+    <string name="error_string">Field must not be empty</string>
+    <string name="label_username">Username</string>
 </resources>

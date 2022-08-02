@@ -21,6 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -31,6 +32,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.fragment_login.*
 
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -40,6 +42,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
 
         //HIDE bottom Bar
@@ -74,7 +77,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         loginButton.setOnClickListener {
             when {
-                TextUtils.isEmpty(l_email.text.toString().trim { it <= ' ' }) -> {
+                l_email.text.toString().isEmpty()-> {
+                    email_text_input.error = resources.getString(R.string.error_string)
                     Toast.makeText(
                         this@LoginFragment.requireContext(),
                         "Please enter email.",
@@ -83,7 +87,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 }
 
 
-                TextUtils.isEmpty(l_password.toString().trim { it <= ' ' }) -> {
+                l_password.text.toString().isEmpty()-> {
+                    psw_text_input.error = resources.getString(R.string.error_string)
                     Toast.makeText(
                         this@LoginFragment.requireContext(),
                         "Please enter password.",
@@ -92,6 +97,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 }
 
                 else -> {
+
+                    email_text_input.error = null
+                    psw_text_input.error  =null
 
                     val email: String = l_email.text.toString().trim { it <= ' ' }
                     val password: String = l_password.text.toString().trim { it <= ' ' }
