@@ -21,19 +21,22 @@
         <entry key="..\:/Users/Scarzello/Documents/Polito/Corsi LM/Digital Interaction Design/AndroidStudio/Egreen_Materiale/egreen_fragmentApplication/app/src/main/res/layout/main_fragment.xml" value="0.25" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/activity_login.xml" value="0.46979166666666666" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/dropdown_item.xml" value="0.409375" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/fragment_account_settings.xml" value="0.264" />
-        <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/fragment_add_plant.xml" value="0.22" />
+        <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/fragment_add_plant.xml" value="0.176" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/fragment_camera.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/fragment_garden_settings.xml" value="0.3882863340563991" />
-        <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/fragment_login.xml" value="0.25625" />
+        <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/fragment_network.xml" value="0.72" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/fragment_plant_settings.xml" value="0.28958333333333336" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/fragment_profile.xml" value="0.28958333333333336" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/fragment_register.xml" value="0.264" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/fragment_settings.xml" value="0.31614583333333335" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/fragment_settings2.xml" value="0.3265625" />
+        <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/list_plant_type.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/main_activity.xml" value="0.33" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/main_fragment.xml" value="0.32916666666666666" />
+        <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/plant_type_list.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/laradice/OneDrive - Politecnico di Torino/magistrale/II ANNO/Interaction Design/eGreen/egreen_fragmentApplication/app/src/main/res/layout/settings_fragment.xml" value="0.3375" />
         <entry key="app/src/main/res/drawable/defaultdot.xml" value="0.151" />
         <entry key="app/src/main/res/drawable/selecteddot.xml" value="0.151" />

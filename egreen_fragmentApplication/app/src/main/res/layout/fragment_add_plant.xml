@@ -1,142 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constrainLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#98B78B"
-    android:orientation="vertical">
+    android:background="#98B78B">
 
     <ImageView
         android:id="@+id/back"
         android:layout_width="wrap_content"
-        android:layout_height="20dp" />
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
         android:text="Add a new plant"
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/white"
         android:textSize="30dp"
-        android:textStyle="bold" />
-
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/plant_info_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.457" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/plant_info_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="382dp"
+        android:layout_height="582dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="30dp"
         android:background="@color/white"
         app:cardCornerRadius="60dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
-            android:layout_height="595dp"
-            android:orientation="vertical">
+            android:layout_height="591dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+
+            <ImageView
+                android:id="@+id/plant_settings_image"
+                android:layout_width="182dp"
+                android:layout_height="131dp"
+                android:src="@drawable/ic_plant_photo"
+                app:layout_constraintBottom_toTopOf="@+id/plant_picture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/plant_picture"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
                 android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/plant_settings_image"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/ic_plant_photo" />
-
-                <TextView
-                    android:id="@+id/plant_picture"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:text="Add a photo for your new plant" />
-            </LinearLayout>
+                android:text="Add a photo for your new plant"
+                app:layout_constraintBottom_toTopOf="@+id/plant_name_input"
+                app:layout_constraintEnd_toEndOf="@+id/plant_settings_image"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/plant_settings_image"
+                app:layout_constraintTop_toBottomOf="@+id/plant_settings_image" />
 
 
-            <LinearLayout
-                android:id="@+id/edit_text_container"
-                android:layout_width="match_parent"
-                android:layout_height="412dp"
-                android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/plant_name_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="304dp"
+                android:layout_height="72dp"
+                app:boxStrokeColor="@color/green_700"
+                app:endIconTint="@color/green_700"
+                app:layout_constraintBottom_toTopOf="@+id/plant_type_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plant_picture">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/Plant_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:hint="Plant Name"
-                    android:maxLines="1" />
+                    android:hint="@string/label_plantName"
+                    android:maxLines="1"
+                    android:textColor="@color/green_700"
+                    android:textColorHighlight="@color/green_700" />
 
-                <Spinner
-                    android:id="@+id/plant_Type"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_margin="20dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/result"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/plant_type_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="304dp"
+                android:layout_height="72dp"
+                app:boxStrokeColor="@color/green_700"
+                app:layout_constraintBottom_toTopOf="@+id/save_Button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plant_name_input">
 
-                <LinearLayout
-                    android:id="@+id/height_info_container"
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:orientation="horizontal">
+                    android:inputType="none"
+                    android:text="@string/label_plant_type"
+                    android:textColor="@color/green_700"
+                    android:textColorHighlight="@color/green_700" />
 
-                    <EditText
-                        android:id="@+id/Plant_height"
-                        android:layout_width="250dp"
-                        android:layout_height="wrap_content"
-                        android:hint="Plant Height"
-                        android:maxLines="1" />
-
-                    <Spinner
-                        android:id="@+id/plant_height_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-                </LinearLayout>
+            <Button
+                android:id="@+id/save_Button"
+                android:layout_width="170dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:text="@string/createplant"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plant_type_input" />
 
 
-                <Button
-                    android:id="@+id/save_Button"
-                    android:layout_width="170dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="20dp"
-
-                    android:textColor="@color/white" />
-
-                <Button
-                    android:id="@+id/photoAPI_Button"
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:textSize="10sp"
-                    android:visibility="gone" />
-
-            </LinearLayout>
-
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

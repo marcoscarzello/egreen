@@ -30,4 +30,14 @@
     <string name="content_description_end_icon" />
     <string name="error_string">Field must not be empty</string>
     <string name="label_username">Username</string>
+    <string name="label_plantName">Plant name</string>
+    <string name="label_plant_type">Plant Type</string>
+    <string name="createplant">Create Plant</string>
+
+    <string-array name="plant_types">
+        <item>House plant</item>
+        <item>Succulent Plant</item>
+        <item>Flower</item>
+        <item>Aromatic Plant</item>
+    </string-array>
 </resources>

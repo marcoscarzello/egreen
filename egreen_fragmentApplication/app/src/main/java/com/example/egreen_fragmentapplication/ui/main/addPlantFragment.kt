@@ -10,9 +10,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
 
 import android.widget.ImageView
 import androidx.core.net.toUri
+import com.example.egreen_fragmentapplication.databinding.FragmentAddPlantBinding
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_login.*
 import java.util.Observer
@@ -28,6 +31,9 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
 
     val viewModel: MainViewModel by activityViewModels()
 
+    private var _binding: FragmentAddPlantBinding?= null
+    private val binding get() = _binding!!
+
     private var mSpinner: Spinner? = null
     private var spinnerResult: String? = null
     private var mActivityCallback: ActivityInterface? = null
@@ -36,7 +42,7 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
     var spinnerHeightResult:String? = null
     var plantName: String? = null
     var plantHeight: String? = null
-    var plantType : String? = null
+    var plantType : TextView? = null
 
 
     override fun onAttach(context: Context) {
@@ -46,29 +52,46 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
     }
 
 
-    //Alessandro
-    /*override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_add_plant, container, false)
+
+        _binding = FragmentAddPlantBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 
-     */
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        val plantTypeArray = resources.getStringArray(R.array.plant_types)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, plantTypeArray)
+
+        (plantType?.editableText as? AutoCompleteTextView)?.setAdapter(arrayAdapter)
+
+        val autocompleteTV = view.findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
+        // set adapter to the autocomplete tv to the arrayAdapter
+        autocompleteTV.setAdapter(arrayAdapter)
+
+
         val viewModel: MainViewModel by activityViewModels()
         result = view.findViewById(R.id.result)
-        mSpinner = view.findViewById(R.id.plant_Type)
-        spinnerHeight = view.findViewById(R.id.plant_height_spinner)
-        val heightEditText = view.findViewById(R.id.Plant_height) as EditText
+        //spinnerHeight = view.findViewById(R.id.plant_height_spinner)
+        //val heightEditText = view.findViewById(R.id.Plant_height) as EditText
         val nameEditText = view.findViewById(R.id.Plant_name) as EditText
         var photoImage = view.findViewById<ImageView>(R.id.plant_settings_image)
 
-        viewModel.plantPicPath.observe(this, androidx.lifecycle.Observer{ pp->
-                viewModel.downTakenPic(this@addPlantFragment.requireContext(),photoImage, pp )})
+        viewModel.plantPicPath.observe(this, androidx.lifecycle.Observer { pp ->
+            viewModel.downTakenPic(this@addPlantFragment.requireContext(), photoImage, pp)
+        })
 
         photoImage.setOnClickListener {
             Log.d("Ho Cliccato ", "la foto")
@@ -77,13 +100,13 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
         }
         val saveButton = view.findViewById<Button>(R.id.save_Button)
         saveButton.text = "CREATE PLANT"
-        saveButton.setOnClickListener{
+        saveButton.setOnClickListener {
             //apre la schermata del dettaglio pianta
             spinnerResult = mSpinner?.selectedItem as String?
             spinnerHeightResult = spinnerHeight?.selectedItem as String?
             plantName = nameEditText.text.toString()
-            plantHeight = heightEditText.text.toString()
-            plantType = spinnerResult
+            //plantHeight = heightEditText.text.toString()
+            //plantType = spinnerResult
 
 
             // error for empty editText
@@ -95,7 +118,7 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
+/*
                 TextUtils.isEmpty(heightEditText.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
                         requireContext(),
@@ -103,9 +126,15 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+
+ */
                 else -> {
                     //crea infine la pianta
-                    viewModel.addPlant(plantName.toString(), plantHeight.toString(), plantType.toString())
+                    viewModel.addPlant(
+                        plantName.toString(),
+                        plantHeight.toString(),
+                        plantType.toString()
+                    )
                     viewModel.changeSelectedPlant(plantName.toString())
 
                     findNavController().navigate(R.id.action_addPlantFragment_to_plantFragment)
@@ -116,7 +145,7 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
 
         }
 
-
+/*
         //IMMAGINE PIANTAAAA
         val openCamera = view.findViewById<Button>(R.id.photoAPI_Button)
         openCamera.text = "PHOTO RECOGNITION"
@@ -126,8 +155,8 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
 
         setUpPlantSpinner()
         setUpHeightSpinner()
+ */
     }
-
 
     private fun setUpPlantSpinner() {
 
