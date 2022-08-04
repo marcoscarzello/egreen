@@ -3,22 +3,19 @@ package com.example.egreen_fragmentapplication.ui.main
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
+import android.widget.AdapterView.OnItemClickListener
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.ViewGroup
-
-import android.widget.ImageView
-import androidx.core.net.toUri
 import com.example.egreen_fragmentapplication.databinding.FragmentAddPlantBinding
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_login.*
-import java.util.Observer
 
 
 /**
@@ -71,22 +68,27 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        var selectedValue: String? = ""
         val plantTypeArray = resources.getStringArray(R.array.plant_types)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, plantTypeArray)
 
-        (plantType?.editableText as? AutoCompleteTextView)?.setAdapter(arrayAdapter)
+        //(plantType?.editableText as? AutoCompleteTextView)?.setAdapter(arrayAdapter)
 
         val autocompleteTV = view.findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
         // set adapter to the autocomplete tv to the arrayAdapter
         autocompleteTV.setAdapter(arrayAdapter)
 
+        autocompleteTV.onItemClickListener =
+            OnItemClickListener { adapterView, view, position, id ->
+                selectedValue = arrayAdapter.getItem(position)
+            }
+
 
         val viewModel: MainViewModel by activityViewModels()
-        result = view.findViewById(R.id.result)
+        //result = view.findViewById(R.id.result)
         //spinnerHeight = view.findViewById(R.id.plant_height_spinner)
         //val heightEditText = view.findViewById(R.id.Plant_height) as EditText
-        val nameEditText = view.findViewById(R.id.Plant_name) as EditText
+        val nameEditText = view.findViewById(R.id.plant_name) as EditText
         var photoImage = view.findViewById<ImageView>(R.id.plant_settings_image)
 
         viewModel.plantPicPath.observe(this, androidx.lifecycle.Observer { pp ->
@@ -98,6 +100,7 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
             viewModel.changeImgCalledFrom(1)    //qua dico che sto chiamando camera fragment da add plant
             findNavController().navigate(R.id.action_addPlantFragment_to_cameraFragment2)
         }
+
         val saveButton = view.findViewById<Button>(R.id.save_Button)
         saveButton.text = "CREATE PLANT"
         saveButton.setOnClickListener {
@@ -133,7 +136,7 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
                     viewModel.addPlant(
                         plantName.toString(),
                         plantHeight.toString(),
-                        plantType.toString()
+                        selectedValue.toString()
                     )
                     viewModel.changeSelectedPlant(plantName.toString())
 

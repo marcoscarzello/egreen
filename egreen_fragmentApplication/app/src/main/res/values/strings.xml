@@ -33,6 +33,7 @@
     <string name="label_plantName">Plant name</string>
     <string name="label_plant_type">Plant Type</string>
     <string name="createplant">Create Plant</string>
+    <string name="deleteplant">Delete plant</string>
 
     <string-array name="plant_types">
         <item>House plant</item>

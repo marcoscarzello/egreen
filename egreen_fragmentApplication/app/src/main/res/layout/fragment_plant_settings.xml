@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -26,109 +27,106 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/plant_info_container"
         android:layout_width="match_parent"
-        android:layout_height="518dp"
+        android:layout_height="543dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:background="@color/white"
         app:cardCornerRadius="60dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="452dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            tools:layout_conversion_absoluteHeight="452dp"
+            tools:layout_conversion_absoluteWidth="411dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="123dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:orientation="vertical">
+            <ImageView
+                android:id="@+id/plant_settings_image"
+                android:layout_width="253dp"
+                android:layout_height="216dp"
+                android:src="@drawable/ic_plant_photo"
+                app:layout_constraintBottom_toTopOf="@+id/save_Button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plant_type_input" />
 
-                <ImageView
-                    android:id="@+id/plant_settings_image"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/ic_plant_photo" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/plant_name_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="304dp"
+                android:layout_height="72dp"
+                app:boxStrokeColor="@color/green_700"
+                app:endIconTint="@color/green_700"
+                app:layout_constraintBottom_toTopOf="@+id/plant_type_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/plant_picture"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:text="Plant Picture" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/edit_text_container"
-                android:layout_width="match_parent"
-                android:layout_height="332dp"
-                android:orientation="vertical">
-
-                <TextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/plant_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Plant Name"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"/>
+                    android:hint="@string/label_plantName"
+                    android:maxLines="1"
+                    android:textColor="@color/green_700"
+                    android:textColorHighlight="@color/green_700" />
 
-                <Spinner
-                    android:id="@+id/plant_Type"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_margin="20dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/result"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/plant_type_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="304dp"
+                android:layout_height="72dp"
+                app:boxStrokeColor="@color/green_700"
+                app:layout_constraintBottom_toTopOf="@+id/plant_settings_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plant_name_input">
 
-                <LinearLayout
-                    android:id="@+id/height_info_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/Plant_height"
-                        android:layout_width="250dp"
-                        android:layout_height="wrap_content"
-                        android:hint="Plant Height"
-                        android:maxLines="1" />
-
-                    <Spinner
-                        android:id="@+id/plant_height_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp" />
-
-
-                </LinearLayout>
-
-
-                <Button
-                    android:id="@+id/save_Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Apply Changes" />
-
-                <Button
-                    android:id="@+id/deletePlantButton"
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="delete" />
+                    android:inputType="none"
+                    android:text="@string/label_plant_type"
+                    android:textColor="@color/green_700"
+                    android:textColorHighlight="@color/green_700" />
 
-            </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        </LinearLayout>
+            <Button
+                android:id="@+id/save_Button"
+                android:layout_width="176dp"
+                android:layout_height="46dp"
+                android:layout_gravity="center"
+                android:text="Apply Changes"
+                app:layout_constraintBottom_toTopOf="@+id/deletePlantButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plant_settings_image" />
+
+            <Button
+                android:id="@+id/deletePlantButton"
+                android:layout_width="65dp"
+                android:layout_height="43dp"
+                android:text="@string/deleteplant"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/save_Button" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 

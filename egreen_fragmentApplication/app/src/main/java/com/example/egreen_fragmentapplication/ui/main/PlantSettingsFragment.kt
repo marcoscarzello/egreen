@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
+import kotlinx.android.synthetic.main.fragment_plant_settings.*
 
 
 class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
@@ -20,17 +21,28 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
 
 
 
+    var plantType : TextView? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val viewModel: MainViewModel by activityViewModels()
 
         val plantNameText  = view.findViewById<TextView>(R.id.plant_name)
-        val plantHeigthEditText  = view.findViewById<EditText>(R.id.Plant_height)
+        //val plantHeigthEditText  = view.findViewById<EditText>(R.id.Plant_height)
         val applyBtn  = view.findViewById<Button >(R.id.save_Button)
-        val plantTypeSpinner = view.findViewById<Spinner>(R.id.plant_Type)
+        //val plantTypeSpinner = view.findViewById<Spinner>(R.id.plant_Type)
         var plantImg = view.findViewById<ImageView>(R.id.plant_settings_image)
         var deletePlantBtn = view.findViewById<Button>(R.id.deletePlantButton)
+
+        val plantTypeArray = resources.getStringArray(R.array.plant_types)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, plantTypeArray)
+
+        (plantType?.editableText as? AutoCompleteTextView)?.setAdapter(arrayAdapter)
+
+        val autocompleteTV = view.findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
+        // set adapter to the autocomplete tv to the arrayAdapter
+        autocompleteTV.setAdapter(arrayAdapter)
 
         /*
         deletePlantBtn.setOnClickListener {
@@ -49,16 +61,16 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
         plantNameText.text = viewModel.getSelectedPlantName()
         viewModel.getSelectedPlantHeigth()
         viewModel.getSelectedPlantType()
-        viewModel.heigth.observe(this, Observer { h -> plantHeigthEditText.setText(h) })
+        //viewModel.heigth.observe(this, Observer { h -> plantHeigthEditText.setText(h) })
 
-        //viewModel.plantType.observe(this, Observer { h -> plantTypeSpinner.setText(h) })
+        viewModel.plantType.observe(this, Observer { h ->  autocompleteTV.setText(h)})
 
         //plantHeigthEditText.setText(viewModel.getSelectedPlantHeigth())
 
 
 
         applyBtn.setOnClickListener{
-            viewModel.modifyPlant(plantHeigthEditText.text.toString())
+            //viewModel.modifyPlant(plantHeigthEditText.text.toString())
             findNavController().navigate(R.id.action_plantSettingsFragment_to_plantFragment)
         }
 
