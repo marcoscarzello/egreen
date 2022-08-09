@@ -89,7 +89,7 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         })
 
         viewModel.lastLight.observe(this, Observer { ll ->
-            if (ll != null ){
+            if (ll != null && ll!= ""){
                 brightness.text = ll    //valore luminosità %  a schermo
 
                 //immagine in funzione della luminosità
