@@ -54,6 +54,9 @@ class MainViewModel : ViewModel () {
 
     var selectedPlant = ""
 
+    private var mutableLastLight = MutableLiveData<String>()
+    val lastLight: LiveData<String> get() = mutableLastLight
+
     private var mutableDarkMode = MutableLiveData<Boolean>()
     val darkMode: LiveData<Boolean> get() = mutableDarkMode
 
@@ -156,6 +159,9 @@ class MainViewModel : ViewModel () {
 
 
         mutableRefDB.value?.child("plants")?.child(plantName)?.child("piantaimgUrl")?.setValue(plantPicPath.value.toString())       //metto nel database il link all'immagine della pianta
+
+        mutableRefDB.value?.child("plants")?.child(plantName)?.child("params")?.child("lastLight")?.setValue(null)
+
     }
 
     open fun deletePlant(plantName: String){
@@ -185,6 +191,19 @@ class MainViewModel : ViewModel () {
             override fun onDataChange(snapshot: DataSnapshot) {
                 mutableWaterMap.value = snapshot.getValue<MutableMap<String, String>>()
                 Log.d("Water MAP READ BY VM", waterMap.value.toString())
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+
+        mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("params")?.child("lastLight")?.addValueEventListener(object: ValueEventListener{
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                mutableLastLight.value = snapshot.getValue<String>()
+                Log.d("lastlight READ BY VM",lastLight.value.toString())
 
             }
 
@@ -240,6 +259,8 @@ class MainViewModel : ViewModel () {
     //private var mutableWtlev = MutableLiveData<String>()
     //val wtlev: LiveData<String> get() = mutableWtlev
 
+
+
     open fun getWtValues(){
 
         mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
@@ -290,6 +311,7 @@ class MainViewModel : ViewModel () {
     }
 
     open fun getPlants() {
+        Log.e(TAG, "get plants dentroooooo")
         mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
 
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -430,7 +452,10 @@ class MainViewModel : ViewModel () {
         mutableRefDB.value?.child("plants/$selectedPlant/piantaimgUrl")?.addValueEventListener(
             object: ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    GlideApp.with(context).load(snapshot.value.toString().toUri()).into(imageView)
+                    if (snapshot.value.toString() == ""){
+                        imageView.setImageResource(R.drawable.plant_placeholder)
+                    }else
+                        GlideApp.with(context).load(snapshot.value.toString().toUri()).into(imageView)
                     //Log.d("Test", snapshot.value.toString().toUri().c)
                 }
 

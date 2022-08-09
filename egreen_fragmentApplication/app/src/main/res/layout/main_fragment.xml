@@ -7,21 +7,34 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainFragment">
 
-    <ImageButton
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="56dp"
+        android:layout_height="45dp"
+        android:src="@drawable/custom_input"
+        app:layout_constraintBottom_toBottomOf="@+id/gs_btn"
+        app:layout_constraintEnd_toEndOf="@+id/gs_btn"
+        app:layout_constraintStart_toStartOf="@+id/gs_btn"
+        app:layout_constraintTop_toTopOf="@+id/gs_btn"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
         android:id="@+id/gs_btn"
-        android:layout_width="29dp"
-        android:layout_height="30dp"
-        android:background="#88FFFFCC"
-        android:src="@drawable/ic_settings"
-        android:text="GS"
-        android:textSize="30dp"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/settingsnew"
+        app:layout_constraintBottom_toTopOf="@+id/viewPager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="407dp"
+        android:layout_height="614dp"
         android:layout_centerInParent="true"
         android:layout_marginBottom="64dp"
         android:background="@color/main_theme"
@@ -30,10 +43,9 @@
         android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/plantName"

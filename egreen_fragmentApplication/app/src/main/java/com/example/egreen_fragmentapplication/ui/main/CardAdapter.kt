@@ -49,7 +49,7 @@ class CardAdapter(private val context: Context?, private val CardArrayList: Arra
             Picasso.with(context).load(image.toUri()).into(view.bannerIv)
         }
         else
-            view.bannerIv.setImageResource(R.drawable.genoveffa)
+            view.bannerIv.setImageResource(R.drawable.plant_placeholder)
 
         view.water_level.text = waterlevel
         view.oxigen.text = oxygen

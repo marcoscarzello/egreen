@@ -10,15 +10,15 @@
 
     <TextView
         android:id="@+id/test_profile"
-        android:layout_width="80dp"
+        android:layout_width="88dp"
         android:layout_height="50dp"
-        android:layout_marginStart="352dp"
+        android:layout_marginStart="344dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/back_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008" />
+        app:layout_constraintVertical_bias="0.011" />
 
     <ImageView
         android:id="@+id/plant"
@@ -26,47 +26,77 @@
         android:layout_height="30dp"
         android:src="@drawable/garden_settings"
         app:layout_constraintBottom_toBottomOf="@+id/test_profile"
-        app:layout_constraintEnd_toEndOf="@+id/test_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toStartOf="@+id/test_profile"
-        app:layout_constraintTop_toTopOf="@+id/test_profile" />
+        app:layout_constraintTop_toTopOf="@+id/test_profile"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="% of brightness"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/brightness"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/brightness"
+        app:layout_constraintTop_toBottomOf="@+id/brightness" />
+
+    <TextView
+        android:id="@+id/brightness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="00"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plant_image_view"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/Hgraph"
+        android:layout_width="299dp"
+        android:layout_height="132dp"
+        android:background="#7FA87E"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintVertical_bias="0.234" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="400dp"
-        android:layout_height="212dp"
+        android:layout_width="411dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.jjoe64.graphview.GraphView
-                android:id="@+id/Hgraph"
-                android:layout_width="320dp"
-                android:layout_height="153dp"
-                android:background="#7FA87E"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.51"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <TextView
         android:id="@+id/plant_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="256dp"
+        android:layout_height="77dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="170dp"
+        android:layout_marginBottom="16dp"
         android:text="Nome pianta"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/humidity"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,13 +108,14 @@
         android:id="@+id/humidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="250dp"
         android:text="00"
         android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/plant_title" />
 
@@ -92,13 +123,14 @@
         android:id="@+id/water_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="250dp"
         android:text="00"
         android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -109,8 +141,11 @@
         android:layout_marginTop="8dp"
         android:text="% humidity"
         android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/plant_image_view"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/humidity"
         app:layout_constraintTop_toBottomOf="@+id/humidity" />
+
 
     <TextView
         android:id="@+id/textView6"
@@ -119,24 +154,35 @@
         android:layout_marginTop="8dp"
         android:text="% water level"
         android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/water_level"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/water_level"
         app:layout_constraintTop_toBottomOf="@+id/water_level" />
 
-
-
-
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/plant_image_view"
-        android:layout_width="251dp"
-        android:layout_height="265dp"
-        android:layout_marginEnd="4dp"
+        android:layout_width="287dp"
+        android:layout_height="259dp"
 
 
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/plant_title"
-        app:layout_constraintVertical_bias="0.487"
-        tools:src="@drawable/genoveffa" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:src="@drawable/plant_placeholder" />
+
+    <ImageView
+        android:id="@+id/bright_img"
+        android:layout_width="98dp"
+        android:layout_height="86dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintEnd_toStartOf="@+id/brightness"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/brightness"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

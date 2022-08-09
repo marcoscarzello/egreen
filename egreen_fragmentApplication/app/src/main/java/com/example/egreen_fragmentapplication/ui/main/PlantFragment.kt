@@ -1,6 +1,7 @@
 package com.example.egreen_fragmentapplication.ui.main
 
 import android.graphics.Color
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -32,6 +33,8 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         val plantNameText  = view.findViewById<TextView>(R.id.plant_title)
         val humidity  = view.findViewById<TextView>(R.id.humidity)
         val waterlevel  = view.findViewById<TextView>(R.id.water_level)
+        val brightness = view.findViewById<TextView>(R.id.brightness)
+        val brightImg = view.findViewById<ImageView>(R.id.bright_img)
 
         var plantImg = view.findViewById<ImageView>(R.id.plant_image_view)
         viewModel.downPlantPic(this@PlantFragment.requireContext(), plantImg)   //scarico immagine pianta
@@ -84,6 +87,20 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
             }
 
         })
+
+        viewModel.lastLight.observe(this, Observer { ll ->
+            if (ll != null ){
+                brightness.text = ll    //valore luminosità %  a schermo
+
+                //immagine in funzione della luminosità
+                if (ll.toInt() <= 35 ) brightImg.setImageResource(R.drawable.bright_0)
+                else if (ll.toInt() < 70 ) brightImg.setImageResource(R.drawable.bright_50)
+                else if (ll.toInt() < 100 ) brightImg.setImageResource(R.drawable.bright_100)
+
+
+            }
+        })
+
 
         viewModel.waterMap.observe(this, Observer { wm ->
             if(wm!= null) {

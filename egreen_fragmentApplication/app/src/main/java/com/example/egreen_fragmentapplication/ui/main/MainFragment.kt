@@ -50,6 +50,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         viewModel.getWtValues()
         viewModel.getHmValues()
 
+
+
         //Log.d("ListaUri", viewModel.plantListUri!!.value?.get(0)!!.toString())
 
         //var mutableRefDB = MutableLiveData<DatabaseReference?>()
@@ -69,7 +71,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         //var humMap: MutableMap<String, String> = HashMap()
         //var watMap: MutableMap<String, String> = HashMap()
 
-        val gsBtn = view.findViewById<ImageButton>(R.id.gs_btn)
+        val gsBtn = view.findViewById<ImageView>(R.id.gs_btn)
 
         gsBtn.setOnClickListener{
             findNavController().navigate(R.id.action_mainFragment_to_gardenSettingsFragment)
@@ -77,6 +79,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
 
 
+
+        //PLANT NAME
         val plantName = view.findViewById<TextView>(R.id.plantName)
 
         viewModel.refDB.value?.child("plantName")?.addValueEventListener(object: ValueEventListener{    //refDB lo ricavo dal view model
@@ -85,8 +89,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val v = snapshot.getValue<String>()
                 plantName.text = v
-                                                                                                            //NOTA se ti sei appena registrato, nel db per ora non c'è il parametro plantName:
-                                                                                                            // lo puoi aggiungere da firebase manualmente per verificare il funzionamento
             }
 
             override fun onCancelled(error: DatabaseError) {
