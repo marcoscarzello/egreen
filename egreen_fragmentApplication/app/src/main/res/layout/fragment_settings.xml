@@ -28,8 +28,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clayo"
-        android:layout_width="350dp"
-        android:layout_height="520dp"
+        android:layout_width="352dp"
+        android:layout_height="467dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
@@ -106,47 +106,6 @@
                             app:layout_constraintEnd_toEndOf="@+id/textView7"
                             app:layout_constraintStart_toStartOf="@+id/textView7"
                             app:layout_constraintTop_toTopOf="@+id/textView7" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp">
-
-                        <TextView
-                            android:id="@+id/textView88"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Network connections"
-                            android:textColor="@color/main_theme"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/textView70"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/textView70"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginStart="24dp"
-                            android:background="@drawable/back_button"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/plant02"
-                            android:layout_width="64dp"
-                            android:layout_height="69dp"
-                            android:src="@drawable/network"
-                            app:layout_constraintBottom_toBottomOf="@+id/textView70"
-                            app:layout_constraintEnd_toEndOf="@+id/textView70"
-                            app:layout_constraintStart_toStartOf="@+id/textView70"
-                            app:layout_constraintTop_toTopOf="@+id/textView70" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -234,7 +193,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/plant04"
+                            android:id="@+id/plant02"
                             android:layout_width="64dp"
                             android:layout_height="69dp"
                             android:src="@drawable/network_connection"

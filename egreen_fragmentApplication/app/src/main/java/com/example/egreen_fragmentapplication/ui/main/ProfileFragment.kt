@@ -3,6 +3,7 @@ package com.example.egreen_fragmentapplication.ui.main
 import android.app.Activity.RESULT_OK
 import android.app.appsearch.AppSearchResult.RESULT_OK
 import android.content.Intent
+import android.media.Image
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -33,6 +34,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val oxigen = view.findViewById<TextView>(R.id.oxigen)
         val greenscore = view.findViewById<TextView>(R.id.greenScore)
         val profilePic = view.findViewById<ImageView>(R.id.profile_pic)
+        val editProfile = view.findViewById<ImageView>(R.id.edit_profile)
+
+        editProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_accountSettingsFragment)
+        }
 
         viewModel.username.observe(this, Observer { u -> nametextview.text = u })
 

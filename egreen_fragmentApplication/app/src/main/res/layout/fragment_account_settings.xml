@@ -19,8 +19,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/settingscontainer"
-        android:layout_width="match_parent"
-        android:layout_height="620dp"
+        android:layout_width="365dp"
+        android:layout_height="524dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="@color/white"
@@ -30,180 +30,163 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="600dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:gravity="center|center_horizontal|center_vertical"
-                android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_username"
+                android:layout_width="240dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/til_c_password"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_pic_settings"
+                app:layout_constraintVertical_chainStyle="packed">
 
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_pic_settings"
-                    android:layout_width="95dp"
-                    android:layout_height="89dp"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.503"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.149"
-                    tools:src="@tools:sample/avatars" />
-
-                <Button
-                    android:id="@+id/newPic"
-                    android:layout_width="120dp"
-                    android:layout_height="40dp"
-                    android:text="new picture"
-                    android:textSize="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/profile_pic_settings"
-                    app:layout_constraintEnd_toStartOf="@+id/profile_pic_settings"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/profile_pic_settings" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_username"
-                    android:layout_width="240dp"
-                    android:layout_height="59dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_corners"
+                    android:ems="10"
+                    android:hint="@string/label_username"
+                    android:inputType="textPersonName"
+                    android:text=""
                     app:layout_constraintBottom_toTopOf="@+id/til_c_password"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_pic_settings"
-                    app:layout_constraintVertical_chainStyle="packed">
+                    app:layout_constraintTop_toBottomOf="@+id/profileImg" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etUsername"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:hint="Username"
-                        android:background="@drawable/input_corners"
-                        android:inputType="textPersonName"
-                        android:text=""
-                        app:layout_constraintBottom_toTopOf="@+id/til_c_password"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profileImg" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/saveAccountChanges"
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/save_changes"
+                app:layout_constraintBottom_toTopOf="@+id/logoutBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_email" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_c_password"
-                    android:layout_width="240dp"
-                    android:layout_height="59dp"
-                    app:layout_constraintBottom_toTopOf="@+id/til_email"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/til_username">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_pic_settings"
+                android:layout_width="95dp"
+                android:layout_height="89dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.665"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.046"
+                tools:src="@tools:sample/avatars" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/current_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ems="10"
-                        android:hint="Password"
-                        android:inputType="textPassword"
-                        android:text="password"
-                        android:background="@drawable/input_corners"
-                        app:layout_constraintBottom_toTopOf="@+id/saveAccountChanges"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/accountEmail" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/newPic"
+                android:layout_width="84dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/new_picture"
+                android:textSize="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_pic_settings"
+                app:layout_constraintEnd_toStartOf="@+id/profile_pic_settings"
+                app:layout_constraintHorizontal_bias="0.831"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/profile_pic_settings"
+                app:layout_constraintVertical_bias="1.0" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_email"
-                    android:layout_width="243dp"
-                    android:layout_height="59dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_c_password"
+                android:layout_width="240dp"
+                android:layout_height="59dp"
+                app:layout_constraintBottom_toTopOf="@+id/til_email"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_username">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/current_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/input_corners"
+                    android:ems="10"
+                    android:hint="@string/label_password"
+                    android:inputType="textPassword"
+                    android:text="@string/label_password"
                     app:layout_constraintBottom_toTopOf="@+id/saveAccountChanges"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/til_c_password">
+                    app:layout_constraintTop_toBottomOf="@+id/accountEmail" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/accountEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:editable="false"
-                        android:ems="10"
-                        android:background="@drawable/input_corners"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:inputType="none"
-                        android:text="Email" />
-                </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_email"
+                android:layout_width="243dp"
+                android:layout_height="59dp"
+                app:layout_constraintBottom_toTopOf="@+id/saveAccountChanges"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/til_c_password">
 
-                <Button
-                    android:id="@+id/saveAccountChanges"
-                    android:layout_width="wrap_content"
-                    android:layout_height="43dp"
-                    android:layout_marginTop="30dp"
-                    android:text="save changes"
-                    app:layout_constraintBottom_toTopOf="@+id/gardenSettingsBtn"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/til_email" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/accountEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/input_corners"
+                    android:editable="false"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="none"
+                    android:text="Email" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <Button
-                    android:id="@+id/gardenSettingsBtn"
-                    android:layout_width="188dp"
-                    android:layout_height="41dp"
-                    android:layout_marginTop="16dp"
-                    android:backgroundTint="#6DB54E"
-                    android:text="garden settings"
-                    app:layout_constraintBottom_toTopOf="@+id/logoutBtn"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/saveAccountChanges" />
+            <Button
+                android:id="@+id/logoutBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:backgroundTint="#777575"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:text="@string/log_out"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
-                <Button
-                    android:id="@+id/logoutBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#777575"
-                    android:scaleX="1"
-                    android:scaleY="1"
-                    android:text="log out"
-                    app:layout_constraintBottom_toTopOf="@+id/deleteAccountBtn"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/gardenSettingsBtn" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="405dp" />
 
-                <Button
-                    android:id="@+id/deleteAccountBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:backgroundTint="#A80505"
-                    android:text="delete account"
-                    android:textSize="8sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/logoutBtn" />
-            </LinearLayout>
-        </LinearLayout>
+            <TextView
+                android:id="@+id/deleteAccountBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_account"
+                android:textColor="#D30000"
+                android:textSize="5sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logoutBtn" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="505dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"

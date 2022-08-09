@@ -360,10 +360,10 @@ class MainViewModel : ViewModel () {
     }
 
     //DELETE ACCOUNT
-    open fun deleteAccount(){
+    open fun deleteAccount(activity: Activity){
         val user = mutableCurrentUser.value
         val refDB = mutableRefDB.value
-        //logOut()
+        logOut(activity)
         Log.d( "User deleting account :" , user.toString())
         user?.delete()!!
             .addOnCompleteListener { task ->

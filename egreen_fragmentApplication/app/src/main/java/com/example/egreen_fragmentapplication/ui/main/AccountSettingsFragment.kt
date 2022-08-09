@@ -5,10 +5,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -22,9 +19,9 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
 
         val viewModel: MainViewModel by activityViewModels()
 
-        val deleteAccount = view.findViewById<Button>(R.id.deleteAccountBtn)
+        val deleteAccount = view.findViewById<TextView>(R.id.deleteAccountBtn)
         val logOut = view.findViewById<Button>(R.id.logoutBtn)
-        val gardenSettings = view.findViewById<Button>(R.id.gardenSettingsBtn)
+        //val gardenSettings = view.findViewById<Button>(R.id.gardenSettingsBtn)
         val etUsername = view.findViewById<EditText>(R.id.etUsername)
         val email = view.findViewById<EditText>(R.id.accountEmail)
         val saveBtn = view.findViewById<Button>(R.id.saveAccountChanges)
@@ -115,9 +112,12 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
         }
 
         //TO GARDEN SETTINGS
+        /*
         gardenSettings.setOnClickListener{
             findNavController().navigate(R.id.action_accountSettingsFragment_to_gardenSettingsFragment)
         }
+
+         */
 
 
 
@@ -133,7 +133,7 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
                 // positive button text and action
                 .setPositiveButton("I'm sure", DialogInterface.OnClickListener {
                         dialog, id ->
-                    viewModel.deleteAccount()
+                    viewModel.deleteAccount(requireActivity())
 
                     findNavController().navigate(R.id.action_accountSettingsFragment_to_registerFragment)
                     Toast.makeText(
