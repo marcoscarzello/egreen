@@ -19,11 +19,15 @@ import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.GoogleAuthProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.bumptech.glide.load.model.LazyHeaders
 import com.example.egreen_fragmentapplication.GlideApp
 import com.example.egreen_fragmentapplication.R
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.auth.api.signin.internal.Storage
 import com.google.android.gms.tasks.Task
 import com.google.common.net.HttpHeaders.USER_AGENT
@@ -51,6 +55,9 @@ import kotlin.collections.HashMap
 data class User(var email : String, var plantName : String, var username : String)
 
 class MainViewModel : ViewModel () {
+
+
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     var selectedPlant = ""
 
@@ -121,8 +128,15 @@ class MainViewModel : ViewModel () {
          mutableRefStorage.value = FirebaseStorage.getInstance().reference.child("Users").child((currentuser.value?.uid.toString()))    //firestore reference
      }
 
-    open fun logOut(){
+    open fun logOut(activity: Activity){
         FirebaseAuth.getInstance().signOut()
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        .requestIdToken("500292871531-l6n061cpjo6srokcd8eh6dodr5n1j735.apps.googleusercontent.com")
+            .requestEmail()
+            .build()
+
+        googleSignInClient =  GoogleSignIn.getClient(activity, gso)
+        googleSignInClient.signOut()
         updateCurrentUser()
         Log.d(TAG, "User logged out successfully.")
     }
@@ -349,7 +363,7 @@ class MainViewModel : ViewModel () {
     open fun deleteAccount(){
         val user = mutableCurrentUser.value
         val refDB = mutableRefDB.value
-        logOut()
+        //logOut()
         Log.d( "User deleting account :" , user.toString())
         user?.delete()!!
             .addOnCompleteListener { task ->

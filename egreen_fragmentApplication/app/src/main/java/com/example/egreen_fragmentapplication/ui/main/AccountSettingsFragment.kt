@@ -99,7 +99,7 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
             //logout from app
             //FirebaseAuth.getInstance().signOut()
 
-            viewModel.logOut()                                                                      //logOut funzione del MainViewModel
+            viewModel.logOut(requireActivity())                                                                      //logOut funzione del MainViewModel
             findNavController().navigate(R.id.action_accountSettingsFragment_to_loginFragment)
 
             Toast.makeText(
