@@ -121,7 +121,16 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+
+                selectedValue == "" ->{
+                    Toast.makeText(
+                        requireContext(),
+                        "Please select a plant type.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
 /*
+
                 TextUtils.isEmpty(heightEditText.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
                         requireContext(),
