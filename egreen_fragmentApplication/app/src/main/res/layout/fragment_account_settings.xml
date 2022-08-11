@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_theme"
+    android:background="@color/green_200"
     tools:context=".ui.main.AccountSettingsFragment">
 
     <ImageView
+        android:id="@+id/backButton_accountSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/backButton_accountSettings"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_margin="20dp"
         android:src="@drawable/ic_baseline_arrow_back_24"
-        />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/settingscontainer"
@@ -37,9 +36,12 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_username"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="240dp"
                 android:layout_height="59dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                app:boxStrokeColor="@color/green_700"
                 app:layout_constraintBottom_toTopOf="@+id/til_c_password"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -51,7 +53,6 @@
                     android:id="@+id/etUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/input_corners"
                     android:ems="10"
                     android:hint="@string/label_username"
                     android:inputType="textPersonName"
@@ -105,22 +106,27 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_c_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="240dp"
                 android:layout_height="59dp"
+                android:layout_marginBottom="8dp"
+                app:boxStrokeColor="@color/green_700"
                 app:layout_constraintBottom_toTopOf="@+id/til_email"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/til_username">
+                app:layout_constraintTop_toBottomOf="@+id/til_username"
+                app:startIconDrawable="@drawable/ic_lock">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/current_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/input_corners"
+                    android:editable="false"
                     android:ems="10"
+                    android:focusableInTouchMode="false"
                     android:hint="@string/label_password"
-                    android:inputType="textPassword"
+                    android:inputType="none"
                     android:text="@string/label_password"
                     app:layout_constraintBottom_toTopOf="@+id/saveAccountChanges"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -130,8 +136,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="243dp"
                 android:layout_height="59dp"
+                app:boxStrokeColor="@color/green_700"
                 app:layout_constraintBottom_toTopOf="@+id/saveAccountChanges"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -142,7 +150,6 @@
                     android:id="@+id/accountEmail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/input_corners"
                     android:editable="false"
                     android:ems="10"
                     android:focusable="false"
@@ -153,18 +160,21 @@
 
             <Button
                 android:id="@+id/logoutBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="74dp"
+                android:layout_height="31dp"
                 android:layout_marginBottom="60dp"
-                android:backgroundTint="#777575"
+                android:backgroundTint="#83918484"
                 android:scaleX="1"
                 android:scaleY="1"
                 android:text="@string/log_out"
+                android:textAlignment="center"
+                android:textSize="8sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline3" />
+                app:layout_constraintTop_toTopOf="@+id/guideline3"
+                app:rippleColor="#00FFFFFF" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline3"

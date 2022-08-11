@@ -1,16 +1,20 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
 import com.example.egreen_fragmentapplication.databinding.FragmentAddPlantBinding
@@ -91,7 +95,7 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
         val nameEditText = view.findViewById(R.id.plant_name) as EditText
         var photoImage = view.findViewById<ImageView>(R.id.plant_settings_image)
 
-        viewModel.plantPicPath.observe(this, androidx.lifecycle.Observer { pp ->
+        viewModel.plantPicPath.observe(this, Observer { pp ->
             viewModel.downTakenPic(this@addPlantFragment.requireContext(), photoImage, pp)
         })
 
@@ -100,6 +104,15 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
             viewModel.changeImgCalledFrom(1)    //qua dico che sto chiamando camera fragment da add plant
             findNavController().navigate(R.id.action_addPlantFragment_to_cameraFragment2)
         }
+
+        //close keyboard on enter
+        nameEditText.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                context?.hideKeyboard(v)
+            }
+        }
+
+
 
         val saveButton = view.findViewById<Button>(R.id.save_Button)
         saveButton.text = "CREATE PLANT"
@@ -221,7 +234,9 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
     }
 
 
-
-
+    fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
 
 }

@@ -4,109 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_theme"
+    android:background="@color/green_200"
     tools:context=".ui.main.GardenSettingsFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/newplantcontainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="385dp"
+        android:layout_height="458dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="30dp"
         android:background="@color/white"
         app:cardCornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsTitle">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="573dp"
+            android:id="@+id/pl"
+            android:layout_width="347dp"
+            android:layout_height="421dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/pl"
-                android:layout_width="match_parent"
-                android:layout_height="530dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:gravity="center"
-                android:orientation="vertical">
+            <Button
+                android:id="@+id/plant0"
+                android:layout_width="170dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="30dp"
+                android:text="new plant"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/plant1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
 
-                <Button
-                    android:id="@+id/plant0"
-                    android:layout_width="170dp"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="30dp"
-                    android:text="new plant"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/plant1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_chainStyle="packed" />
+            <Button
+                android:id="@+id/plant2"
+                android:layout_width="170dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="30dp"
+                android:text="new plant"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/plant3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plant1" />
 
-                <Button
-                    android:id="@+id/plant2"
-                    android:layout_width="170dp"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="30dp"
-                    android:text="new plant"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/plant3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/plant1" />
+            <Button
+                android:id="@+id/plant1"
+                android:layout_width="170dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="30dp"
+                android:text="new plant"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/plant2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plant0" />
 
-                <Button
-                    android:id="@+id/plant1"
-                    android:layout_width="170dp"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="30dp"
-                    android:text="new plant"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/plant2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/plant0" />
+            <Button
+                android:id="@+id/plant3"
+                android:layout_width="170dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="30dp"
+                android:text="new plant"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plant2" />
 
-                <Button
-                    android:id="@+id/plant3"
-                    android:layout_width="170dp"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="30dp"
-                    android:text="new plant"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/plant2" />
-
-            </LinearLayout>
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/settingsTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="363dp"
+        android:layout_height="61dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
         android:text="Garden Settings"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
+        android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@color/white"
+        android:textColor="@color/green_700"
+        android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/pl"
+        app:layout_constraintBottom_toTopOf="@+id/newplantcontainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

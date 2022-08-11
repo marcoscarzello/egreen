@@ -1,10 +1,13 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -48,8 +51,22 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
                 etUsername.setText(viewModel.getEmail())
         })
 
+        fun Context.hideKeyboard(view: View) {
+            val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+
+        //close keyboard on enter
+        etUsername.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                context?.hideKeyboard(v)
+            }
+        }
+
 
         //click su password
+
+        /*
         etPassword.setOnFocusChangeListener { v, hasFocus ->
             if(hasFocus) {
                 val dialogBuilder =
@@ -87,9 +104,8 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
             }
         }
 
-        saveBtn.setOnClickListener{
-            viewModel.setUsername(etUsername.text.toString())
-        }
+         */
+
 
         //LOGOUT
         logOut.setOnClickListener {

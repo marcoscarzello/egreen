@@ -5,7 +5,7 @@
     android:id="@+id/constrainLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#98B78B">
+    android:background="@color/green_200">
 
     <ImageView
         android:id="@+id/back"
@@ -25,12 +25,12 @@
         android:text="Add a new plant"
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@color/white"
+        android:textColor="@color/green_700"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/plant_info_container"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.457" />
@@ -95,9 +95,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/label_plantName"
-                    android:maxLines="1"
-                    android:inputType="text"
                     android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
                     android:textColor="@color/green_700"
                     android:textColorHighlight="@color/green_700" />
 
