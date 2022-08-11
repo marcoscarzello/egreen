@@ -96,6 +96,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/label_plantName"
                     android:maxLines="1"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"
                     android:textColor="@color/green_700"
                     android:textColorHighlight="@color/green_700" />
 
