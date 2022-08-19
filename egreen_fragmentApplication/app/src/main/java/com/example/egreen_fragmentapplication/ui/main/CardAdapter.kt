@@ -54,6 +54,19 @@ class CardAdapter(private val context: Context?, private val CardArrayList: Arra
         view.water_level.text = waterlevel
         view.oxigen.text = oxygen
 
+        //setta goccia con livello acqua
+    if (waterlevel!= "New Plant") {
+        when{
+                (waterlevel.toInt() < 10) -> view.drop.setImageResource(R.drawable.water_0)
+                (waterlevel.toInt() < 35) -> view.drop.setImageResource(R.drawable.water_25)
+                (waterlevel.toInt() < 60) -> view.drop.setImageResource(R.drawable.water_50)
+                (waterlevel.toInt() < 85) -> view.drop.setImageResource(R.drawable.water_75)
+                else -> view.drop.setImageResource(R.drawable.water_100)
+        }
+    }else
+        view.drop.setImageResource(R.drawable.empty)
+
+
         //handles clicks
         view.setOnClickListener() {
             //Toast.makeText(context, "$plantName", Toast.LENGTH_SHORT).show()
