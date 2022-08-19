@@ -42,6 +42,7 @@ import com.google.type.DateTime
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeout
 import java.lang.Exception
 import java.net.URI
 import java.net.URL
@@ -191,8 +192,8 @@ class MainViewModel : ViewModel () {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 mutableHumidityMap.value = snapshot.getValue<MutableMap<String, String>>()
-                Log.d("HUMIDITY MAP READ BY VM", humidityMap.value.toString())
-
+                //Log.d("HUMIDITY MAP READ BY VM", humidityMap.value.toString())
+                //getHmValues()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -204,8 +205,8 @@ class MainViewModel : ViewModel () {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 mutableWaterMap.value = snapshot.getValue<MutableMap<String, String>>()
-                Log.d("Water MAP READ BY VM", waterMap.value.toString())
-
+                //Log.d("Water MAP READ BY VM", waterMap.value.toString())
+                //getWtValues()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -217,7 +218,7 @@ class MainViewModel : ViewModel () {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 mutableLastLight.value = snapshot.getValue<String>()
-                Log.d("lastlight READ BY VM",lastLight.value.toString())
+                //Log.d("lastlight READ BY VM",lastLight.value.toString())
 
             }
 
@@ -277,8 +278,31 @@ class MainViewModel : ViewModel () {
 
     open fun getWtValues(){
 
+        //child("params")?.child("last5waterlevel")?.child("a")?
+
+        /*mutableRefDB.value?.child("plants")?.child("Painta1")?.child("params")?.child("last5waterlevel")?.child("a")?.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val wt = snapshot.getValue<String>().toString()
+
+                Log.d("SUPER TEST WT", wt)
+
+                mutabledataWt.value = snapshot.getValue<String>()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
+        return mutabledataWt.value.toString()*/
+
         mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                //if (mutabledataWtList.value?.size!! > 0) {
+                    mutabledataWtList.value?.clear()
+                //}
+
                 for (ds in snapshot.children) {
                     val pianta = ds.child("plantName").getValue(String::class.java)
 
@@ -303,6 +327,9 @@ class MainViewModel : ViewModel () {
 
         mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                mutabledataHmList.value?.clear()
+
                 for (ds in snapshot.children) {
                     val plant = ds.child("plantName").getValue(String::class.java)
 
@@ -327,8 +354,10 @@ class MainViewModel : ViewModel () {
     open fun getPlants() {
         Log.e(TAG, "get plants dentroooooo")
         mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
-
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                mutablePlantList.value?.clear()
+
                 for (ds in snapshot.children) {
                     val pianta = ds.child("plantName").getValue(String::class.java)
                     //Log.d("DS", ds.toString())
@@ -344,8 +373,10 @@ class MainViewModel : ViewModel () {
 
     open fun getPlantsUri() {
         mutableRefDB.value?.child("plants")?.addValueEventListener(object: ValueEventListener{
-
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                mutablePlantListUri.value?.clear()
+
                 for (ds in snapshot.children) {
                     val piantaUri = ds.child("piantaimgUrl").getValue(String::class.java)
                     //Log.d("DS", ds.toString())

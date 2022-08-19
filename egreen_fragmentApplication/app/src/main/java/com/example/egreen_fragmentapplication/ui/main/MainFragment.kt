@@ -81,7 +81,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
 
         //PLANT NAME
-        val plantName = view.findViewById<TextView>(R.id.plantName)
+        /*val plantName = view.findViewById<TextView>(R.id.plantName)
 
         viewModel.refDB.value?.child("plantName")?.addValueEventListener(object: ValueEventListener{    //refDB lo ricavo dal view model
 
@@ -94,7 +94,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-        })
+        })*/
 
 
 /*
@@ -126,19 +126,31 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                     Log.d("Oscar", "lista zero")
                 }
 
+                Log.d("passo di qui", "!")
+                Log.d("wt lev", viewModel.dataWtList.value.toString())
+
                 var i : Int = 0
                 for (p: String in plantList) {
                         if (p != null) {
 
                             //viewModel.changeSelectedPlant(p)
+                            //val wt = viewModel.getWtValues()
+                            //viewModel.getWtValues()
+                            val wt = viewModel.dataWtList!!.value?.get(i)!!.toString()
+                            val hm = viewModel.dataHmList!!.value?.get(i)!!.toString()
+
+                            //Log.d("SUPER LOG WT!!!!!", wt)
+                            //Log.d("SUPER LOG HM!!!!!", hm)
 
                             cardArrayList.add(
                                 CardModel(
                                     p,
                                     viewModel.plantListUri!!.value?.get(i)!!.toString(),//R.drawable.genoveffa,
-                                    //viewModel.refDB.value?.child("plants")?.child(p)?.child("piantaimgUrl").toString().toUri(),
-                                    viewModel.dataWtList!!.value?.get(i)!!.toString(),
-                                    viewModel.dataHmList!!.value?.get(i)!!.toString()
+                                    //viewModel.refDB.value?.child("plants")?.child(p)?.child("piantaimgUrl").toString(),
+                                    wt,
+                                    hm
+                                    //viewModel.dataWtList!!.value?.get(i)!!.toString(),
+                                    //viewModel.dataHmList!!.value?.get(i)!!.toString()
                                 )
                             )
 
@@ -182,7 +194,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 }
                 }
             })
-        }, 600)
+        }, 2000)
 
 
 
