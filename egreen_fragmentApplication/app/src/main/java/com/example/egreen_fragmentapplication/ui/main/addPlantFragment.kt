@@ -45,6 +45,7 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
     var plantHeight: String? = null
     var plantType : TextView? = null
 
+    var selectedValue: String? = ""
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -53,26 +54,29 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
     }
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
 
-        _binding = FragmentAddPlantBinding.inflate(inflater, container, false)
+    override fun onResume() {
+        super.onResume()
 
-        return binding.root
-    }
+        val plantTypeArray = resources.getStringArray(R.array.plant_types)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, plantTypeArray)
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        //(plantType?.editableText as? AutoCompleteTextView)?.setAdapter(arrayAdapter)
+
+        val autocompleteTV = view?.findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
+        // set adapter to the autocomplete tv to the arrayAdapter
+        autocompleteTV?.setAdapter(arrayAdapter)
+
+        autocompleteTV?.onItemClickListener =
+            OnItemClickListener { adapterView, view, position, id ->
+                selectedValue = arrayAdapter.getItem(position)
+            }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var selectedValue: String? = ""
         val plantTypeArray = resources.getStringArray(R.array.plant_types)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, plantTypeArray)
 
