@@ -45,6 +45,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             findNavController().navigate(R.id.action_settingsFragment_to_networkFragment)
         }
 
+        /*
         viewModel.darkMode.observe(this, Observer { u ->
             //lo metto nella main activity
 
@@ -55,6 +56,17 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
                 darkMode.isChecked = u
             })
+        when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_NO -> {viewModel.setDarkMode(false)} // Night mode is not active, we're using the light theme
+            Configuration.UI_MODE_NIGHT_YES -> {viewModel.setDarkMode(true)} // Night mode is active, we're using dark theme
+        }
+
+
+         */
+        viewModel.darkMode.observe(this, Observer { u ->
+            darkMode.isChecked = u
+        })
+
         when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
             Configuration.UI_MODE_NIGHT_NO -> {viewModel.setDarkMode(false)} // Night mode is not active, we're using the light theme
             Configuration.UI_MODE_NIGHT_YES -> {viewModel.setDarkMode(true)} // Night mode is active, we're using dark theme
