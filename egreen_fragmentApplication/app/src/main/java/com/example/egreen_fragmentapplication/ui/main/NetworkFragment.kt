@@ -37,7 +37,7 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
             userCode.text = user?.uid})
 
         connectBtn.setOnClickListener{
-            val url = "http://www.polito.it"
+            val url = "http://192.168.4.1"
             val i = Intent(Intent.ACTION_VIEW)
             i.data = Uri.parse(url)
             startActivity(i)
