@@ -58,8 +58,8 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
             ))
         HgraphView.setTitle("Last humidity values")
         val gridLabel: GridLabelRenderer = HgraphView.getGridLabelRenderer()
-        gridLabel.horizontalAxisTitle = "measure number"
-        gridLabel.verticalAxisTitle = "humidity %"
+        gridLabel.horizontalAxisTitle = ""
+        gridLabel.verticalAxisTitle = "%"
 
 
         plantNameText.text = viewModel.getSelectedPlantName()
@@ -81,7 +81,7 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
                         DataPoint(5.0, humMap["a"]!!.toDouble())
                     )
                 )
-                series.setColor(Color.RED)
+                series.setColor(Color.WHITE)
                 series.setDrawDataPoints(true)
                 HgraphView.addSeries(series)
             }
@@ -100,15 +100,30 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
 
             }
         })
+        /*
+               viewModel.plantList.observe(this, Observer { plantList ->
+
+                       var i : Int = 0
+                       for (p: String in plantList) {
+                           if (p != null) {
+
+                               waterlevel.text = viewModel.dataWtList!!.value?.get(i)!!.toString()
+                           }}})
 
 
-        viewModel.waterMap.observe(this, Observer { wm ->
-            if(wm!= null) {
-                watMap = wm
-                waterlevel.text = watMap["a"]
-                Log.d("Water MAP READ BY FRAGMENT PLANT", watMap.toString())
+               viewModel.waterMap.observe(this, Observer { wm ->
+                   if(wm!= null) {
+                       watMap = wm
+                       waterlevel.text = watMap["a"]
+                       Log.d("Water MAP READ BY FRAGMENT PLANT", watMap.toString())
+                   }
+
+               })
+
+                */
+        viewModel.water.observe(this, Observer { w ->
+            if(w!= null){
+                waterlevel.text = w
             }
-
         })
-    }
-}
+    }}

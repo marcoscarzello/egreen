@@ -90,6 +90,9 @@ class MainViewModel : ViewModel () {
     private var mutableWaterMap = MutableLiveData<MutableMap<String, String>>()
     val waterMap: LiveData<MutableMap<String, String>> get() = mutableWaterMap
 
+    private var mutableWater = MutableLiveData<String>()
+    val water: LiveData<String> get() = mutableWater
+
     private var mutableUsername = MutableLiveData<String>()
     val username: LiveData<String> get() = mutableUsername
 
@@ -157,7 +160,7 @@ class MainViewModel : ViewModel () {
         params["last5waterlevel"] = ""
 
 
-        provvisoria["a"] = "50"
+        provvisoria["a"] = "20"
         provvisoria["b"] = "45"
         provvisoria["c"] = "29"
         provvisoria["d"] = "26"
@@ -201,9 +204,26 @@ class MainViewModel : ViewModel () {
 
         })
 
+        mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("params")?.child("last5waterlevel")?.child("a")?.addValueEventListener(object: ValueEventListener{
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var wt = snapshot.getValue<String>()
+                if (wt != null) {
+                    mutableWater.value = (100-(100*wt.toInt()/20)).toString()
+                }
+                //Log.d("Water MAP READ BY VM", waterMap.value.toString())
+                //getWtValues()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+
         mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("params")?.child("last5waterlevel")?.addValueEventListener(object: ValueEventListener{
 
             override fun onDataChange(snapshot: DataSnapshot) {
+
                 mutableWaterMap.value = snapshot.getValue<MutableMap<String, String>>()
                 //Log.d("Water MAP READ BY VM", waterMap.value.toString())
                 //getWtValues()
@@ -309,9 +329,16 @@ class MainViewModel : ViewModel () {
                     if (pianta != null) {
                         mutableRefDB.value?.child("plants")?.child(pianta)?.child("params")?.child("last5waterlevel")?.child("a")?.addValueEventListener(object: ValueEventListener{
                             override fun onDataChange(snapshot: DataSnapshot) {
-                                val wt = snapshot.getValue<String>().toString()
-                                //Log.d("Il wt lev", wt)
-                                mutabledataWtList.value?.add(snapshot.getValue<String>().toString())
+                                if(snapshot.getValue<String>().toString() != ""){
+
+                                        val wt = snapshot.getValue<String>().toString()
+                                    Log.e("LK ", wt)
+                                    if(wt != "null") {
+                                        val n = (100 - (100 * wt.toInt() / 20)).toString()
+                                        //Log.d("Il wt lev", wt)
+                                        mutabledataWtList.value?.add(n)
+                                    }
+                                    }
                             }
                             override fun onCancelled(error: DatabaseError) {
                                 TODO("Not yet implemented")
