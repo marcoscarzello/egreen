@@ -5,29 +5,18 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
-import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
 import kotlinx.android.synthetic.main.main_fragment.*
 import androidx.lifecycle.Observer
 
 import android.os.Handler
-import android.widget.ImageButton
 import android.widget.ImageView
-import androidx.core.graphics.drawable.toIcon
-import androidx.core.net.toUri
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import kotlinx.coroutines.*
-import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.concurrent.schedule
 
 class MainFragment : Fragment(R.layout.main_fragment) {
 
@@ -44,11 +33,15 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val loadingImg = view.findViewById<ImageView>(R.id.loading_img)
+        val loadingTxt = view.findViewById<TextView>(R.id.loading_txt)
+
         val viewModel: MainViewModel by activityViewModels()
         viewModel.getPlants()
         viewModel.getPlantsUri()
         viewModel.getWtValues()
         viewModel.getHmValues()
+
 
 
 
@@ -194,6 +187,9 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 }
                 }
             })
+
+            loadingImg.visibility = View.GONE
+            loadingTxt.visibility = View.GONE
         }, 2000)
 
 

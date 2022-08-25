@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Notification Title"
             val descriptionText = "Notification Description"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply{
                 description = descriptionText
             }
@@ -45,12 +45,12 @@ class MainActivity : AppCompatActivity() {
             notificationManager.createNotificationChannel(channel)
         }
     }
-    private fun sendNotification(){
+    private fun sendNotification(plant: String){
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Pianta innaffiata!")
-            .setContentText("La tua pianta è stata appena innaffiata dal sistema per carenza di umidità.")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentTitle("Low water in $plant!")
+            .setContentText("The water level of your tank is below 25%! Fill it up quickly!")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
         with(NotificationManagerCompat.from(this)) {
             notify(notificationID, builder.build())
         }
@@ -64,10 +64,8 @@ class MainActivity : AppCompatActivity() {
 
         //notifica prova
         createNotificationChannel()
-        val notificaBtn= findViewById<TextView>(R.id.notifica)
-        notificaBtn.setOnClickListener{
-            sendNotification()
-        }
+
+
         //provo darkmode
 
 
@@ -75,6 +73,15 @@ class MainActivity : AppCompatActivity() {
         hideBottomBar(false)
 
         val vm: MainViewModel by viewModels()
+
+        //notifica
+
+        vm.water.observe(this, Observer{ w->
+            if(w.toInt() < 25){
+                sendNotification(vm.getSelectedPlantName())
+            }
+        })
+
         //prendo le info extra che ho messo nell'intent all'accesso nell'app e li assegno a variabili
 
         var userId: String? = ""

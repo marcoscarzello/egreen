@@ -67,5 +67,27 @@
 
     </androidx.viewpager.widget.ViewPager>
 
+    <ImageView
+        android:id="@+id/loading_img"
+        android:layout_width="95dp"
+        android:layout_height="96dp"
+        android:src="@android:drawable/ic_menu_recent_history"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPager"
+        app:layout_constraintEnd_toEndOf="@+id/viewPager"
+        app:layout_constraintStart_toStartOf="@+id/viewPager"
+        app:layout_constraintTop_toTopOf="@+id/viewPager" />
+
+    <TextView
+        android:id="@+id/loading_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="Loading..."
+        app:layout_constraintBottom_toBottomOf="@+id/loading_img"
+        app:layout_constraintEnd_toEndOf="@+id/loading_img"
+        app:layout_constraintStart_toStartOf="@+id/loading_img"
+        app:layout_constraintTop_toTopOf="@+id/loading_img" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
