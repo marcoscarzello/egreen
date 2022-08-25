@@ -36,6 +36,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val profilePic = view.findViewById<ImageView>(R.id.profile_pic)
         val editProfile = view.findViewById<ImageView>(R.id.edit_profile)
 
+
         editProfile.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_accountSettingsFragment)
         }
@@ -45,9 +46,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         viewModel.plantList.observe(this, Observer {plantList ->
             noplants.text = plantList.count().toString()
 
+
+            oxigen.text = (plantList.count() * 2.4).toString()
             //greenscore?
-            var tmp = plantList.count()*100
-            greenscore.text = tmp.toString()
+            var tmp = plantList.count()*100*2.4*0.7
+            greenscore.text = tmp.toInt().toString()
+
+
         })
 
         //oxigen come si misura?

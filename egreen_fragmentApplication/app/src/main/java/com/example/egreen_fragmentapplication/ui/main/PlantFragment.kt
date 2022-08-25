@@ -39,6 +39,7 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         var plantImg = view.findViewById<ImageView>(R.id.plant_image_view)
         viewModel.downPlantPic(this@PlantFragment.requireContext(), plantImg)   //scarico immagine pianta
 
+
         //to delete
         val test = view.findViewById<TextView>(R.id.test_profile)
         test.setOnClickListener{
