@@ -33,17 +33,20 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        requireActivity()
-            .onBackPressedDispatcher
-            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    Log.d(TAG, "Fragment back pressed invoked")
-                    // Do custom work here
-                    findNavController().navigate(R.id.action_networkFragment_to_settingsFragment)
+        //se faccio indietro da network fragment andro sempre in settings fragmnet
+            requireActivity()
+                .onBackPressedDispatcher
+                .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        Log.d(TAG, "Fragment back pressed invoked")
+                        // Do custom work here
+                        findNavController().navigate(R.id.action_networkFragment_to_settingsFragment)
 
+                    }
                 }
-            }
-            )
+                )
+
+
         val connectBtn = view.findViewById<Button>(R.id.connect_button)
         val userCode = view.findViewById<TextView>(R.id.user_code)
 

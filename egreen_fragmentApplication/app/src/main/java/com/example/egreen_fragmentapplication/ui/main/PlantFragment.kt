@@ -1,5 +1,6 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.content.ContentValues
 import android.graphics.Color
 import android.media.Image
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -127,4 +129,19 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
                 waterlevel.text = w
             }
         })
-    }}
+
+        //se faccio indietro da plant fragment andro sempre in garden fragmnet
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    Log.d(ContentValues.TAG, "Fragment back pressed invoked")
+                    // Do custom work here
+                    findNavController().navigate(R.id.action_plantFragment_to_mainFragment)
+
+                }
+            }
+            )
+    }
+
+}

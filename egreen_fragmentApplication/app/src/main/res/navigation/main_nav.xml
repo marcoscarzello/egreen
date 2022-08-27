@@ -150,6 +150,9 @@
         <action
             android:id="@+id/action_plantFragment_to_plantSettingsFragment"
             app:destination="@id/plantSettingsFragment" />
+        <action
+            android:id="@+id/action_plantFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/networkFragment"

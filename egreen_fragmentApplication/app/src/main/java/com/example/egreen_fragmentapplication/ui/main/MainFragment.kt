@@ -1,5 +1,6 @@
 package com.example.egreen_fragmentapplication.ui.main
 
+import android.content.ContentValues
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,7 @@ import androidx.lifecycle.Observer
 import android.os.Handler
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import kotlin.collections.ArrayList
@@ -209,5 +211,18 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
             override fun onPageScrollStateChanged(state: Int) {}
         })
+
+        //se faccio indietro da main fragment
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    Log.d(ContentValues.TAG, "Fragment back pressed invoked")
+                    // Do custom work here
+                    //non succede nulla
+
+                }
+            }
+            )
     }
 }
