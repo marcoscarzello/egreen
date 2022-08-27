@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_addPlantFragment_to_cameraFragment2"
             app:destination="@id/cameraFragment2" />
+        <action
+            android:id="@+id/action_addPlantFragment_to_networkFragment"
+            app:destination="@id/networkFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -152,7 +155,11 @@
         android:id="@+id/networkFragment"
         android:name="com.example.egreen_fragmentapplication.ui.main.NetworkFragment"
         android:label="fragment_network"
-        tools:layout="@layout/fragment_network" />
+        tools:layout="@layout/fragment_network" >
+        <action
+            android:id="@+id/action_networkFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.example.egreen_fragmentapplication.ui.main.ChangePasswordFragment"
