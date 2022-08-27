@@ -278,8 +278,24 @@ class MainViewModel : ViewModel () {
         //return heigth.value.toString()
     }
 
+
+    //setta il valore di dark mode
     open fun setDarkMode(boolean: Boolean){
-        mutableDarkMode.value = boolean
+        mutableRefDB.value?.child("darkMode")?.setValue(boolean)    //salvo su firebase la preferenza utente della dark mode
+    }
+
+    //aggiunge il listener al ramo darkmode dell'utente e ne assegna il valore a mutableDarkMode.
+    open fun getDarkMode(){
+        mutableRefDB.value?.child("darkMode")?.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                mutableDarkMode.value = snapshot.getValue<Boolean>()
+                Log.e("dm from vm", darkMode.value.toString())
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+
     }
 
     open fun getSelectedPlantName() : String {

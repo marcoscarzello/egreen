@@ -114,6 +114,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                                     currentUserDb.child("username")?.setValue(r_username.text.toString())        //metto nel ramo dell'utente creato lo username
                                     currentUserDb.child("email")?.setValue(r_email.text.toString())              //metto nel ramo dell'utente creato la mail
                                     currentUserDb.child("plants")?.setValue("")       //metto nel ramo dell'utente creato la mail
+                                    currentUserDb.child("darkMode")?.setValue(false)    //setto a false la dark mode del nuovo utente
 
                                     Toast.makeText(
                                         this@RegisterFragment.requireContext(),
@@ -128,6 +129,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
  */
 
                                     viewModel.updateCurrentUser()
+                                    viewModel.getDarkMode()
                                     activity?.hideBottomBar(false)
                                     findNavController().navigate(R.id.action_registerFragment_to_mainFragment)
                                 } else {

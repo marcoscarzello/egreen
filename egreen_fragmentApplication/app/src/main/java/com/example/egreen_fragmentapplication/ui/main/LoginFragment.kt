@@ -124,6 +124,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                                     viewModel.updateCurrentUser()
                                     viewModel.getUsername()
+                                    viewModel.getDarkMode()
                                     //viewModel.getPlants() //carica piante
                                     //Log.d("Quali piante sono caricate: ", viewModel.plantList.value.toString())
                                     //viewModel.getWtValues()
@@ -195,6 +196,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             if (!snapshot.child("username").exists()) {
                                 currentUserDb.child("username")?.setValue(firebaseUser.email)
+                                currentUserDb.child("darkMode")?.setValue(false)
                             }
                         }
                         override fun onCancelled(error: DatabaseError) {
@@ -203,6 +205,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                     viewModel.updateCurrentUser()
                     viewModel.getUsername()
+                    viewModel.getDarkMode()
 
                     activity?.hideBottomBar(false)
                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)

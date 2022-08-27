@@ -60,6 +60,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+
+        val vm: MainViewModel by viewModels()
+
         supportActionBar?.hide()
 
         //notifica prova
@@ -67,27 +70,29 @@ class MainActivity : AppCompatActivity() {
 
 
         //provo darkmode
-
+        //vm.setDarkMode(false)
+        //vm.getDarkMode()
 
 
         hideBottomBar(false)
 
-        val vm: MainViewModel by viewModels()
+
 
         vm.darkMode.observe(this, Observer { u ->
             //lo metto nella main activity
-
-            if (u)
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            else
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
+            Log.e("darkmode", u.toString())
+            if(u !== null) {
+                if (u)
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                else
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
         })
         when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
             Configuration.UI_MODE_NIGHT_NO -> {vm.setDarkMode(false)} // Night mode is not active, we're using the light theme
             Configuration.UI_MODE_NIGHT_YES -> {vm.setDarkMode(true)} // Night mode is active, we're using dark theme
         }
-        vm.setDarkMode(false)
+
 
         //notifica
 
