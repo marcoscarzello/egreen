@@ -31,19 +31,21 @@
     <string name="content_description_end_icon" />
     <string name="error_string">Field must not be empty</string>
     <string name="label_username">Username</string>
-    <string name="label_plantName">Plant name</string>
-    <string name="label_plant_type">Plant Type</string>
-    <string name="createplant">Create Plant</string>
-    <string name="deleteplant">Delete plant</string>
+    <string name="label_plantName">Nome pianta</string>
+    <string name="label_plant_type">Tipo pianta</string>
+    <string name="createplant">Crea pianta</string>
+    <string name="deleteplant">Cancella pianta</string>
     <string name="delete_account">CANCELLA ACCOUNT</string>
-    <string name="new_picture">new picture</string>
-    <string name="save_changes">save changes</string>
+    <string name="new_picture">nuova immagine</string>
+    <string name="save_changes">salva modifiche</string>
     <string name="log_out">log out</string>
+    <string name="add_new_plant">Aggiungi nuova pianta</string>
+    <string name="add_a_photo_for_your_new_plant">Aggiungi una foto per la nuova pianta</string>
 
     <string-array name="plant_types">
-        <item>House plant</item>
-        <item>Succulent Plant</item>
-        <item>Flower</item>
-        <item>Aromatic Plant</item>
+        <item>Pianta da appartamento</item>
+        <item>Pianta grassa</item>
+        <item>Fiori</item>
+        <item>Pianta aromatica</item>
     </string-array>
 </resources>

@@ -32,12 +32,15 @@
     <string name="label_username">Username</string>
     <string name="label_plantName">Plant name</string>
     <string name="label_plant_type">Plant Type</string>
-    <string name="createplant">Create Plant</string>
+    <string name="createplant">Create plant</string>
     <string name="deleteplant">Delete plant</string>
     <string name="delete_account">DELETE ACCOUNT</string>
     <string name="new_picture">new picture</string>
     <string name="save_changes">save changes</string>
     <string name="log_out">log out</string>
+    <string name="add_new_plant">Add a new plant</string>
+    <string name="add_a_photo_for_your_new_plant">Add a photo for your new plant</string>
+
 
     <string-array name="plant_types">
         <item>House plant</item>
