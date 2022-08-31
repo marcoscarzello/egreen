@@ -22,14 +22,15 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome!"</string>
-    <string name="invalid_username">Not a valid username</string>
+    <string name="welcome">"Benvenuto!"</string>
+    <string name="invalid_username">Username non valido</string>
     <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="login_failed">"Accesso fallito"</string>
     <string name="label_password">Password</string>
+    <string name="confirm_password">conferma password</string>
     <string name="label_email">Email</string>
     <string name="content_description_end_icon" />
-    <string name="error_string">Field must not be empty</string>
+    <string name="error_string">Il campo non deve essere vuoto</string>
     <string name="label_username">Username</string>
     <string name="label_plantName">Nome pianta</string>
     <string name="label_plant_type">Tipo pianta</string>
@@ -38,9 +39,40 @@
     <string name="delete_account">CANCELLA ACCOUNT</string>
     <string name="new_picture">nuova immagine</string>
     <string name="save_changes">salva modifiche</string>
+    <string name="apply_changes">APPLICA CAMBIAMENTI</string>
     <string name="log_out">log out</string>
     <string name="add_new_plant">Aggiungi nuova pianta</string>
     <string name="add_a_photo_for_your_new_plant">Aggiungi una foto per la nuova pianta</string>
+
+    <string name="least_6">La tua password deve contenere almeno 6 caratteri</string>
+    <string name="att_pass">Password attuale</string>
+    <string name="new_pass">Nuova password</string>
+    <string name="rip_pass">Ripeti nuova password</string>
+    <string name="save">SALVA</string>
+
+    <string name="new_p">NUOVA PIANTA</string>
+    <string name="google">ACCEDI CON GOOGLE</string>
+    <string name="no_acc">Non ho un account</string>
+
+    <string name="connect_plant">Collega la tua pianta</string>
+    <string name="text_connection">Qui puoi collegare il tuo dispositivo fisico al tuo impianto. Tutto ciò di cui hai bisogno è un WiFi domestico a cui connetterti e il nome dell'impianto che hai scelto in precedenza. \n - Accendi il dispositivo fisico\n- Fai clic sul codice utente qui sotto per copiarlo... ti servirà\n- Fai clic sul pulsante in basso e inserisci le credenziali Wi-Fi della tua casa\n- Non dimenticare di aggiungere il nome dell'impianto che si vuole collegare\n- L'impianto può essere già creato o non ancora\n- L'impianto è connesso quando il led blu si spegne- Esci dal browser</string>
+    <string name="connect_device">COLLEGA DISPOSITIVO</string>
+
+    <string name="hum">% umidità</string>
+    <string name="water">% livello dell'acqua</string>
+    <string name="brig">% illuminazione</string>
+    <string name="manage">Modifica impostazioni pianta</string>
+    <string name="oxigen">Ossigeno prodotto giornalmente (L)</string>
+    <string name="plants_">Piante</string>
+
+
+    <string name="camera">Fotocamera</string>
+    <string name="gallery">Galleria</string>
+
+    <string name="settings">Impostazioni</string>
+    <string name="account_settings">Impostazioni profilo</string>
+    <string name="garden_settings">Impostazioni giardino</string>
+    <string name="connection">Connessione</string>
 
     <string-array name="plant_types">
         <item>Pianta da appartamento</item>

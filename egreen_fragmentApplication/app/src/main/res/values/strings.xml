@@ -26,6 +26,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="label_password">Password</string>
+    <string name="confirm_password">confirm password</string>
     <string name="label_email">Email</string>
     <string name="content_description_end_icon" />
     <string name="error_string">Field must not be empty</string>
@@ -37,9 +38,39 @@
     <string name="delete_account">DELETE ACCOUNT</string>
     <string name="new_picture">new picture</string>
     <string name="save_changes">save changes</string>
+    <string name="apply_changes">APPLY CHANGES</string>
     <string name="log_out">log out</string>
     <string name="add_new_plant">Add a new plant</string>
     <string name="add_a_photo_for_your_new_plant">Add a photo for your new plant</string>
+
+    <string name="least_6">Your password must be at least  6 characters</string>
+    <string name="att_pass">Current password</string>
+    <string name="new_pass">New password</string>
+    <string name="rip_pass">New password, again</string>
+    <string name="save">SAVE</string>
+
+    <string name="new_p">NEW PLANT</string>
+    <string name="google">GOOGLE SIGN IN</string>
+    <string name="no_acc">I don\'t have any account</string>
+
+    <string name="connect_plant">Connect your plant</string>
+    <string name="text_connection">Here you can connect your physical device to your plant. All you need is a home WiFi to connect to and the plant name you choose before. \n - Turn on the physical device\n- Click the user code below to copy it...you will need it\n- Click the button below and enter your home's wifi credentials\n- Don't forget to add the name of the plant you want to connect\n- Plant can be already created or not yet\n- The system is connected when the blue led goes off- Exit the browser</string>
+    <string name="connect_device">CONNECT DEVICE</string>
+
+    <string name="hum">% humidity</string>
+    <string name="water">% water level</string>
+    <string name="brig">% of brightness</string>
+    <string name="manage">Manage plant settings</string>
+    <string name="oxigen">Daily oxigen (L)</string>
+    <string name="plants_">Plants</string>
+
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+
+    <string name="settings">Settings</string>
+    <string name="account_settings">Account settings</string>
+    <string name="garden_settings">Garden settings</string>
+    <string name="connection">Connection</string>
 
 
     <string-array name="plant_types">
