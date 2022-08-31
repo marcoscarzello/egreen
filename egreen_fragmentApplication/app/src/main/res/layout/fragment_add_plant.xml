@@ -82,8 +82,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="304dp"
                 android:layout_height="72dp"
-                app:boxStrokeColor="@color/green_700"
-                app:endIconTint="@color/green_700"
+                app:boxStrokeColor="?attr/colorOnPrimary"
+                app:endIconTint="?attr/colorOnPrimary"
                 app:layout_constraintBottom_toTopOf="@+id/plant_type_input"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -98,8 +98,8 @@
                     android:imeOptions="actionNext"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:textColor="@color/green_700"
-                    android:textColorHighlight="@color/green_700" />
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textColorHighlight="?attr/colorOnPrimary" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,7 +108,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="304dp"
                 android:layout_height="72dp"
-                app:boxStrokeColor="@color/green_700"
+                app:boxStrokeColor="?attr/colorOnPrimary"
+                app:endIconMode="dropdown_menu"
+                app:endIconTint="?attr/colorOnPrimary"
                 app:layout_constraintBottom_toTopOf="@+id/save_Button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -121,8 +123,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="none"
                     android:text="@string/label_plant_type"
-                    android:textColor="@color/green_700"
-                    android:textColorHighlight="@color/green_700" />
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textColorHighlight="?attr/colorOnPrimary" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

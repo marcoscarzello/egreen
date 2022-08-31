@@ -4,10 +4,10 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/green_200</item>
         <item name="colorPrimaryVariant">@color/green_700</item>
-        <item name="colorOnPrimary">@color/blue</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/green_700</item>
-        <item name="colorSecondaryVariant">@color/green_700</item>
+        <item name="colorSecondaryVariant">@color/brown</item>
         <item name="colorOnSecondary">@color/blue</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
