@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             notificationManager.createNotificationChannel(channel)
         }
     }
-    private fun sendNotification(plant: String){
+    fun sendNotification(plant: String){
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle("Low water in $plant!")
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
             Configuration.UI_MODE_NIGHT_YES -> {vm.setDarkMode(true)} // Night mode is active, we're using dark theme
         }
 
-
+/*
         //notifica
 
         vm.water.observe(this, Observer{ w->
@@ -94,6 +94,8 @@ class MainActivity : AppCompatActivity() {
                 sendNotification(vm.getSelectedPlantName())
             }
         })
+
+ */
 
         //prendo le info extra che ho messo nell'intent all'accesso nell'app e li assegno a variabili
 

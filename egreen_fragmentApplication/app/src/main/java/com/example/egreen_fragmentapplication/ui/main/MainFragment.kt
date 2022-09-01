@@ -17,6 +17,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.viewpager.widget.ViewPager
+import com.example.egreen_fragmentapplication.MainActivity
 import com.google.android.material.tabs.TabLayout
 import kotlin.collections.ArrayList
 
@@ -224,5 +225,30 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 }
             }
             )
+
+
+        //notifica
+
+            Log.e("plantlist : ", viewModel.plantList.value.toString())
+            Log.e("plantWtlist : ", viewModel.dataWtList.value.toString())
+            viewModel.plantList.observe(this, Observer { list ->
+                var j : Int = 0
+                for (w: String in list) {
+                    if(w != null) {
+                        if (viewModel.dataWtList!!.value?.get(j)!!.toInt() < 25) {
+                            (activity as MainActivity?)?.sendNotification(
+                                (viewModel.plantList!!.value?.get(
+                                    j
+                                ).toString())
+                            )
+                        }
+                        j++
+                    }
+                }
+            })
+
+
+
+
     }
 }

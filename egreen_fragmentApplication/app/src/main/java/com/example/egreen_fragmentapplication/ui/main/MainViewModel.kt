@@ -347,8 +347,8 @@ class MainViewModel : ViewModel () {
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 if(snapshot.getValue<String>().toString() != ""){
 
-                                        val wt = snapshot.getValue<String>().toString()
-                                    Log.e("LK ", wt)
+                                    val wt = snapshot.getValue<String>().toString()
+                                    Log.e("aggiungo a wt:  ", wt)
                                     if(wt != "null") {
                                         val n = (100 - (100 * wt.toInt() / 20)).toString()
                                         //Log.d("Il wt lev", wt)

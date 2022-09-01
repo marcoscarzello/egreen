@@ -46,7 +46,8 @@ class CardAdapter(private val context: Context?, private val CardArrayList: Arra
         view.plantName.text = plantName
 
         if(plantName != "New Plant"){
-            Picasso.with(context).load(image.toUri()).rotate(90F).into(view.bannerIv)
+            Picasso.with(context).load(image.toUri()).into(view.bannerIv)
+            //Picasso.with(context).load(image.toUri()).rotate(90F).into(view.bannerIv)
         }
         else
             view.bannerIv.setImageResource(R.drawable.plant_placeholder)
