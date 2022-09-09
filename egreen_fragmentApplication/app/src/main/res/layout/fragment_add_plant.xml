@@ -5,7 +5,7 @@
     android:id="@+id/constrainLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green_200">
+    android:background="@color/main_theme">
 
     <ImageView
         android:id="@+id/back"
@@ -22,10 +22,12 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/add_new_plant"
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@color/green_700"
+        android:textColor="@color/white"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/plant_info_container"
@@ -37,12 +39,14 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/plant_info_container"
-        android:layout_width="382dp"
+        android:layout_width="352dp"
         android:layout_height="582dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="@color/white"
         app:cardCornerRadius="60dp"
+
+        app:cardElevation="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="?attr/colorSecondaryVariant"
         app:cardCornerRadius="22dp"
+        app:cardElevation="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,6 +33,7 @@
                 android:layout_margin="10dp"
                 android:padding="8dp"
                 android:text="Genoveffa"
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -97,12 +99,12 @@
                         android:id="@+id/water_level"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="82dp"
                         android:text="55"
                         android:textColor="?attr/colorOnPrimary"
                         android:textSize="35dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/drop"
+                        app:layout_constraintStart_toStartOf="@+id/drop"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView

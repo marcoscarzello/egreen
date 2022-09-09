@@ -54,6 +54,10 @@
     <string name="google">ACCEDI CON GOOGLE</string>
     <string name="no_acc">Non ho un account</string>
 
+    <string name="garden">Giardino</string>
+    <string name="prof">Profilo</string>
+    <string name="sett">Impostazioni</string>
+
     <string name="connect_plant">Collega la tua pianta</string>
     <string name="text_connection">Qui puoi collegare il tuo dispositivo fisico al tuo impianto. Tutto ciò di cui hai bisogno è un WiFi domestico a cui connetterti e il nome dell\'impianto che hai scelto in precedenza. \n - Accendi il dispositivo fisico\n- Fai clic sul codice utente qui sotto per copiarlo... ti servirà\n- Fai clic sul pulsante in basso e inserisci le credenziali Wi-Fi della tua casa\n- Non dimenticare di aggiungere il nome dell\'impianto che si vuole collegare\n- L\'impianto può essere già creato o non ancora\n- L\'impianto è connesso quando il led blu si spegne- Esci dal browser</string>
     <string name="connect_device">COLLEGA DISPOSITIVO</string>

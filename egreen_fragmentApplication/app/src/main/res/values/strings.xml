@@ -53,6 +53,11 @@
     <string name="google">GOOGLE SIGN IN</string>
     <string name="no_acc">I don\'t have any account</string>
 
+    <string name="garden">Garden</string>
+    <string name="prof">Profile</string>
+    <string name="sett">Settings</string>
+
+
     <string name="connect_plant">Connect your plant</string>
     <string name="text_connection">Here you can connect your physical device to your plant. All you need is a home WiFi to connect to and the plant name you choose before. \n - Turn on the physical device\n- Click the user code below to copy it...you will need it\n- Click the button below and enter your home\'s wifi credentials\n- Don\'t forget to add the name of the plant you want to connect\n- Plant can be already created or not yet\n- The system is connected when the blue led goes off- Exit the browser</string>
     <string name="connect_device">CONNECT DEVICE</string>
