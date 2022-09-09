@@ -24,6 +24,7 @@
         android:layout_marginEnd="16dp"
         android:background="@color/white"
         app:cardCornerRadius="40dp"
+        app:cardElevation="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,13 +81,14 @@
                 android:id="@+id/profile_pic_settings"
                 android:layout_width="95dp"
                 android:layout_height="89dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.665"
+                app:layout_constraintHorizontal_bias="0.684"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.046"
+                app:layout_constraintVertical_bias="0.043"
                 tools:src="@tools:sample/avatars" />
 
             <Button
@@ -94,6 +96,7 @@
                 android:layout_width="88dp"
                 android:layout_height="52dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="20dp"
                 android:text="@string/new_picture"
                 android:textSize="10dp"
