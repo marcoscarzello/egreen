@@ -141,6 +141,7 @@
                 android:id="@+id/profile_pic"
                 android:layout_width="161dp"
                 android:layout_height="159dp"
+                android:elevation="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView3"

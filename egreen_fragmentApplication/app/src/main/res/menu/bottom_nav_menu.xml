@@ -4,16 +4,16 @@
 
     <item
         android:id="@+id/miHome"
-        android:title="Home"
-        android:icon="@drawable/settings" />
+        android:icon="@drawable/plants"
+        android:title="@string/garden" />
 
     <item
         android:id="@+id/miProfile"
-        android:title="Profile"
-        android:icon="@drawable/ic_profile" />
+        android:icon="@drawable/profile"
+        android:title="@string/prof" />
     <item
         android:id="@+id/miSettings"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings" />
+        android:icon="@drawable/settings"
+        android:title="@string/sett" />
 
 </menu>

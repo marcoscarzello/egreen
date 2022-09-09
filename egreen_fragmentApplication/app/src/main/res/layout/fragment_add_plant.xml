@@ -140,6 +140,7 @@
                 android:layout_gravity="center"
                 android:text="@string/createplant"
                 android:textColor="@color/white"
+                android:backgroundTint="?attr/colorButtonNormal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -164,8 +164,7 @@
         android:id="@+id/plant_image_view"
         android:layout_width="287dp"
         android:layout_height="259dp"
-
-
+        android:elevation="20dp"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
