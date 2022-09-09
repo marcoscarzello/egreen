@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green_200"
+    android:background="@color/main_theme"
     tools:context=".ui.main.GardenSettingsFragment">
 
     <androidx.cardview.widget.CardView
@@ -92,12 +92,11 @@
         android:layout_width="363dp"
         android:layout_height="61dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
         android:text="@string/garden_settings"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@color/green_700"
+        android:textColor="@color/white"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/newplantcontainer"
@@ -105,7 +104,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.41000003"
+        app:layout_constraintVertical_bias="0.50"
         tools:ignore="NotSibling" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
