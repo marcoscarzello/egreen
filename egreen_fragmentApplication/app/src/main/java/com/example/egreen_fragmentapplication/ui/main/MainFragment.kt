@@ -229,6 +229,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         //notifica
 
+        /*
             Log.e("plantlist : ", viewModel.plantList.value.toString())
             Log.e("plantWtlist : ", viewModel.dataWtList.value.toString())
             viewModel.plantList.observe(this, Observer { list ->
@@ -247,6 +248,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 }
             })
 
+
+         */
 
 
 

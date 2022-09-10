@@ -63,6 +63,11 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
             }
         }
 
+        saveBtn.setOnClickListener{
+            viewModel.setUsername(etUsername.text.toString())
+            etUsername.clearFocus()
+        }
+
 
         //click su password
 

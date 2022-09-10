@@ -22,7 +22,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    //prova notifica
+    //NOTIFICA NON LA USIAMOOOOO
     private val CHANNEL_ID = "channel_id_example_01"
     private val notificationID = 101
 
