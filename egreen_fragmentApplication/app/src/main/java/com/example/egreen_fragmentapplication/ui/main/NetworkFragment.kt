@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.egreen_fragmentapplication.R
 import android.content.Intent
 import android.net.Uri
+import android.provider.Settings
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
@@ -46,6 +47,11 @@ class NetworkFragment : Fragment(R.layout.fragment_network) {
                 }
                 )
 
+        val wifi = view.findViewById<Button>(R.id.wifi_btn)
+        wifi.setOnClickListener {
+
+            startActivity( Intent(Settings.ACTION_WIFI_SETTINGS))
+        }
 
         val connectBtn = view.findViewById<Button>(R.id.connect_button)
         val userCode = view.findViewById<TextView>(R.id.user_code)

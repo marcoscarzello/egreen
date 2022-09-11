@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">egreen_fragmentApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -59,8 +59,13 @@
     <string name="sett">Impostazioni</string>
 
     <string name="connect_plant">Collega la tua pianta</string>
-    <string name="text_connection">Qui puoi collegare il tuo dispositivo fisico al tuo impianto. Tutto ciò di cui hai bisogno è un WiFi domestico a cui connetterti e il nome dell\'impianto che hai scelto in precedenza. \n - Accendi il dispositivo fisico\n- Fai clic sul codice utente qui sotto per copiarlo... ti servirà\n- Fai clic sul pulsante in basso e inserisci le credenziali Wi-Fi della tua casa\n- Non dimenticare di aggiungere il nome dell\'impianto che si vuole collegare\n- L\'impianto può essere già creato o non ancora\n- L\'impianto è connesso quando il led blu si spegne- Esci dal browser</string>
-    <string name="connect_device">COLLEGA DISPOSITIVO</string>
+    <string name="text_connection">Qui puoi collegare il tuo dispositivo fisico al tuo impianto. Tutto ciò di cui hai bisogno è un WiFi domestico a cui connetterti e il nome dell\'impianto che hai scelto in precedenza.</string>
+    <string name="text_connection1">1. Turn on the physical device</string>
+    <string name="text_connection2" tools:ignore="StringEscaping">2. Connettiti a schedina</string>
+    <string name="text_connection3">3.Clicca sul codice user qua sotto per copiarlo...ti servirà </string>
+    <string name="text_connection4">4. Ricorda il nome della pianta che vuoi connettere (Se non sei sicuro, controlla nel giardino)</string>
+    <string name="text_connection6">Quando si spegnerà il led blu, sarai connesso.</string>
+    <string name="connect_device">5. COLLEGA DISPOSITIVO</string>
 
     <string name="hum">% umidità</string>
     <string name="water">% livello dell\'acqua</string>

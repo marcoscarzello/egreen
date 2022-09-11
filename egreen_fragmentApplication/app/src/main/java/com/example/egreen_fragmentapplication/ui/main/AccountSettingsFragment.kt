@@ -69,49 +69,6 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
         }
 
 
-        //click su password
-
-        /*
-        etPassword.setOnFocusChangeListener { v, hasFocus ->
-            if(hasFocus) {
-                val dialogBuilder =
-                    AlertDialog.Builder(this@AccountSettingsFragment.requireContext())
-
-                // set message of alert dialog
-                dialogBuilder.setMessage("Do you want to change your password?")
-                    // if the dialog is cancelable
-                    .setCancelable(false)
-                    // positive button text and action
-                    .setPositiveButton(
-                        "Yes, please",
-                        DialogInterface.OnClickListener { dialog, id ->
-
-                            //qua vorrò andare nel fragment di change password
-                            findNavController().navigate(R.id.action_accountSettingsFragment_to_changePasswordFragment)
-
-                        })
-                    // negative button text and action
-                    .setNegativeButton("My mistake", DialogInterface.OnClickListener { dialog, id ->
-                        dialog.cancel()
-
-                        //qua bisognerebbe togliere il focus dal text password
-                        v.clearFocus()
-
-                    })
-
-                // create dialog box
-                val alert = dialogBuilder.create()
-                // set title for alert dialog box
-                alert.setTitle("Your Password")
-                // show alert dialog
-                alert.show()
-                //viewModel.deleteAccount()
-            }
-        }
-
-         */
-
-
         //LOGOUT
         logOut.setOnClickListener {
             //logout from app
@@ -131,16 +88,6 @@ class AccountSettingsFragment : Fragment(R.layout.fragment_account_settings) {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
-
-        //TO GARDEN SETTINGS
-        /*
-        gardenSettings.setOnClickListener{
-            findNavController().navigate(R.id.action_accountSettingsFragment_to_gardenSettingsFragment)
-        }
-
-         */
-
-
 
 
         //DELETE ACCOUNT

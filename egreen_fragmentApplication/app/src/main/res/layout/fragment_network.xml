@@ -10,82 +10,147 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
         android:text="@string/connect_plant"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="30dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/plant_info_container"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="267dp"
+        android:layout_height="73dp"
+        android:gravity="top"
+        android:text="@string/text_connection"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/plant_info_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/plant_info_container"
-        android:layout_width="364dp"
-        android:layout_height="597dp"
+        android:layout_width="335dp"
+        android:layout_height="497dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="38dp"
         android:background="@color/white"
         app:cardCornerRadius="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/connect_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="?attr/colorButtonNormal"
-                android:text="@string/connect_device"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4"
-                app:layout_constraintVertical_bias="0.52" />
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="0dp"
+                android:id="@+id/textView11"
+                style="@style/TextAppearance.AppCompat.Button"
+                android:layout_width="226dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:gravity="top"
-                android:text="@string/text_connection"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/text_connection1"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/wifi_btn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.26" />
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <Button
+                android:id="@+id/wifi_btn"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_connection2"
+                android:textAlignment="textStart"
+                app:layout_constraintBottom_toTopOf="@+id/textView12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <TextView
+                android:id="@+id/textView12"
+                style="@style/TextAppearance.AppCompat.Button"
+                android:layout_width="226dp"
+                android:layout_height="33dp"
+                android:text="@string/text_connection3"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/user_code"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/wifi_btn" />
 
             <TextView
                 android:id="@+id/user_code"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="21dp"
-                android:layout_marginBottom="12dp"
+                android:layout_height="27dp"
+                android:minHeight="48dp"
                 android:text="TextView"
+                android:textAlignment="center"
                 android:textColor="@color/green_700"
                 android:textIsSelectable="true"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/textView13"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+            <TextView
+                android:id="@+id/textView13"
+                style="@style/TextAppearance.AppCompat.Button"
+                android:layout_width="226dp"
+                android:layout_height="67dp"
+                android:text="@string/text_connection4"
+                android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@+id/connect_button"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/user_code" />
+
+            <Button
+                android:id="@+id/connect_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorButtonNormal"
+                android:text="@string/connect_device"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/textView14"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+            <TextView
+                android:id="@+id/textView14"
+                style="@style/TextAppearance.AppCompat.Button"
+                android:layout_width="229dp"
+                android:layout_height="46dp"
+                android:text="@string/text_connection6"
+                android:textAlignment="center"
+                android:textColor="#2A3A97"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/connect_button" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

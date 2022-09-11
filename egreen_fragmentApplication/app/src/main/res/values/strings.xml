@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">egreen_fragmentApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -59,8 +59,13 @@
 
 
     <string name="connect_plant">Connect your plant</string>
-    <string name="text_connection">Here you can connect your physical device to your plant. All you need is a home WiFi to connect to and the plant name you choose before. \n - Turn on the physical device\n- Click the user code below to copy it...you will need it\n- Click the button below and enter your home\'s wifi credentials\n- Don\'t forget to add the name of the plant you want to connect\n- Plant can be already created or not yet\n- The system is connected when the blue led goes off- Exit the browser</string>
-    <string name="connect_device">CONNECT DEVICE</string>
+    <string name="text_connection">Here you can connect your physical device to your plant. All you need is a home WiFi to connect to and the plant name you choose before.</string>
+    <string name="text_connection1">1. Turn on the physical device</string>
+    <string name="text_connection2">2. Connect to schedina</string>
+    <string name="text_connection3">3. Click the user code below to copy it... you will need it</string>
+    <string name="text_connection4">4. Keep in mind the name of the plant you want to connect to. (If you\'re not sure, check it in the garden)</string>
+    <string name="text_connection6">When the blue led goes off the system will be connected.</string>
+    <string name="connect_device">5. CONNECT DEVICE</string>
 
     <string name="hum">% humidity</string>
     <string name="water">% water level</string>

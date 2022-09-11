@@ -33,17 +33,14 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
     val viewModel: MainViewModel by activityViewModels()
 
     private var _binding: FragmentAddPlantBinding?= null
-    private val binding get() = _binding!!
 
     private var mSpinner: Spinner? = null
     private var spinnerResult: String? = null
     private var mActivityCallback: ActivityInterface? = null
-    var result: TextView? = null
     private var spinnerHeight: Spinner? = null
     var spinnerHeightResult:String? = null
     var plantName: String? = null
     var plantHeight: String? = null
-    var plantType : TextView? = null
 
     var selectedValue: String? = ""
 
@@ -80,8 +77,6 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
         val plantTypeArray = resources.getStringArray(R.array.plant_types)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, plantTypeArray)
 
-        //(plantType?.editableText as? AutoCompleteTextView)?.setAdapter(arrayAdapter)
-
         val autocompleteTV = view.findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
         // set adapter to the autocomplete tv to the arrayAdapter
         autocompleteTV.setAdapter(arrayAdapter)
@@ -92,10 +87,8 @@ class addPlantFragment : Fragment(R.layout.fragment_add_plant) {
             }
 
 
+        viewModel.changeImgCalledFrom(1)
         val viewModel: MainViewModel by activityViewModels()
-        //result = view.findViewById(R.id.result)
-        //spinnerHeight = view.findViewById(R.id.plant_height_spinner)
-        //val heightEditText = view.findViewById(R.id.Plant_height) as EditText
         val nameEditText = view.findViewById(R.id.plant_name) as EditText
         var photoImage = view.findViewById<ImageView>(R.id.plant_settings_image)
 

@@ -674,22 +674,4 @@ class MainViewModel : ViewModel () {
          */
     }
 
-/*D
-    private val userData: MutableLiveData<User> by lazy {
-        MutableLiveData<User>().also {
-            loadUserData()
-        }
-    }
-
-    fun getUserData(): LiveData<User> {
-        return userData
-    }
-
-    private fun loadUserData() {
-        var myDB = Firebase.database.reference
-        val tmp =  FirebaseAuth.getInstance().currentUser?.uid.toString()
-        //userData.email = myDB.child("users").child(tmp).child("email")
-    }
-
- */
 }
