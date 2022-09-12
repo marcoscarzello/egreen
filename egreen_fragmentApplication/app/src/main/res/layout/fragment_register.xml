@@ -5,7 +5,7 @@
     android:id="@+id/googlebtnReg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green_200"
+    android:background="?attr/colorSurface"
     tools:context="ui.main.RegisterFragment">
 
     <Button
@@ -28,9 +28,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="156dp"
-        android:backgroundTint="@color/green_700"
+        android:backgroundTint="?attr/colorButtonNormal"
         android:fontFamily="@font/ropa_sans"
         android:text="sign up"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:typeface="monospace"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -155,7 +156,7 @@
         android:gravity="fill"
         android:text="Register"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@color/green_700"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
