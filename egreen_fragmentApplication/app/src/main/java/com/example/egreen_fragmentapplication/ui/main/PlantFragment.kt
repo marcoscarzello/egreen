@@ -2,11 +2,9 @@ package com.example.egreen_fragmentapplication.ui.main
 
 import android.content.ContentValues
 import android.graphics.Color
-import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
@@ -43,7 +41,7 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
 
 
         //to delete
-        val test = view.findViewById<TextView>(R.id.test_profile)
+        val test = view.findViewById<TextView>(R.id.test_profile111)
         test.setOnClickListener{
             findNavController().navigate(R.id.action_plantFragment_to_plantSettingsFragment)
         }
