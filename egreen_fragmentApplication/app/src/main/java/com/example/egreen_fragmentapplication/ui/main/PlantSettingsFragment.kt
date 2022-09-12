@@ -85,11 +85,11 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
         deletePlantBtn.setOnClickListener {
             val dialogBuilder = AlertDialog.Builder(this@PlantSettingsFragment.requireContext())
             // set message of alert dialog
-            dialogBuilder.setMessage("This plant will be deleted from the system")
+            dialogBuilder.setMessage(R.string.plant_delete)
                 // if the dialog is cancelable
                 .setCancelable(false)
                 // positive button text and action
-                .setPositiveButton("Yes", DialogInterface.OnClickListener {
+                .setPositiveButton(R.string.yes, DialogInterface.OnClickListener {
                         dialog, id ->
 
 
@@ -100,7 +100,7 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
 
                     Toast.makeText(
                         this@PlantSettingsFragment.requireContext(),
-                        "Plant deleted",
+                        R.string.pianta_cancellata,
                         Toast.LENGTH_SHORT
                     ).show()
 
@@ -108,7 +108,7 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
 
                 })
                 // negative button text and action
-                .setNegativeButton("My mistake", DialogInterface.OnClickListener {
+                .setNegativeButton(R.string.mistake, DialogInterface.OnClickListener {
                         dialog, id -> dialog.cancel()
                 })
 
