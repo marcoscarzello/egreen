@@ -60,7 +60,7 @@
 
     <string name="connect_plant">Collega la tua pianta</string>
     <string name="text_connection">Qui puoi collegare il tuo dispositivo fisico al tuo impianto. Tutto ciò di cui hai bisogno è un WiFi domestico a cui connetterti e il nome dell\'impianto che hai scelto in precedenza.</string>
-    <string name="text_connection1">1. Turn on the physical device</string>
+    <string name="text_connection1">1. Collega alla corrente il dispositivo</string>
     <string name="text_connection2" tools:ignore="StringEscaping">2. Connettiti a schedina</string>
     <string name="text_connection3">3.Clicca sul codice user qua sotto per copiarlo...ti servirà </string>
     <string name="text_connection4">4. Ricorda il nome della pianta che vuoi connettere (Se non sei sicuro, controlla nel giardino)</string>

@@ -129,6 +129,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
  */
 
                                     viewModel.updateCurrentUser()
+                                    viewModel.getUsername()
                                     viewModel.getDarkMode()
                                     activity?.hideBottomBar(false)
                                     findNavController().navigate(R.id.action_registerFragment_to_mainFragment)

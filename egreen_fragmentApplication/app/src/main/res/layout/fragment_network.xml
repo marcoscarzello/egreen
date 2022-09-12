@@ -86,7 +86,7 @@
                 android:id="@+id/textView12"
                 style="@style/TextAppearance.AppCompat.Button"
                 android:layout_width="226dp"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:text="@string/text_connection3"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@+id/user_code"

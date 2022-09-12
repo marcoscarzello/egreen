@@ -72,7 +72,7 @@ class GardenSettingsFragment : Fragment(R.layout.fragment_garden_settings) {
 
 
             for (item: Button in plants){
-                when (item.text){
+                when (item.text.toString().toLowerCase()){
                     "new plant" ->
                         item.setOnClickListener(){
                             viewModel.resetTmpPlantPath()
