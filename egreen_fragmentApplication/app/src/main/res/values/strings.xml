@@ -82,6 +82,8 @@
     <string name="garden_settings">Garden settings</string>
     <string name="connection">Connection</string>
 
+    <string name="low_water">Low water in</string>
+
     <string name="avviso_nome">Sorry, you can\'t change my name:(</string>
 
     <string-array name="plant_types">

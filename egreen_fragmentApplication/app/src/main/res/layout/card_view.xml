@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="?attr/colorSecondaryVariant"
         app:cardCornerRadius="22dp"
-        app:cardElevation="40dp"
+        app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,10 +102,12 @@
                         android:text="55"
                         android:textColor="?attr/colorOnPrimary"
                         android:textSize="35dp"
+                        android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/drop"
                         app:layout_constraintStart_toStartOf="@+id/drop"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="invisible" />
 
                     <TextView
                         android:id="@+id/oxigen"

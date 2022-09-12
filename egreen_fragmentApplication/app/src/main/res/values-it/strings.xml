@@ -83,6 +83,8 @@
     <string name="garden_settings">Impostazioni giardino</string>
     <string name="connection">Connessione</string>
 
+    <string name="low_water">Poca acqua in</string>
+
     <string name="avviso_nome">Mi spiace, non mi puoi cambiare nome:(</string>
 
     <string-array name="plant_types">
