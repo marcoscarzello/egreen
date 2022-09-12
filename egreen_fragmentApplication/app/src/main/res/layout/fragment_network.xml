@@ -20,12 +20,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="267dp"
-        android:layout_height="73dp"
+        android:layout_width="322dp"
+        android:layout_height="92dp"
         android:gravity="top"
         android:text="@string/text_connection"
         android:textAlignment="center"
@@ -39,10 +40,9 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/plant_info_container"
-        android:layout_width="335dp"
-        android:layout_height="497dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="38dp"
+        android:layout_width="336dp"
+        android:layout_height="427dp"
+        android:layout_marginBottom="46dp"
         android:background="@color/white"
         app:cardCornerRadius="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -102,7 +102,7 @@
                 android:minHeight="48dp"
                 android:text="TextView"
                 android:textAlignment="center"
-                android:textColor="@color/green_700"
+                android:textColor="?attr/colorOnSecondary"
                 android:textIsSelectable="true"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView13"
@@ -144,7 +144,7 @@
                 android:layout_height="46dp"
                 android:text="@string/text_connection6"
                 android:textAlignment="center"
-                android:textColor="#2A3A97"
+                android:textColor="?attr/colorPrimaryVariant"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
