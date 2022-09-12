@@ -42,7 +42,7 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         val humArr = arrayOf("0", "0", "0", "0", "0")
 
         //to delete
-        val test = view.findViewById<TextView>(R.id.test_profile)
+        val test = view.findViewById<ImageView>(R.id.test_profile)
         test.setOnClickListener{
             findNavController().navigate(R.id.action_plantFragment_to_plantSettingsFragment)
         }

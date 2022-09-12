@@ -50,10 +50,25 @@
                 android:id="@+id/plant_settings_image"
                 android:layout_width="258dp"
                 android:layout_height="223dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:src="@drawable/ic_plant_photo"
-                app:layout_constraintBottom_toTopOf="@+id/save_Button"
+                app:layout_constraintBottom_toTopOf="@+id/plant_name_input"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.06999999" />
+
+            <Button
+                android:id="@+id/save_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorButtonNormal"
+                android:text="@string/apply_changes"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/deletePlantButton"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/plant_type_input" />
 
@@ -62,9 +77,10 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="232dp"
                 android:layout_height="56dp"
+                android:layout_marginTop="32dp"
                 app:boxStrokeColor="@color/green_700"
                 app:endIconTint="@color/green_700"
-                app:layout_constraintBottom_toTopOf="@+id/plant_type_input"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,9 +90,9 @@
                     android:id="@+id/plant_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/label_plantName"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
+                    android:hint="@string/label_plantName"
                     android:maxLines="1"
                     android:textColor="?attr/colorOnPrimary"
                     android:textColorHighlight="@color/green_700" />
@@ -88,12 +104,14 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="232dp"
                 android:layout_height="56dp"
+                android:layout_marginTop="8dp"
                 app:boxStrokeColor="@color/green_700"
-                app:layout_constraintBottom_toTopOf="@+id/plant_settings_image"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/plant_name_input">
+                app:layout_constraintTop_toBottomOf="@+id/plant_name_input"
+                app:layout_constraintVertical_bias="0.0">
 
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTextView"
@@ -108,30 +126,20 @@
 
 
             <Button
-                android:id="@+id/save_Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/apply_changes"
-                android:textColor="@color/white"
-                android:backgroundTint="?attr/colorButtonNormal"
-                app:layout_constraintBottom_toTopOf="@+id/deletePlantButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/plant_settings_image" />
-
-            <Button
                 android:id="@+id/deletePlantButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="118dp"
+                android:layout_height="33dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/empty"
                 android:text="@string/deleteplant"
-                android:textSize="8sp"
-                android:textColor="@color/white"
-                android:backgroundTint="?attr/colorButtonNormal"
+                android:textColor="#D30000"
+                android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.91"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/save_Button" />
+                app:layout_constraintTop_toBottomOf="@+id/plant_type_input"
+                app:layout_constraintVertical_bias="0.98" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

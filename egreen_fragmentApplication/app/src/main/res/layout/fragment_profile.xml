@@ -51,15 +51,17 @@
 
             <TextView
                 android:id="@+id/no_plants"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:text="TextView"
-                android:textSize="24sp"
+                android:textAlignment="center"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintVertical_bias="0.74" />
 
             <TextView
                 android:id="@+id/textView"
@@ -67,11 +69,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/plants_"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.307" />
+                app:layout_constraintVertical_bias="0.19" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -93,11 +96,12 @@
 
             <TextView
                 android:id="@+id/oxigen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="8dp"
                 android:text="TextView"
-                android:textSize="24sp"
+                android:textAlignment="center"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.509"
@@ -107,16 +111,17 @@
 
             <TextView
                 android:id="@+id/textView222"
-                android:layout_width="104dp"
-                android:layout_height="59dp"
+                android:layout_width="131dp"
+                android:layout_height="63dp"
                 android:text="@string/oxigen"
                 android:textAlignment="center"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.307" />
+                app:layout_constraintVertical_bias="0.19" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -184,6 +189,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="Green Score"
                 android:textSize="22sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/greenScore"
                 app:layout_constraintStart_toStartOf="parent" />
 
