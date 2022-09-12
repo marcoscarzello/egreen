@@ -59,6 +59,13 @@ class PlantSettingsFragment : Fragment(R.layout.fragment_plant_settings) {
         viewModel.downPlantPic(requireContext(), plantImg)
 
         plantNameText.text = viewModel.getSelectedPlantName()
+        plantNameText.setOnClickListener {
+            Toast.makeText(
+                this@PlantSettingsFragment.requireContext(),
+                R.string.avviso_nome,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
         viewModel.getSelectedPlantHeigth()
         viewModel.getSelectedPlantType()
         //viewModel.heigth.observe(this, Observer { h -> plantHeigthEditText.setText(h) })
