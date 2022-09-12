@@ -96,9 +96,9 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
                 brightness.text = ll    //valore luminosità %  a schermo
 
                 //immagine in funzione della luminosità
-                if (ll.toInt() <= 35 ) brightImg.setImageResource(R.drawable.bright_0)
-                else if (ll.toInt() < 70 ) brightImg.setImageResource(R.drawable.bright_50)
-                else if (ll.toInt() < 100 ) brightImg.setImageResource(R.drawable.bright_100)
+                if (ll.toInt() <= 35 ) brightImg.setImageResource(R.drawable.brightness0)
+                else if (ll.toInt() < 70 ) brightImg.setImageResource(R.drawable.brightness50)
+                else if (ll.toInt() < 100 ) brightImg.setImageResource(R.drawable.brightness100)
 
 
             }
