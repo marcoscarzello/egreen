@@ -41,7 +41,7 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
 
 
         //to delete
-        val test = view.findViewById<TextView>(R.id.test_profile)
+        val test = view.findViewById<ImageView>(R.id.test_profile)
         test.setOnClickListener{
             findNavController().navigate(R.id.action_plantFragment_to_plantSettingsFragment)
         }
