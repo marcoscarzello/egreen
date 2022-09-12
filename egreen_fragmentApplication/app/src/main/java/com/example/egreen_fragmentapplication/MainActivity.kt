@@ -41,8 +41,8 @@ class MainActivity : AppCompatActivity() {
     fun sendNotification(plant: String){
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Low water in $plant!")
-            .setContentText("The water level of your tank is below 25%! Fill it up quickly!")
+            .setContentTitle(R.string.low_water.toString()+"$plant!")
+            .setContentText(R.string.water_level.toString())
             .setPriority(NotificationCompat.PRIORITY_HIGH)
         with(NotificationManagerCompat.from(this)) {
             notify(notificationID, builder.build())
