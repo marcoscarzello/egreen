@@ -173,7 +173,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:src="@drawable/plant_placeholder" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/bright_img"
         android:layout_width="98dp"
         android:layout_height="86dp"

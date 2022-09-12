@@ -39,6 +39,7 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         var plantImg = view.findViewById<ImageView>(R.id.plant_image_view)
         viewModel.downPlantPic(this@PlantFragment.requireContext(), plantImg)   //scarico immagine pianta
 
+        val humArr = arrayOf("0", "0", "0", "0", "0")
 
         //to delete
         val test = view.findViewById<TextView>(R.id.test_profile)
@@ -68,18 +69,37 @@ class PlantFragment : Fragment(R.layout.fragment_plant) {
         viewModel.humidityMap.observe(this, Observer { hm ->
             if (hm!= null) {
                 humMap = hm
-                humidity.text = humMap["a"]
+                humidity.text = hm["a"]
                 Log.d("HUMIDITY MAP READ BY FRAGMENT PLANT", humMap.toString())
+
+                /*umArr[4] = humArr[3]
+                humArr[3] = humArr[2]
+                humArr[2] = humArr[1]
+                humArr[1] = humArr[0]
+                humArr[0] = hm
+
+                 */
 
                 //aggiornamento graph
                 HgraphView.removeAllSeries()
                 series = LineGraphSeries(
                     arrayOf<DataPoint>(
+
                         DataPoint(1.0, humMap["e"]!!.toDouble()),
                         DataPoint(2.0, humMap["d"]!!.toDouble()),
                         DataPoint(3.0, humMap["c"]!!.toDouble()),
                         DataPoint(4.0, humMap["b"]!!.toDouble()),
                         DataPoint(5.0, humMap["a"]!!.toDouble())
+
+                         /*
+
+                        DataPoint(1.0, humArr[4]!!.toDouble()),
+                        DataPoint(2.0, humArr[3]!!.toDouble()),
+                        DataPoint(3.0, humArr[2]!!.toDouble()),
+                        DataPoint(4.0, humArr[1]!!.toDouble()),
+                        DataPoint(5.0, humArr[0]!!.toDouble())
+
+                          */
                     )
                 )
                 series.setColor(Color.WHITE)

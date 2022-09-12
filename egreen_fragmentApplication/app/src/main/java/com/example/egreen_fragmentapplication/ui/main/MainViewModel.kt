@@ -93,6 +93,9 @@ class MainViewModel : ViewModel () {
     private var mutableWater = MutableLiveData<String>()
     val water: LiveData<String> get() = mutableWater
 
+    private var mutableHumidity = MutableLiveData<String>()
+    val humidity: LiveData<String> get() = mutableHumidity
+
     private var mutableUsername = MutableLiveData<String>()
     val username: LiveData<String> get() = mutableUsername
 
@@ -160,11 +163,11 @@ class MainViewModel : ViewModel () {
         params["last5waterlevel"] = ""
 
 
-        provvisoria["a"] = "20"
-        provvisoria["b"] = "45"
-        provvisoria["c"] = "29"
-        provvisoria["d"] = "26"
-        provvisoria["e"] = "9"
+        provvisoria["a"] = "0"
+        provvisoria["b"] = "0"
+        provvisoria["c"] = "0"
+        provvisoria["d"] = "0"
+        provvisoria["e"] = "0"
 
 
 
@@ -174,6 +177,7 @@ class MainViewModel : ViewModel () {
         //da eliminare (simula ultimi dati caricati da arduino
         mutableRefDB.value?.child("plants")?.child(plantName)?.child("params")?.child("last5humidity")?.setValue(provvisoria)
         mutableRefDB.value?.child("plants")?.child(plantName)?.child("params")?.child("last5waterlevel")?.setValue(provvisoria)
+        mutableRefDB.value?.child("plants")?.child(plantName)?.child("params")?.child("humidityarray")?.setValue(provvisoria)
 
 
         mutableRefDB.value?.child("plants")?.child(plantName)?.child("piantaimgUrl")?.setValue(plantPicPath.value.toString())       //metto nel database il link all'immagine della pianta
@@ -191,7 +195,7 @@ class MainViewModel : ViewModel () {
 
         selectedPlant = name
 
-        mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("params")?.child("last5humidity")?.addValueEventListener(object: ValueEventListener{
+        mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("params")?.child("humidityarray")?.addValueEventListener(object: ValueEventListener{
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 mutableHumidityMap.value = snapshot.getValue<MutableMap<String, String>>()
@@ -217,7 +221,33 @@ class MainViewModel : ViewModel () {
 
             override fun onCancelled(error: DatabaseError) {
             }
+        })
 
+        var provvisoria: MutableMap<String, String> = HashMap()
+
+        mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("params")?.child("last5humidity")?.child("a")?.addValueEventListener(object: ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var hmu = snapshot.getValue<String>()
+                if (hmu != null  && hmu != humidityMap.value!!.getValue("a")) {
+                    mutableHumidity.value = hmu.toString()
+
+                    provvisoria["e"] = humidityMap.value!!.getValue("d")
+                    provvisoria["d"] = humidityMap.value!!.getValue("c")
+                    provvisoria["c"] = humidityMap.value!!.getValue("b")
+                    provvisoria["b"] = humidityMap.value!!.getValue("a")
+                    provvisoria["a"] = hmu
+                    Log.e("provvisoria", provvisoria.toString())
+                    mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("params")?.child("humidityarray")?.setValue(provvisoria)
+
+                }
+            }
+            //Log.d("Water MAP READ BY VM", waterMap.value.toString())
+            //getWtValues()
+
+
+            override fun onCancelled(error: DatabaseError) {
+            }
         })
 
         mutableRefDB.value?.child("plants")?.child(selectedPlant)?.child("params")?.child("last5waterlevel")?.addValueEventListener(object: ValueEventListener{
@@ -381,6 +411,7 @@ class MainViewModel : ViewModel () {
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 val hm = snapshot.getValue<String>().toString()
                                 //Log.d("Il hm lev", hm)
+                                //mutabledataHmList.value?.clear()
                                 mutabledataHmList.value?.add(snapshot.getValue<String>().toString())
                                 //Log.d("LISTA hm", mutabledataHmList.value.toString())
                             }
