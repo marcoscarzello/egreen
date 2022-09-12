@@ -82,7 +82,13 @@
     <string name="garden_settings">Garden settings</string>
     <string name="connection">Connection</string>
 
-    <string name="low_water">Low water in</string>
+    <string name="low_water">Low water in </string>
+    <string name="water_level">The water level of your tank is below 25%! Fill it up quickly!</string>
+    <string name="enter_mail">Please enter email.</string>
+    <string name="enter_pass">Please enter password.</string>
+    <string name="logged_succ">You are logged in succesfully</string>
+
+
 
     <string name="avviso_nome">Sorry, you can\'t change my name:(</string>
 

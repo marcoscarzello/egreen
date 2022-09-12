@@ -81,7 +81,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     email_text_input.error = resources.getString(R.string.error_string)
                     Toast.makeText(
                         this@LoginFragment.requireContext(),
-                        "Please enter email.",
+                        R.string.enter_mail,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -91,7 +91,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     psw_text_input.error = resources.getString(R.string.error_string)
                     Toast.makeText(
                         this@LoginFragment.requireContext(),
-                        "Please enter password.",
+                        R.string.enter_pass,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -117,7 +117,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                                     Toast.makeText(
                                         this@LoginFragment.requireContext(),
-                                        "You are logged in succesfully",
+                                        R.string.logged_succ,
                                         Toast.LENGTH_SHORT
                                     ).show()
 
@@ -182,7 +182,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                     Toast.makeText(
                         this@LoginFragment.requireContext(),
-                        "You are logged in succesfully",
+                        R.string.logged_succ,
                         Toast.LENGTH_SHORT
                     ).show()
 

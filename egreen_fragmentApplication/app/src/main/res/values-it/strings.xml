@@ -83,7 +83,12 @@
     <string name="garden_settings">Impostazioni giardino</string>
     <string name="connection">Connessione</string>
 
-    <string name="low_water">Poca acqua in</string>
+    <string name="low_water">Poca acqua in </string>
+    <string name="water_level">Il livello dell\'acqua nel tuo serbatoio è sotto al 25%! Riempilo urgentemente!</string>
+    <string name="enter_mail">Per favore immetti un\'email</string>
+    <string name="enter_pass">Per favore immetti una password.</string>
+    <string name="logged_succ">Ti sei loggato correttamente</string>
+
 
     <string name="avviso_nome">Mi spiace, non mi puoi cambiare nome:(</string>
 
