@@ -34,7 +34,7 @@
     <string name="label_username">Username</string>
     <string name="label_plantName">Nome pianta</string>
     <string name="label_plant_type">Tipo pianta</string>
-    <string name="createplant">Crea pianta</string>
+    <string name="createplant">CREA PIANTA</string>
     <string name="deleteplant">Cancella pianta</string>
     <string name="delete_account">CANCELLA ACCOUNT</string>
     <string name="new_picture">nuova immagine</string>

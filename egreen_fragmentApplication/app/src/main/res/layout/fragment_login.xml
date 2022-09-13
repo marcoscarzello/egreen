@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface"
+    android:background="?attr/colorPrimary"
     tools:context="ui.main.LoginFragment">
 
 
@@ -13,8 +13,6 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="304dp"
         android:layout_height="102dp"
-        app:startIconDrawable="@drawable/ic_email"
-        app:startIconContentDescription="@string/content_description_end_icon"
         app:boxStrokeColor="@color/green_700"
         app:errorEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/psw_text_input"
@@ -22,8 +20,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mail"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:ignore="MissingConstraints"
-        >
+        app:startIconContentDescription="@string/content_description_end_icon"
+        app:startIconDrawable="@drawable/ic_email"
+        tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/login_email"
@@ -40,17 +39,17 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="304dp"
         android:layout_height="72dp"
+        app:boxStrokeColor="@color/green_700"
         app:endIconMode="password_toggle"
         app:endIconTint="@color/green_700"
-        app:startIconDrawable="@drawable/ic_lock"
-        app:startIconContentDescription="@string/content_description_end_icon"
-        app:boxStrokeColor="@color/green_700"
         app:errorEnabled="true"
-
         app:layout_constraintBottom_toTopOf="@+id/googlebtn"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_text_input"
+        app:startIconContentDescription="@string/content_description_end_icon"
+        app:startIconDrawable="@drawable/ic_lock"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -128,10 +127,10 @@
         android:id="@+id/googlebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/google"
-        android:textColor="@color/white"
-
         android:backgroundTint="?attr/colorButtonNormal"
+        android:text="@string/google"
+
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

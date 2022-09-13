@@ -47,6 +47,16 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="31dp"
+                android:layout_height="29dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/plant_settings_image"
+                app:layout_constraintEnd_toEndOf="@+id/plant_settings_image"
+                app:srcCompat="@drawable/edit_plant_2" />
+
+            <ImageView
                 android:id="@+id/plant_settings_image"
                 android:layout_width="258dp"
                 android:layout_height="223dp"
