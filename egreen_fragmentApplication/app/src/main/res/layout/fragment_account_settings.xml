@@ -58,6 +58,7 @@
                     android:hint="@string/label_username"
                     android:inputType="textPersonName"
                     android:text=""
+                    android:textColorLink="#FFFFFF"
                     app:layout_constraintBottom_toTopOf="@+id/til_c_password"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
