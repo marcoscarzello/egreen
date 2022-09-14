@@ -13,7 +13,7 @@
         android:title="@string/prof" />
     <item
         android:id="@+id/miSettings"
-        android:icon="@drawable/ic_settings"
+        android:icon="@drawable/settings_con_foglia"
         android:title="@string/sett" />
 
 </menu>
