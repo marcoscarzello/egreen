@@ -5,7 +5,7 @@
     android:id="@+id/Constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_theme">
+    android:background="?attr/colorPrimary">
 
     <ImageView
         android:id="@+id/test_profile"
@@ -62,7 +62,7 @@
         android:id="@+id/Hgraph"
         android:layout_width="299dp"
         android:layout_height="132dp"
-        android:background="@color/main_theme"
+        android:background="?attr/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

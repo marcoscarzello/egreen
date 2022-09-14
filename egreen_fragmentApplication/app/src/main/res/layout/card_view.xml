@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/green_200"
     android:gravity="center_vertical"
     android:orientation="vertical">
 
@@ -13,7 +12,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="?attr/colorSecondaryVariant"
+        android:backgroundTint="@color/green_700"
         app:cardCornerRadius="22dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,6 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="105dp"
                 android:layout_margin="20dp"
+                app:cardBackgroundColor="?attr/colorSecondaryVariant"
                 app:cardCornerRadius="35dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout

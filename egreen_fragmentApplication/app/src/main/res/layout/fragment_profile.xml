@@ -6,8 +6,20 @@
     android:layout_height="match_parent"
     android:background="@color/main_theme">
 
-    <TextView
+    <ImageView
         android:id="@+id/textView9"
+        android:layout_width="56dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/custom_input"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView9v"
         android:layout_width="71dp"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
@@ -15,22 +27,25 @@
         android:background="@drawable/back_button"
         android:textColor="@color/main_theme"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.879"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:visibility="invisible" />
 
     <ImageView
         android:id="@+id/edit_profile"
-        android:layout_width="44dp"
-        android:layout_height="43dp"
+        android:layout_width="37dp"
+        android:layout_height="29dp"
         android:src="@drawable/edits"
         app:layout_constraintBottom_toBottomOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="@+id/textView9"
         app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
+        app:layout_constraintTop_toTopOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.5" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_plants"
@@ -38,6 +53,7 @@
         android:layout_height="146dp"
         android:layout_marginTop="56dp"
         android:elevation="0dp"
+        app:cardBackgroundColor="?attr/colorSecondary"
         app:cardCornerRadius="30dp"
         app:cardElevation="30dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
@@ -56,6 +72,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="TextView"
                 android:textAlignment="center"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -68,6 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/plants_"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -83,8 +101,9 @@
         android:layout_width="152dp"
         android:layout_height="146dp"
         android:layout_marginTop="56dp"
-        app:cardElevation="30dp"
+        app:cardBackgroundColor="?attr/colorSecondary"
         app:cardCornerRadius="30dp"
+        app:cardElevation="30dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/schermataSuperiore"
@@ -101,6 +120,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="TextView"
                 android:textAlignment="center"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -115,6 +135,7 @@
                 android:layout_height="63dp"
                 android:text="@string/oxigen"
                 android:textAlignment="center"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -129,7 +150,8 @@
         android:id="@+id/schermataSuperiore"
         android:layout_width="352dp"
         android:layout_height="311dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
+        app:cardBackgroundColor="?attr/colorSecondary"
         app:cardCornerRadius="30dp"
         app:cardElevation="30dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -159,6 +181,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="0"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="34sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textView3"
@@ -172,6 +195,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="User Name"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textView3"
@@ -188,6 +212,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="20dp"
                 android:text="Green Score"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/greenScore"
